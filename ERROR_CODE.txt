@@ -1,0 +1,64 @@
+DERC Delhezi Error Code
+
+kod aplikacji - kod pakietu - kod klasy - kod błędu
+
+|- com.delhezi.ga = 1
+   |- crossover = 1-1
+      |- crossover.factory = 1-1.1
+      |- crossover.permutation = 1-1.2
+      |- crossover.standard = 1-1.3
+   |- exception = 1-2
+   |- fitnessfunction = 1-3
+      |- fitnessfunction.drivers= 1-3.1
+         |- fitnessfunction.drivers.factory = 1-3.1.1
+   |- genes = 1-4
+   |- initialize = 1-5
+      |- initialize.data = 1-5.1
+   |- mutation = 1-6
+      |- mutation.factory = 1-6.1
+      |- mutation.heuristics = 1-6.2
+   |- selection = 1-8
+      |- selection.factory = 1-8.1
+   |- utility = 1-9
+
+      1-1.1-1  com.delhezi.ga.crossover.factory.CrossoverFactory
+      1-1.2-1  com.delhezi.ga.crossover.permutation.OrderCrossover
+      1-1.2-2  com.delhezi.ga.crossover.permutation.PartiallyMappedCrossover
+      1-1.3-1  com.delhezi.ga.crossover.standard.AverageCrossover
+      1-1.3-2  com.delhezi.ga.crossover.standard.HeuristicUniformCrossover
+      1-1.3-3  com.delhezi.ga.crossover.standard.KPointCrossover
+      1-1.3-4  com.delhezi.ga.crossover.standard.ReducedSurrogateCrossover
+      1-1.3-5  com.delhezi.ga.crossover.standard.ShuffleCrossover
+      1-1.3-6  com.delhezi.ga.crossover.standard.UniformCrossover
+   
+      1-3.1.1-1  com.delhezi.ga.fitnessfunction.drivers.factory.FitnessFunctionDriverFactory
+      1-3-1  com.delhezi.ga.fitnessfunction.FitnessFunction
+
+      1-6.1-1  com.delhezi.ga.mutation.factory.MutationFactory
+      1-6.2-1  com.delhezi.ga.mutation.heuristics._2Opt
+      1-6.2-2  com.delhezi.ga.mutation.heuristics._3Opt
+      1-6.2-3  com.delhezi.ga.mutation.heuristics.LinKernighan
+      1-6-1  com.delhezi.ga.mutation.InversionMutation
+      1-6-2  com.delhezi.ga.mutation.SwapMutation
+   
+      1-8.1-1  com.delhezi.ga.selection.factory.SelectionFactory
+      1-8-1  com.delhezi.ga.selection.AbstractRouletteWheel
+      1-8-2  com.delhezi.ga.selection.LinearRanking
+      1-8-3  com.delhezi.ga.selection.RouletteWheelEffectiveImplementation
+      1-8-4  com.delhezi.ga.selection.RouletteWheelElementaryImplementation
+      1-8-5  com.delhezi.ga.selection.Tournament
+   
+      1-9-1  com.delhezi.ga.utility.ScriptEngine
+   
+      1-1  Chromosome
+      1-2  ChromosomeProperties
+      1-3  GeneticAlgorithm
+      1-4  GeneticAlgorithmControl
+      1-5  GeneticAlgorithmXMLFactory
+      1-6  Population
+      1-7  PopulationChangeableSize
+      1-8  PopulationConstantSize
+      1-9  StateInitialized
+      1-10  StateRunning
+      1-11  StateStopped
+      1-12  StateError

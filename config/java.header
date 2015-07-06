@@ -1,0 +1,8 @@
+^/\*{2}$
+^ \* \@\(\#\)\w+\.java$
+^ \* Copyright \(C\) \d\d\d\d-\d\d\d\d delhezi.com$
+^ \*$
+^ \* This class is released under the:$
+^ \* GNU Lesser General Public License \(LGPL\) version 3 or later.$
+^ \* http://www.gnu.org/copyleft/lesser.html$
+^ \*\/$

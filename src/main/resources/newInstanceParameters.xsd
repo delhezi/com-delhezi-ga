@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xsd:annotation>
+    <xsd:documentation xml:lang="pl">Schemat opisujący parametry inicjujące algorytm genetyczny.</xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:complexType name="IdsDBTyp">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="pl">Tworzenie populacji początkowej na podstawie wyniku zapytania do bazy danych.
+        populationSize NIEJAWNY (wyliczony w kodzie java), jest równy ilości rekordów zwróconych przez zapytanie.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element name="dbConnectionString">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="pl">String z konfiguracją połączenia.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string"/>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="dbSQLQuery">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="pl">Zapytanie SQL tworzące popualcję.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string"/>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:complexType name="IdsSampleTSPTyp">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="pl">Przykładowa populacja dla problemu komiwojażera.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element name="populationSize">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="pl">Ilość chromosomów inicjujących polulację.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:positiveInteger"/>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:complexType name="ChangeablePopulationSizeTyp">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="pl">
+        Populacja o zmiennej liczebności.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element name="maxLT">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="pl">Maksymalny czas życia osobnika w populacji (ilość pokoleń).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:positiveInteger"/>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="minLT">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="pl">Minimalny czas życia osobnika w populacji (ilość pokoleń).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:positiveInteger"/>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:complexType name="ConstantPopulationSizeTyp">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="pl">
+        Populacja o stałej liczebności równej initializeDataSource.populationSize.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element name="selectionMethod">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="pl">Metoda selekcji.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="RouletteWheelElementaryImplementation"/>
+            <xsd:enumeration value="RouletteWheelEffectiveImplementation"/>
+            <xsd:enumeration value="Tournament"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+
+
+  <xsd:element name="gaInitializeParameters">
+    <xsd:complexType>
+      <xsd:sequence>
+
+        <xsd:element name="population">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="pl">Cechy populacji.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:choice>
+              <xsd:element name="constantPopulationSize" type="ConstantPopulationSizeTyp"/>
+              <xsd:element name="changeablePopulationSize" type="ChangeablePopulationSizeTyp"/>
+            </xsd:choice>
+          </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="crossoverOperator">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="pl">Operator krzyżowania.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="OrderCrossover"/>
+              <xsd:enumeration value="PartiallyMatchedCrossover"/>
+              <xsd:enumeration value="KPointCrossover"/>
+              <xsd:enumeration value="UniformCrossover"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="crossoverProbability">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="pl">Prawdopodobieństwo krzyżowania.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:double">
+              <xsd:minInclusive value="0"/>
+              <xsd:maxInclusive value="1"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="mutationOperator">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="pl">Operator mutacji.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="InversionMutation"/>
+              <xsd:enumeration value="SwapMutation"/>
+              <xsd:enumeration value="_2Opt"/>
+              <xsd:enumeration value="_3Opt"/>
+              <xsd:enumeration value="LinKernighan"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="mutationProbability">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="pl">Prawdopodobieństwo mutacji.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:double">
+              <xsd:minInclusive value="0"/>
+              <xsd:maxInclusive value="1"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="elitism" minOccurs="0" type="xsd:boolean" default="true">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="pl">Elitaryzm.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="fitnessFunctionScript">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="pl">Nazwa skryptu w którym zaimplementowano funkcję celu.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string"/>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="fitnessFunctionOption">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="pl">Maksymalizacja lub minimalizacja funkcji celu.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="minimisation"/>
+              <xsd:enumeration value="maximisation"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+
+        <xsd:element name="initializeDataSource">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="pl">Typ żróda danych wykorzystanego do utworzenia osobników populacji.
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:choice>
+              <xsd:element name="db" type="IdsDBTyp"/>
+              <xsd:element name="sampleTSP" type="IdsSampleTSPTyp"/>
+            </xsd:choice>
+          </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="endConditions" minOccurs="0">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="pl">Warunki zakończenia obliczeń. W przypadku braku
+              określenia warunków końca wykonywana jest pętla nieskończona.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="maxGeneration" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="pl">Maksymalna ilość generacji.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:positiveInteger"/>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="maxGenerationTopChromosomeNoChange" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="pl">Maksymalna ilość generacji od chwili znalezienia najlepszego osobnika.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:positiveInteger"/>
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
