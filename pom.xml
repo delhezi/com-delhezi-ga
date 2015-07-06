@@ -81,7 +81,7 @@
   <licenses>
     <license>
       <name>GNU Lesser General Public License (LGPL) version 3 or later</name>
-      <url>LICENSE.txt</url>
+      <url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -104,10 +104,9 @@
   
   <!-- Environment -->
   <scm>
-    <!-- http://maven.apache.org/scm/subversion.html -->
-    <connection>scm:svn:https://subversion.assembla.com/svn/${project.artifactId}/trunk</connection>
-    <developerConnection>scm:svn:https://subversion.assembla.com/svn/${project.artifactId}/trunk</developerConnection>
-    <url>http://subversion.assembla.com/svn/${project.artifactId}/trunk</url> 
+    <connection>scm:git:git@github.com:delhezi/{project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:delhezi/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/delhezi/${project.artifactId}/</url> 
   </scm>
   
   <distributionManagement>
