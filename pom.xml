@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.delhezi.ga</groupId>
   <artifactId>com-delhezi-ga</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   
     <properties>
@@ -464,18 +464,18 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>-->
-				
+
 				<!-- override version of GPG plugin to use new GPG signing features -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
 					<version>1.6</version>
 				</plugin>
-				<plugin>
+				<!-- <plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
 					<version>2.5.2</version>
-				</plugin>
+				</plugin>-->
 			</plugins>
 		</pluginManagement>
 		
