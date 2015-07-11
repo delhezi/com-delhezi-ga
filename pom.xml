@@ -176,14 +176,14 @@
 
   <!-- Build Settings -->
   <build>
-        <!-- FTP TRANSFER -->
+        <!-- FTP TRANSFER 
         <extensions>
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-ftp</artifactId>
                 <version>${wagon-ftp.version}</version>
             </extension>
-        </extensions>
+        </extensions>-->
     <resources>
       <resource>
         <directory>.</directory>
@@ -470,12 +470,21 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
 					<version>1.6</version>
+        				<executions>
+          				<execution>
+           				 <id>sign-artifacts</id>
+           				 <phase>verify</phase>
+           				 <goals>
+          				    <goal>sign</goal>
+           				 </goals>
+          				</execution>
+       				 </executions>
 				</plugin>
-				<!-- <plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
 					<version>2.5.2</version>
-				</plugin>-->
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		
