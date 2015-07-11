@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.delhezi.ga</groupId>
   <artifactId>com-delhezi-ga</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   
     <properties>
@@ -440,7 +440,7 @@
 				<pluginManagement>
 			<plugins>
 				<!-- remove M2E warning complaining about usage of maven-enforcer-plugin in parent -->
-				<plugin>
+				<!-- <plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
 					<version>1.0.0</version>
@@ -463,7 +463,7 @@
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
-				</plugin>
+				</plugin>-->
 				
 				<!-- override version of GPG plugin to use new GPG signing features -->
 				<plugin>
