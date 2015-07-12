@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.delhezi.ga</groupId>
   <artifactId>com-delhezi-ga</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging> 
   
   
@@ -64,7 +64,6 @@
     <connection>scm:git:git@github.com:delhezi/{project.artifactId}.git</connection>
     <developerConnection>scm:git:git@github.com:delhezi/${project.artifactId}.git</developerConnection>
     <url>https://github.com/delhezi/${project.artifactId}/</url> 
-	<tag>com-delhezi-ga-1.0.0</tag>
   </scm>
   
   <distributionManagement>
@@ -471,6 +470,9 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
 					<version>1.6</version>
+                    <configuration>
+                        <passphrase>554pGH12..Jjhg76&^</passphrase>
+                    </configuration>
         				<executions>
           				<execution>
            				 <id>sign-artifacts</id>
