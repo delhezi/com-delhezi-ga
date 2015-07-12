@@ -59,12 +59,19 @@
     </developer>
   </developers>
   
-    <!-- Environment -->
+    <!-- Environment 
   <scm>
     <connection>scm:git:git@github.com:delhezi/{project.artifactId}.git</connection>
     <developerConnection>scm:git:git@github.com:delhezi/${project.artifactId}.git</developerConnection>
     <url>https://github.com/delhezi/${project.artifactId}/</url> 
-    <tag>com-delhezi-ga-1.0.0</tag>
+	<tag>HEAD</tag>
+  </scm>-->
+  
+  <scm>
+    <connection>scm:git:ssh://git@github.com/delhezi/{project.artifactId}.git</connection>
+    <developerConnection>scm:git:ssh"//git@github.com/delhezi/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/delhezi/${project.artifactId}/</url> 
+	<tag>HEAD</tag>
   </scm>
   
   <distributionManagement>
