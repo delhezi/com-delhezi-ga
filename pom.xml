@@ -471,7 +471,7 @@
 					<artifactId>maven-gpg-plugin</artifactId>
 					<version>1.6</version>
                     <configuration>
-                        <passphrase>554pGH12..Jjhg76&^</passphrase>
+                        <passphrase>"<![CDATA["554pGH12..Jjhg76&^"]]>"</passphrase>
                     </configuration>
         				<executions>
           				<execution>
