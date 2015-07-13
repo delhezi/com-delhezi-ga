@@ -67,30 +67,20 @@
   </scm>
   
   <distributionManagement>
-    <!-- <repository>
-       <id>release-server</id>
-       <name>Release Repository</name>
-       <url>ftp://centos-gitlab/maven/${project.artifactId}/releases</url>
-    </repository>
-    <snapshotRepository>
-      <id>release-server</id>
-      <name>Snapshot Repository</name>
-      <url>ftp://centos-gitlab/maven/${project.artifactId}/snapshots</url>
-      <uniqueVersion>false</uniqueVersion>
-    </snapshotRepository> -->
+   <repository>
+    <id>sonatype</id>
+    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+   </repository>
     <site>
       <id>ftp.delhezi.com</id>
       <name>Delhezi Website</name>
       <url>ftp://ftp.delhezi.com//public_html/delhezi/public/${project.artifactId}/site/${project.version}/</url>
     </site>
   </distributionManagement>
+  
   <issueManagement>
     <url>https://github.com/delhezi/com-delhezi-ga/issues</url>
   </issueManagement>
-  
-  
-  
-  
   
   <dependencies>
     <dependency>
@@ -176,14 +166,14 @@
 
   <!-- Build Settings -->
   <build>
-        <!-- FTP TRANSFER 
+        <!-- FTP TRANSFER -->
         <extensions>
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-ftp</artifactId>
                 <version>${wagon-ftp.version}</version>
             </extension>
-        </extensions>-->
+        </extensions>
     <resources>
       <resource>
         <directory>.</directory>
