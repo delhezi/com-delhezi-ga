@@ -67,6 +67,7 @@ public class ScriptEngine {
         this.scriptPath = scriptPath;
         this.scriptFile = scriptFile;
 
+
         ScriptEngineManager manager = new ScriptEngineManager();
         javax.script.ScriptEngine engine =
             manager.getEngineByName(scriptEnginName);
