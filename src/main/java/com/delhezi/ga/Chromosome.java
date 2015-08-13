@@ -56,7 +56,7 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
      */
     public final int compareTo(final Chromosome<GENE_TYPE> chromosome) {
         try {
-            if (this.chProperties.getFitnessFunction().isMaximisation() == true) {
+            if (this.chProperties.getFitnessFunction().isMaximisation()) {
                 if (this.getFitness() > chromosome.getFitness()) {
                     return 1;
                 }
@@ -120,7 +120,7 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
    * @since 1.0
    */
   public final double getFitness() throws GeneticAlgorithmException {
-      if (this.changed == true) {
+      if (this.changed) {
           this.fitness = this.chProperties.getFitnessFunction()
               .calculateFitness(genes);
           this.changed = false;
