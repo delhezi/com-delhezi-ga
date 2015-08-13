@@ -14,12 +14,10 @@ import java.util.logging.Logger;
 
 /**
  * <code>Chromosome</code>: Klasa chromosomu.
- * @param <GENE_TYPE> typ obiektu charakteryzujący gen np.: Integer, Double,
- * lub objekt klasy com.delhezi.genes.*.
+ * @param <GENE_TYPE> typ obiektu charakteryzujący gen np.: Integer, Double lub objekt klasy com.delhezi.genes.*.
  * Uwaga; Genami nie mogą być typy proste np. int, double.
  * @version 1.0 2009-06-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class Chromosome<GENE_TYPE> implements Cloneable,
                                    Comparable<Chromosome<GENE_TYPE>> {
@@ -34,8 +32,7 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
      * Konstruktor.
      * @param genes Tablica genów.
      * @param chromosomeProperties Referencja do obiektu przechowującego
-     * parametry wspólne dla wszystkich chromosomów w ramach jednej
-     * instancji populacji.
+     * parametry wspólne dla wszystkich chromosomów w ramach jednej instancji populacji.
      * @since 1.0
      */
     public Chromosome(final GENE_TYPE[] genes,
@@ -81,8 +78,7 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
 
 
     /**
-     * Zwraca parametr określający maksymalizację/minimalizację funkcji
-     * celu.
+     * Zwraca parametr określający maksymalizację/minimalizację funkcji celu.
      * @return true -  maksymalizacja funkcji celu (najlepszym jest osobnik o
      *                 najwiekszej wartości wskaźnika przystosowania)
      *         false - minimalizacja funkcji celu (najlepszym jest osobnik o
