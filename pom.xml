@@ -249,7 +249,7 @@
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 						</manifest>
 						<manifestEntries>
-							<Implementation-Build>$\{buildNumber}</Implementation-Build>
+							<Implementation-Build>${buildNumber}</Implementation-Build>
 							<Svn-Revision>${buildNumber}</Svn-Revision>
 							<Build-Date>${maven.build.timestamp}</Build-Date>
 						</manifestEntries>
