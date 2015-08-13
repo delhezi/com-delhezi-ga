@@ -446,8 +446,6 @@
 								<configLocation>${project.basedir}/config/delhezi_checks.xml</configLocation>
 								<headerLocation>${project.basedir}/config/java.header</headerLocation>
 								<encoding>UTF-8</encoding>
-								<consoleOutput>true</consoleOutput>
-								<failsOnError>true</failsOnError>
 								<linkXRef>true</linkXRef>
 							</configuration>
 						</plugin>
