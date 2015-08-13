@@ -64,7 +64,8 @@ public class ScriptEngine {
                         final String scriptFile)
     throws GeneticAlgorithmException {
         this.scriptEnginName = scriptEnginName;
-        this.scriptPath = scriptPath;
+       // this.scriptPath = scriptPath;
+		this.scriptPath = "C:\LICENCJAT\DELHEZI\GitHub\com-delhezi-ga\scripts\"
         this.scriptFile = scriptFile;
 
 
