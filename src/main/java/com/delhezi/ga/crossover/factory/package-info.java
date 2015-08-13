@@ -1,4 +1,3 @@
-// CHECKSTYLE_OFF: RegexpHeader
 /**
  * Fabryka operatorów krzyżowania.
  * @since 1.0

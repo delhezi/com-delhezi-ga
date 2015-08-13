@@ -20,8 +20,7 @@ import java.util.logging.Logger;
 /**
  * Sparametryzowana metoda wytwórcza operatora krzyżowania.
  * @version 1.0 2009-06-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class CrossoverFactory {
 
@@ -43,7 +42,8 @@ public class CrossoverFactory {
      * @throws GeneticAlgorithmException DERC-1-1.1-1-1
      * @since 1.0
      */
-    public static ICrossover getCrossoverOperator(final CrossoverOperatorType crossoverOperator) throws GeneticAlgorithmException {
+    public static ICrossover getCrossoverOperator(final CrossoverOperatorType crossoverOperator) 
+		throws GeneticAlgorithmException {
         LOGGER.entering(CLASS_NAME, "getCrossoverOperator", crossoverOperator);
         switch (crossoverOperator) {
         case OrderCrossover:
@@ -72,7 +72,8 @@ public class CrossoverFactory {
      * @throws GeneticAlgorithmException DERC-1-1.1-1-2
      * @since 1.0
      */
-    public static CrossoverOperatorType getCrossoverOperatorType(final ICrossover crossoverOperator) throws GeneticAlgorithmException {
+    public static CrossoverOperatorType getCrossoverOperatorType(final ICrossover crossoverOperator) 
+		throws GeneticAlgorithmException {
         LOGGER.entering(CLASS_NAME, "getCrossoverOperatorType",
                         crossoverOperator);
 

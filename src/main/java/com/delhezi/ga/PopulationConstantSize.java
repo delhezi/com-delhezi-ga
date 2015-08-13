@@ -215,7 +215,7 @@ public final class PopulationConstantSize extends Population {
            //Jeśli w nowej populacji nie ma lepszego chromosomu niż ostatni
            //elitarny mymieniamy ostatni chromosom populacji na
            //chromosom elitarny.
-        if (super.getElitism() == true) {
+        if (super.getElitism()) {
             if (elitarChromosome.compareTo(foundTopChromosome) == 1) {
                 super.getChromosomes().removeLast();
                 super.getChromosomes().add(elitarChromosome.clone());
