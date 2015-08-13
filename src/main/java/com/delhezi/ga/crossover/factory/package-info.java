@@ -1,3 +1,4 @@
+// CHECKSTYLE:OFF
 // CHECKSTYLE_OFF: RegexpHeader
 /**
  * Fabryka operatorów krzyżowania.
@@ -12,3 +13,4 @@ package com.delhezi.ga.crossover.factory;
  * GNU Lesser General Public License (LGPL) version 3 or later.
  * http://www.gnu.org/copyleft/lesser.html
  */
+ 
