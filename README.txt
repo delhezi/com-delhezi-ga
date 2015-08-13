@@ -1,4 +1,4 @@
-                          com-delhezi-ga
+﻿                          com-delhezi-ga
 Opis
 ------------------------------
   com-delhezi-ga stanowi implementację algorytmów genetycznych w środowisku java.
@@ -15,9 +15,7 @@ Lista zmian
 Wymagania dotyczące kompilacji biblioteki
 ------------------------------
   Poprawne zbudowanie biblioteki wymaga dostępności
-    JDK 1.6 (http://download.oracle.com/javase/6/docs/)
-    
-  Systemy operacyjne wykorzystane do realizacji testów: Windows XP, Windows Vista.
+    JDK 1.7 (http://docs.oracle.com/javase/7/docs/)
 
   Uwaga. Skrypty stworzone do budowy aplikacji bazują na zmiennych środowiskowych.
   DELHEZI_HOME, JAVA_HOME, M2_HOME.
@@ -27,14 +25,19 @@ Kompilacja kodu z wykorzystaniem Mavena
 ------------------------------
   1. Kompilacja kodu oraz kolejne czynności opisane w tym dokumencie wymagają zainstalowania środowiska Mavena.
      http://maven.apache.org/
-     W projekcie wykorzystano apache-maven-3.1.0.
+     W projekcie wykorzystano apache-maven-3.3.3.
 
-     Polecenia budujące projekt oraz wdrażające go do repozytorium Mavena:
      mvn clean
-     mvn compile (lub mvn cobertura:check dla kompilacji uwarunkowanej spełnieniem wymogów minimalnego pokrycia kodu testami)
-     mvn test-compile
-     mvn test
-     mvn package
+
+     Dozwolone fazy cyklu życia Mmaven'a dla projektu typu jar:
+     mvn compile   	- kompiluje kod źródłowy. (lub mvn cobertura:check dla kompilacji uwarunkowanej spełnieniem wymogów minimalnego pokrycia kodu testami)
+     mvn test-compile   - kompiluje testy jednostkowe
+     mvn test		- wykonuje testy jednostkowe, wyniki umieszcza w katalogu target/surefire-reports
+     mvn package	- pakuje kod do pliku jar
+     mvn install	- instaluje pakiet w lokalnym repozytorium mavena
+     mvn deploy		- wdraża pakiet do zdalnego repozytorium
+
+     Wdrażenie projekty do lokalnego repozytorium Mavena:
      mvn install:install-file -DgroupId=com.delhezi.ga -DartifactId=com-delhezi-ga -Dversion=1.0.0 -Dpackaging=jar -Dfile=target/com-delhezi-ga-1.0.0.jar
 
 
