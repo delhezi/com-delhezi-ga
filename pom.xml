@@ -48,9 +48,11 @@
 		<junit.version>4.12</junit.version>
 		<junit-addons.version>1.4</junit-addons.version>
 		<log4j.version>1.2.17</log4j.version>
+		<buildnumber-maven-plugin.version>1.3</buildnumber-maven-plugin.version>
 		<maven-checkstyle-plugin.version>2.15</maven-checkstyle-plugin.version>
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
 		<maven-jar-plugin.version>2.6</maven-jar-plugin.version>
+		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>2.10.2</maven-javadoc-plugin.version>
 		<maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
 		<maven-pmd-plugin.version>3.4</maven-pmd-plugin.version>
@@ -195,7 +197,6 @@
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
 					<encoding>UTF-8</encoding>
-					<!-- <executable>${env.JAVA_HOME}/bin/javac</executable> -->
 					<fork>true</fork>
 				</configuration>
 			</plugin>
@@ -203,7 +204,7 @@
 			<plugin> <!-- Inicjuje zmienną buildNumber numerem rewizji pobranym z lokalnego repozytorium GIT-->
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>1.3</version>
+				<version>${buildnumber-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<phase>validate</phase>
@@ -213,46 +214,66 @@
 					</execution>
 				</executions>
 				<configuration>
-					<doCheck>false</doCheck> <!-- Wymuszenie zakomitowania kodu do lokalnego repozytorium  GIT-->
+					<doCheck>true</doCheck> <!-- Wymuszenie zakomitowania kodu do lokalnego repozytorium  GIT-->
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>${maven-jar-plugin.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>jar</goal>
-							<goal>test-jar</goal>
-						</goals>
-						<phase>package</phase>
-					</execution>
-				</executions>
 				<configuration>
 					<archive>
+						<index>true</index>
+						<manifestEntries>
+							<Implementation-Date>${maven.build.timestamp}</Implementation-Date>
+							<Implementation-Revision>${buildNumber}</Implementation-Revision><!-- Numer rewizji pobrany z lokalnego repozytorium GIT-->
+						</manifestEntries>
 						<manifest>
 							<!-- http://maven.apache.org/shared/maven-archiver/examples/classpath.html -->
-							<!-- Dodaje do MANIFESTU classpatch z wylistowanymi bibliotekami
-                wymienione w sekcji dependencies jesli nie mają ustawione scope=test-->
+							<!-- Dodaje do MANIFESTU classpatch z wylistowanymi bibliotekami wymienione w sekcji dependencies jesli nie mają ustawione scope=test-->
 							<addClasspath>true</addClasspath>
 							<!-- http://commons.ucalgary.ca/projects/maven-buildnumber-plugin/howto.html -->
-							<!-- Dodaje Implementation-Title, Implementation-Version,
-                Implementation-Vendor-Id, Implementation-Vendor -->
+							<!-- Dodaje Implementation-Title, Implementation-Version, Implementation-Vendor-Id, Implementation-Vendor -->
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 							<!-- http://maven.apache.org/shared/maven-archiver/examples/manifest.html -->
-							<!-- Dodaje Specification-Title, Specification-Version,
-                Specification-Vendor -->
+							<!-- Dodaje Specification-Title, Specification-Version, Specification-Vendor -->
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							<packageName>${project.groupId}</packageName>
 						</manifest>
-						<manifestEntries>
-							<Implementation-Revision>${buildNumber}</Implementation-Revision><!-- Numerem rewizji pobranym z lokalnego repozytorium GIT-->
-							<Implementation-Date>${maven.build.timestamp}</Implementation-Date>
-						</manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven-source-plugin.version}</version>
+				<configuration>
+					<archive>
+						<index>true</index>
+						<manifestEntries>
+							<Implementation-Date>${maven.build.timestamp}</Implementation-Date>
+							<Implementation-Revision>${buildNumber}</Implementation-Revision>
+						</manifestEntries>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							<packageName>${project.groupId}</packageName>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>		
+
+
+
 
 			<!-- deploy to the OSSRH Nexus server -->
 			<plugin>
@@ -400,6 +421,18 @@
 								<docencoding>UTF-8</docencoding>
 								<source>${java.version}</source>
 								<show>public</show>
+								<archive>
+									<index>true</index>
+									<manifestEntries>
+										<Implementation-Date>${maven.build.timestamp}</Implementation-Date>
+										<Implementation-Revision>${buildNumber}</Implementation-Revision>
+									</manifestEntries>
+									<manifest>
+										<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+										<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+										<packageName>${project.groupId}</packageName>
+									</manifest>
+								</archive>
 							</configuration>
 						</plugin>
 						<plugin>
