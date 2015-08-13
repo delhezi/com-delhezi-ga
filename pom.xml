@@ -200,7 +200,6 @@
 					<fork>true</fork>
 				</configuration>
 			</plugin>
-
 			<plugin> <!-- Inicjuje zmienną buildNumber numerem rewizji pobranym z lokalnego repozytorium GIT-->
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
@@ -226,7 +225,7 @@
 						<index>true</index>
 						<manifestEntries>
 							<Implementation-Date>${maven.build.timestamp}</Implementation-Date>
-							<Implementation-Revision>${buildNumber}</Implementation-Revision><!-- Numer rewizji pobrany z lokalnego repozytorium GIT-->
+							<Implementation-Revision>${buildNumber}</Implementation-Revision>
 						</manifestEntries>
 						<manifest>
 							<!-- http://maven.apache.org/shared/maven-archiver/examples/classpath.html -->
@@ -421,18 +420,6 @@
 								<docencoding>UTF-8</docencoding>
 								<source>${java.version}</source>
 								<show>public</show>
-								<archive>
-									<index>true</index>
-									<manifestEntries>
-										<Implementation-Date>${maven.build.timestamp}</Implementation-Date>
-										<Implementation-Revision>${buildNumber}</Implementation-Revision>
-									</manifestEntries>
-									<manifest>
-										<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-										<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-										<packageName>${project.groupId}</packageName>
-									</manifest>
-								</archive>
 							</configuration>
 						</plugin>
 						<plugin>
@@ -456,8 +443,12 @@
 							<artifactId>maven-checkstyle-plugin</artifactId>
 							<version>${maven-checkstyle-plugin.version}</version>
 							<configuration>
-								<configLocation>${basedir}/config/delhezi_checks.xml</configLocation>
-								<headerLocation>${basedir}/config/java.header</headerLocation>
+								<configLocation>${project.basedir}/config/delhezi_checks.xml</configLocation>
+								<headerLocation>${project.basedir}/config/java.header</headerLocation>
+								<encoding>UTF-8</encoding>
+								<consoleOutput>true</consoleOutput>
+								<failsOnError>true</failsOnError>
+								<linkXRef>true</linkXRef>
 							</configuration>
 						</plugin>
 						<plugin>
