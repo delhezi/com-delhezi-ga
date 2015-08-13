@@ -156,6 +156,7 @@
 	</prerequisites>
 
 	<build>
+		<finalName>$\{project.artifactId}-$\{project.version}-r$\{buildNumber}</finalName>
 		<!-- FTP transfer -->
 		<extensions>
 			<extension>
