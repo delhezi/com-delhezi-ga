@@ -1,4 +1,4 @@
-package utility;
+package com.delhezi.ga.utility;
 
 import com.delhezi.ga.utility.HashCodeUtil;
 import org.junit.Test;

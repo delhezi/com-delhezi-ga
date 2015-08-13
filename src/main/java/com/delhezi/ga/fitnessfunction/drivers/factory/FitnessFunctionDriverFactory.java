@@ -54,6 +54,7 @@ public class FitnessFunctionDriverFactory {
         LOGGER.entering(CLASS_NAME, "getFitnessFunctionEngineDriver",
                         new Object[] {scriptEnginName, scriptPath,
                                       scriptFile });
+		LOGGER.log(Level.WARNING, "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
         IFitnessFunctionDriver driv =
             new ScriptEngineDriver(scriptEnginName, scriptPath, scriptFile);
         LOGGER.exiting(CLASS_NAME, "getFitnessFunctionEngineDriver", driv);
