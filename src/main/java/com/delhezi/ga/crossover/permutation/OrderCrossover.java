@@ -48,9 +48,9 @@ public class OrderCrossover implements com.delhezi.ga.crossover.ICrossover {
         final int geneLength = chromosome1.getGenes().length;
 
         //Losowe określenie dwóch punktów krzyżowania.
-		final int cutpoint1 = (int) (Math.random() * geneLength);
+        final int cutpoint1 = (int) (Math.random() * geneLength);
         final int cutpoint2 = (int) (Math.random() * geneLength);
-		
+
         this.crossover(chromosome1, chromosome2, cutpoint1, cutpoint2);
         }
 
@@ -94,7 +94,7 @@ public class OrderCrossover implements com.delhezi.ga.crossover.ICrossover {
         }
 
         int currentIndex1 = 0;
-		int currentIndex2 = 0;
+        int currentIndex2 = 0;
         boolean znaleziono;
 
 
