@@ -1,3 +1,11 @@
+/**
+ * @(#)GeneticAlgorithmXmlDomParserFactory.java
+ * Copyright (C) 2008-2011 delhezi.com
+ *
+ * This class is released under the:
+ * GNU Lesser General Public License (LGPL) version 3 or later.
+ * http://www.gnu.org/copyleft/lesser.html
+ */
 package com.delhezi.ga;
 
 import com.delhezi.ga.crossover.factory.CrossoverOperatorType;
@@ -33,7 +41,12 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.w3c.dom.traversal.DocumentTraversal;
 
-
+/**
+ * <code>GeneticAlgorithmXmlDomParserFactory </code>: Analiza składniwa dokumentu xml
+ * z użyciem parsera JAXP. Walidacja w oparciu o newInstanceParameters.xsd
+ * @version 1.0 2009-12-14
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
+ */
 public class GeneticAlgorithmXmlDomParserFactory {
     /** Logger object. */
     private static final Logger LOGGER =
