@@ -214,7 +214,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<doCheck>true</doCheck> <!-- Wymuszenie zakomitowania kodu do lokalnego repozytorium  GIT-->
+					<!--<doCheck>true</doCheck>  Wymuszenie zakomitowania kodu do lokalnego repozytorium  GIT-->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -287,22 +287,7 @@
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
-
-			<!-- Source jar files generated -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.4</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin> 
-
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
