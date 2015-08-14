@@ -398,7 +398,7 @@ public class GeneticAlgorithm {
                                    FitnessFunctionOption fitnessFunctionOption) throws GeneticAlgorithmException {
         IFitnessFunctionDriver fitnessFunctionDriver =
             FitnessFunctionDriverFactory.getFitnessFunctionEngineDriver(fitnessFunctionEnginName,
-                                                                        fitnassFunctionScriptsPath,
+                                                                        fitnassFunctionScriptsPath.replaceAll("\\\\", "/"),
                                                                         fitnessFunctionScriptFile);
         FitnessFunction fitnessFunction =
             new FitnessFunction(fitnessFunctionDriver, "fitnessFunction");

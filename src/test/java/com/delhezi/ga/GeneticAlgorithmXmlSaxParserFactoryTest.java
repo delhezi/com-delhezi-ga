@@ -28,7 +28,7 @@ public class GeneticAlgorithmXmlSaxParserFactoryTest {
             //System.out.println ("Current dir : " + dir1.getCanonicalPath());
             //System.out.println ("Parent  dir : " + dir2.getCanonicalPath());
             //scriptEngineDriverPath = "D:/sun/NetBeansProjects/lib/com-delhezi-ga_scripts/";
-            scriptEngineDriverPath = dir1.getCanonicalPath() + "/scripts/";
+            scriptEngineDriverPath = dir1.getCanonicalPath().replaceAll("\\\\", "/") + "/scripts/";
         } catch (Exception e) {
             log.debug("Exception: ", e);
             e.printStackTrace();

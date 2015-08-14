@@ -15,16 +15,15 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.FileReader;
+import java.io.Reader;
 import javax.script.Invocable;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-//http://www.java2s.com/Code/Java/JDK-6/CatchScriptException.htm
 /**
  * <code>FitnessFunction</code>: Silnik skryptów.
  * @version 1.0 2009-12-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class ScriptEngine {
 
@@ -64,35 +63,72 @@ public class ScriptEngine {
                         final String scriptFile)
     throws GeneticAlgorithmException {
         this.scriptEnginName = scriptEnginName;
-        this.scriptPath = scriptPath;
+        this.scriptPath = scriptPath.replaceAll("\\\\", "/");
         this.scriptFile = scriptFile;
+        
+        /*
+        System.out.print("xxxxxxxxxxxxxxxxxxxxxxxxxx1::" + this.scriptPath + scriptFile);
+        try {
+            ScriptEngineManager factory2 = new ScriptEngineManager();
+            javax.script.ScriptEngine engine2 = factory2.getEngineByName("JavaScript");
+            engine2.eval("function hi(){\n"+
+            		"var a = 'PROSPER'.toLowerCase(); \n"+
+            		"middle(); \n"+
+            		"print('Live long and' + a)}\n"+
+            		"function middle(){\n"+
+            		"var b = 1; for(var i=0, max = 5; i<max;i++){\nb++;\n}\n print('b is '+b);}hi();");
+            } catch (ScriptException ex) {
+                    //...
+                }
+                */
 
-
+            ScriptEngineManager factory3 = new ScriptEngineManager();
+            javax.script.ScriptEngine engine = factory3.getEngineByName("JavaScript");
+            try {
+				engine.eval("load(\"" + this.scriptPath  + this.scriptFile + "\");");
+			} catch (ScriptException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        
+/*    
+        
         ScriptEngineManager manager = new ScriptEngineManager();
         javax.script.ScriptEngine engine =
             manager.getEngineByName(scriptEnginName);
+        
+        if (engine == null) {
+            String errMessage =
+                    "DERC-" + DERC + "4: Cannot load " + scriptEnginName + " engine.";
+            throw new GeneticAlgorithmException(errMessage);
+        }
+        
 
-        FileReader reader;
+        Reader reader;
         try {
-            reader = new FileReader(scriptPath + scriptFile);
+            reader = new FileReader(this.scriptPath + scriptFile);
         } catch (FileNotFoundException e) {
             String errMessage =
-                "DERC-" + DERC + "1: The script " + scriptPath
+                "DERC-" + DERC + "1: The script " + this.scriptPath
                 + scriptFile
                 + " does not exist, is a directory rather than a regular file,"
                 + " or for some other reason cannot be opened for reading.";
             LOGGER.log(Level.WARNING, errMessage, e);
             throw new GeneticAlgorithmException(errMessage);
         }
+        
         try {
+            System.out.print("ccccccccccccccccccccccccccccccccc1::" + this.scriptPath + scriptFile);
             engine.eval(reader);
+            System.out.print("ccccccccccccccccccccccccccccccccc2::" + this.scriptPath + scriptFile);
         } catch (ScriptException e) {
             String errMessage =
                 "DERC-" + DERC + "2: Error occurrs in script "
-                + scriptPath + scriptFile + ".";
+                + this.scriptPath + scriptFile + ".";
             LOGGER.log(Level.WARNING, errMessage, e);
             throw new GeneticAlgorithmException(errMessage);
         }
+
         try {
             reader.close();
         } catch (IOException e) {
@@ -101,6 +137,7 @@ public class ScriptEngine {
             LOGGER.log(Level.WARNING, errMessage, e);
             throw new GeneticAlgorithmException(errMessage);
         }
+*/
         invokeEngine = (Invocable) engine;
     }
 
