@@ -10,8 +10,6 @@ package com.delhezi.ga.selection;
 
 import com.delhezi.ga.Chromosome;
 import com.delhezi.ga.exception.GeneticAlgorithmException;
-import com.delhezi.ga.fitnessfunction.FitnessFunction;
-
 import java.util.LinkedList;
 
 /**

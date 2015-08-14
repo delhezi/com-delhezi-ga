@@ -8,7 +8,6 @@
  */
 package com.delhezi.ga.selection.factory;
 
-import com.delhezi.ga.selection.LinearRanking;
 
 /**
  * Typy funkcji selekcji.
