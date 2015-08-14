@@ -149,16 +149,16 @@ public class PartiallyMatchedCrossover
     /**
      * Optymalizacja tabeli odwzorowań dla sekcji dopasowania.
      * Przykład dla substring1(6,9,2,1), substring2(3,2,7,9):
-     * 6 <-> 3
-     * 9 <-> 2
-     * 2 <-> 7
-     * 1 <-> 9
+     * 6 - 3
+     * 9 - 2
+     * 2 - 7
+     * 1 - 9
      * "zlepiając" powyższe odwzorowanie otrzymujemy:
-     * 6 <-> 3
-     * 1 <-> 9 <-> 2 <-> 7
+     * 6 - 3
+     * 1 - 9 - 2 - 7
      * co po skróceniu daje:
-     * 6 <-> 3
-     * 1 <-> 7
+     * 6 - 3
+     * 1 - 7
      *
      * @param <T> xxx
      * @param substring1 Sekcja dopasowania.

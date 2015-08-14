@@ -19,7 +19,7 @@ public class KPointCrossoverTest {
 
 
     /**
-     * @see KPointCrossover#crossover(com.delhezi.ga.Chromosome,com.delhezi.ga.Chromosome)
+     * KPointCrossover#crossover(com.delhezi.ga.Chromosome,com.delhezi.ga.Chromosome)
      */
     @Test
     public void testCrossover() {
@@ -27,7 +27,7 @@ public class KPointCrossoverTest {
     }
 
     /**
-     * @see KPointCrossover#crossover(com.delhezi.ga.Chromosome,com.delhezi.ga.Chromosome,int)
+     * KPointCrossover#crossover(com.delhezi.ga.Chromosome,com.delhezi.ga.Chromosome,int)
      */
     @Test
     public void testCrossover1() {
@@ -57,7 +57,7 @@ public class KPointCrossoverTest {
       }
 
     /**
-     * @see KPointCrossover#crossover(com.delhezi.ga.Chromosome,com.delhezi.ga.Chromosome,java.util.List)
+     * KPointCrossover#crossover(com.delhezi.ga.Chromosome,com.delhezi.ga.Chromosome,java.util.List)
      */
     @Test
     public void testCrossover2() {
@@ -106,7 +106,7 @@ public class KPointCrossoverTest {
     }
 
     /**
-     * @see KPointCrossover#setK(int)
+     * KPointCrossover#setK(int)
      */
     @Test
     public void testSetK() {
@@ -114,7 +114,7 @@ public class KPointCrossoverTest {
     }
 
     /**
-     * @see KPointCrossover#getK()
+     * KPointCrossover#getK()
      */
     @Test
     public void testGetK() {

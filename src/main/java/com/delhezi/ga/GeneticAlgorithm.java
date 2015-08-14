@@ -25,8 +25,7 @@ import com.delhezi.ga.fitnessfunction.drivers.factory.FitnessFunctionDriverFacto
 /**
  * <code>GeneticAlgorithm</code>: Fasada.
  * @version 1.0 2011-01-25
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class GeneticAlgorithm {
     /** Logger object. */
@@ -38,10 +37,19 @@ public class GeneticAlgorithm {
 
     private Population population;
 
+    /** Status algorytmu gentycznego. */
     private State stateError;
+
+    /** Status algorytmu gentycznego. */
     private State stateInitialized;
+
+    /** Status algorytmu gentycznego. */
     private State stateRunning;
+
+    /** Status algorytmu gentycznego. */
     private State stateStopped;
+
+    /** Status algorytmu gentycznego. */
     private State state;
 
     /**
@@ -61,7 +69,7 @@ public class GeneticAlgorithm {
      * @return Numer aktualnego pokolenia.
      * @since 1.0
      */
-    public int getGeneration() {
+    public final int getGeneration() {
         return getPopulation().getGeneration();
     }
 
@@ -71,7 +79,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public double getTopChromosomeCost() throws GeneticAlgorithmException {
+    public final double getTopChromosomeCost() throws GeneticAlgorithmException {
         return getPopulation().getTopChromosome().getFitness();
     }
 
@@ -80,7 +88,7 @@ public class GeneticAlgorithm {
      * @return Numer pokolenia.
      * @since 1.0
      */
-    public int getTopChromosomeGenerationFound() {
+    public final int getTopChromosomeGenerationFound() {
         return getPopulation().getTopChromosomeGenerationFound();
     }
 
@@ -89,7 +97,7 @@ public class GeneticAlgorithm {
      * @return Typ populacji.
      * @since 1.0
      */
-    public PopulationType getPopulationType() {
+    public final PopulationType getPopulationType() {
         PopulationType popType = null;
         if (getPopulation().getClass().getName().equals("com.delhezi.ga.PopulationChangeableSize")) {
             popType = PopulationType.valueOf("PopulationChangeableSize");
@@ -107,7 +115,8 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationChangeableSize.
      * @since 1.0
      */
-    public void toPopulationConstantSize(SelectionMethodType selectionMethod) throws GeneticAlgorithmException {
+    public final void toPopulationConstantSize(final SelectionMethodType selectionMethod)
+    throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationChangeableSize) {
             setPopulation(((com.delhezi.ga.PopulationChangeableSize)getPopulation()).toPopulationConstantSize(selectionMethod));
         } else {
@@ -124,8 +133,8 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationConstantSize.
      * @since 1.0
      */
-    public void toPopulationChangeableSize(int maxLT,
-                                           int minLT) throws GeneticAlgorithmException {
+    public final void toPopulationChangeableSize(final int maxLT,
+                                           final int minLT) throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationConstantSize) {
             setPopulation(((com.delhezi.ga.PopulationConstantSize)getPopulation()).toPopulationChangeableSize(maxLT,
                                                                                                               minLT));
@@ -142,7 +151,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationChangeableSize.
      * @since 1.0
      */
-    public int getMaxLT() throws GeneticAlgorithmException {
+    public final int getMaxLT() throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationChangeableSize) {
             return ((com.delhezi.ga.PopulationChangeableSize) getPopulation()).getMaxLT();
         } else {
@@ -158,7 +167,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationChangeableSize.
      * @since 1.0
      */
-    public void setMaxLT(int maxLT) throws GeneticAlgorithmException {
+    public final void setMaxLT(final int maxLT) throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationChangeableSize) {
             ((com.delhezi.ga.PopulationChangeableSize) getPopulation()).setMaxLT(maxLT);
         } else {
@@ -174,7 +183,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationChangeableSize.
      * @since 1.0
      */
-    public int getMinLT() throws GeneticAlgorithmException {
+    public final int getMinLT() throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationChangeableSize) {
             return ((com.delhezi.ga.PopulationChangeableSize) getPopulation()).getMinLT();
         } else {
@@ -190,7 +199,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationChangeableSize.
      * @since 1.0
      */
-    public void setMinLT(int minLT) throws GeneticAlgorithmException {
+    public final void setMinLT(final int minLT) throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationChangeableSize) {
             ((com.delhezi.ga.PopulationChangeableSize) getPopulation()).setMinLT(minLT);
         } else {
@@ -206,7 +215,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationConstantSize.
      * @since 1.0
      */
-    public SelectionMethodType getSelectionMethod() throws GeneticAlgorithmException {
+    public final SelectionMethodType getSelectionMethod() throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationConstantSize) {
             return SelectionFactory.getSelectionMethodType(((com.delhezi.ga.PopulationConstantSize) getPopulation()).getSelect());
         } else {
@@ -222,7 +231,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationConstantSize.
      * @since 1.0
      */
-    public void setSelectionMethod(SelectionMethodType selectionMethod) throws GeneticAlgorithmException {
+    public final void setSelectionMethod(final SelectionMethodType selectionMethod) throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationConstantSize) {
             ((com.delhezi.ga.PopulationConstantSize) getPopulation()).setSelect(selectionMethod);
         } else {
@@ -236,7 +245,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public CrossoverOperatorType getCrossoverOperator() throws GeneticAlgorithmException {
+    public final CrossoverOperatorType getCrossoverOperator() throws GeneticAlgorithmException {
         return CrossoverFactory.getCrossoverOperatorType(getPopulation().getCrossover());
     }
 
@@ -246,7 +255,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public void setCrossoverOperator(CrossoverOperatorType crossoverOperator) throws GeneticAlgorithmException {
+    public final void setCrossoverOperator(final CrossoverOperatorType crossoverOperator) throws GeneticAlgorithmException {
         getPopulation().setCrossover(crossoverOperator);
     }
 
@@ -255,7 +264,7 @@ public class GeneticAlgorithm {
      * @return Prawdopodobieństwo krzyżowania.
      * @since 1.0
      */
-    public double getCrossoverProbability() {
+    public final double getCrossoverProbability() {
         return getPopulation().getCrossoverProbability();
     }
 
@@ -265,7 +274,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public void setCrossoverProbability(double crossoverProbability) throws GeneticAlgorithmException {
+    public final void setCrossoverProbability(final double crossoverProbability) throws GeneticAlgorithmException {
         getPopulation().setCrossoverProbability(crossoverProbability);
     }
 
@@ -275,7 +284,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public MutationOperatorType getMutationOperator() throws GeneticAlgorithmException {
+    public final MutationOperatorType getMutationOperator() throws GeneticAlgorithmException {
         return MutationFactory.getMutationOperatorType(getPopulation().getMutation());
     }
 
@@ -285,7 +294,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public void setMutationOperator(MutationOperatorType mutationOperator) throws GeneticAlgorithmException {
+    public final void setMutationOperator(final MutationOperatorType mutationOperator) throws GeneticAlgorithmException {
         getPopulation().setMutation(mutationOperator);
     }
 
@@ -294,7 +303,7 @@ public class GeneticAlgorithm {
      * @return Prawdopodobieństwo mutacji.
      * @since 1.0
      */
-    public double getMutationProbability() {
+    public final double getMutationProbability() {
         return getPopulation().getMutationProbability();
     }
 
@@ -304,7 +313,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public void setMutationProbability(double mutationProbability) throws GeneticAlgorithmException {
+    public final void setMutationProbability(final double mutationProbability) throws GeneticAlgorithmException {
         getPopulation().setMutationProbability(mutationProbability);
     }
 
@@ -313,7 +322,7 @@ public class GeneticAlgorithm {
      * @return Elitaryzm.
      * @since 1.0
      */
-    public boolean getElitism() {
+    public final boolean getElitism() {
         return getPopulation().getElitism();
     }
 
@@ -322,7 +331,7 @@ public class GeneticAlgorithm {
      * @param elitism Elitaryzm.
      * @since 1.0
      */
-    public void setElitism(boolean elitism) {
+    public final void setElitism(final boolean elitism) {
         getPopulation().setElitism(elitism);
     }
 
@@ -332,7 +341,7 @@ public class GeneticAlgorithm {
      * @return Ścieżka do katalogu.
      * @since 1.0
      */
-    public String getFitnessFunctionScriptPath() {
+    public final String getFitnessFunctionScriptPath() {
         return ((ScriptEngineDriver) getPopulation().getChromosomeProperties().getFitnessFunction().getScriptEngineDriver()).getScriptPath();
     }
 
@@ -341,7 +350,7 @@ public class GeneticAlgorithm {
      * @return Nazwa pliku ze skrytem funkcji celu.
      * @since 1.0
      */
-    public String getFitnessFunctionScriptFile() {
+    public final String getFitnessFunctionScriptFile() {
         return ((ScriptEngineDriver) getPopulation().getChromosomeProperties().getFitnessFunction().getScriptEngineDriver()).getScriptFile();
     }
 
@@ -350,7 +359,7 @@ public class GeneticAlgorithm {
      * @return Nazwa silnika skryptów.
      * @since 1.0
      */
-    public String getFitnessFunctionEnginName() {
+    public final String getFitnessFunctionEnginName() {
         return ((ScriptEngineDriver) getPopulation().getChromosomeProperties().getFitnessFunction().getScriptEngineDriver()).getScriptEnginName();
     }
 
@@ -359,7 +368,7 @@ public class GeneticAlgorithm {
      * @return Informacja o maksymalizacji/maksymalizacji funkcji celu.
      * @since 1.0
      */
-    public FitnessFunctionOption getFitnessFunctionOption() {
+    public final FitnessFunctionOption getFitnessFunctionOption() {
         return (getPopulation().getChromosomeProperties().getFitnessFunction().isMaximisation() ==
                 true) ? FitnessFunctionOption.maximisation :
                FitnessFunctionOption.minimisation;
@@ -371,7 +380,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public void setFitnessFunctionOption(FitnessFunctionOption fitnessFunctionOption) throws GeneticAlgorithmException {
+    public final void setFitnessFunctionOption(final FitnessFunctionOption fitnessFunctionOption) throws GeneticAlgorithmException {
         FitnessFunction fitnessFunction =
             getPopulation().getChromosomeProperties().getFitnessFunction();
         if (fitnessFunctionOption == FitnessFunctionOption.minimisation) {
@@ -392,10 +401,10 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public void setFitnessFunction(String fitnessFunctionEnginName,
-                                   String fitnassFunctionScriptsPath,
-                                   String fitnessFunctionScriptFile,
-                                   FitnessFunctionOption fitnessFunctionOption) throws GeneticAlgorithmException {
+    public final void setFitnessFunction(final String fitnessFunctionEnginName,
+                                   final String fitnassFunctionScriptsPath,
+                                   final String fitnessFunctionScriptFile,
+                                   final FitnessFunctionOption fitnessFunctionOption) throws GeneticAlgorithmException {
         IFitnessFunctionDriver fitnessFunctionDriver =
             FitnessFunctionDriverFactory.getFitnessFunctionEngineDriver(fitnessFunctionEnginName,
                                                                         fitnassFunctionScriptsPath.replaceAll("\\\\", "/"),
@@ -415,7 +424,7 @@ public class GeneticAlgorithm {
      * @return Wielkość populacji.
      * @since 1.0
      */
-    public int getPopulationSize() {
+    public final int getPopulationSize() {
         return getPopulation().getPopulationSize();
     }
 
@@ -427,7 +436,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationConstantSize.
      * @since 1.0
      */
-    public void setPopulationSize(int populationSize) throws GeneticAlgorithmException {
+    public final void setPopulationSize(final int populationSize) throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationConstantSize) {
             ((com.delhezi.ga.PopulationConstantSize) getPopulation()).changePopulationSize(populationSize);
         } else {
@@ -439,7 +448,7 @@ public class GeneticAlgorithm {
      * Uruchamia algorytm genetyczny.
      * @throws GeneticAlgorithmException xxx
      */
-    public void run() throws GeneticAlgorithmException {
+    public final void run() throws GeneticAlgorithmException {
         state.run();
     }
 
@@ -447,7 +456,7 @@ public class GeneticAlgorithm {
      * Zatrzymuje działanie algorytmu genetycznego.
      * @throws GeneticAlgorithmException xxx
      */
-    public void stop() throws GeneticAlgorithmException {
+    public final void stop() throws GeneticAlgorithmException {
         state.stop();
     }
 
@@ -463,7 +472,7 @@ public class GeneticAlgorithm {
      * Warunek końca; Zwraca maksymalną ilość przewidzianych generacji.
      * @return Maksymalna ilość przewidzianych generacji.
      */
-    public int getMaxGenerationCount() {
+    public final int getMaxGenerationCount() {
         return this.maxGenerationCount;
     }
 
@@ -471,7 +480,7 @@ public class GeneticAlgorithm {
      * Warunek końca; Ustawia maksymalną ilość przewidzianych generacji.
      * @param maxGenerationCount Maksymalna ilość przewidzianych generacji.
      */
-    public void setMaxGenerationCount(int maxGenerationCount) {
+    public final void setMaxGenerationCount(int maxGenerationCount) {
         this.maxGenerationCount = maxGenerationCount;
     }
 
@@ -480,7 +489,7 @@ public class GeneticAlgorithm {
      * chwili znalezienia ostatniego najlepszego chromosomu.
      * @return Maksymalna ilość przewidzianych generacji.
      */
-    public int getLastGenerationTopChromosomeFind() {
+    public final int getLastGenerationTopChromosomeFind() {
         return this.lastGenerationTopChromosomeFind;
     }
 
@@ -489,7 +498,7 @@ public class GeneticAlgorithm {
      * chwili znalezienia ostatniego najlepszego chromosomu.
      * @param lastGenerationTopChromosomeFind Maksymalna ilość przewidzianych generacji.
      */
-    public void setLastGenerationTopChromosomeFind(int lastGenerationTopChromosomeFind) {
+    public final void setLastGenerationTopChromosomeFind(final int lastGenerationTopChromosomeFind) {
         this.lastGenerationTopChromosomeFind = lastGenerationTopChromosomeFind;
     }
 
@@ -498,7 +507,7 @@ public class GeneticAlgorithm {
      * @return Stan.
      * @since 1.0
      */
-    public GeneticAlgorithmState getState() {
+    public final GeneticAlgorithmState getState() {
         return state.getState();
     }
 
@@ -507,7 +516,7 @@ public class GeneticAlgorithm {
      * @param state Stan.
      * @since 1.0
      */
-    protected void setState(final GeneticAlgorithmState state) {
+    protected final void setState(final GeneticAlgorithmState state) {
         switch (state) {
         case ERROR:
             this.state = stateError;
@@ -529,7 +538,7 @@ public class GeneticAlgorithm {
      * @return Referencja do populacji.
      * @since 1.0
      */
-    protected Population getPopulation() {
+    protected final Population getPopulation() {
         return this.population;
     }
 
@@ -538,7 +547,7 @@ public class GeneticAlgorithm {
      * @param population Populacja.
      * @since 1.0
      */
-    protected void setPopulation(Population population) {
+    protected final void setPopulation(final Population population) {
         this.population = population;
     }
 }

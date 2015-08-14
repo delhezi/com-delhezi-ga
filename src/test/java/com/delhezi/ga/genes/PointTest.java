@@ -16,7 +16,7 @@ public class PointTest {
     }
 
     /**
-     * @see com.delhezi.ga.genes.Point#equals(Object)
+     * com.delhezi.ga.genes.Point#equals(Object)
      */
     @Test
     public void testEquals() {
@@ -80,7 +80,7 @@ public class PointTest {
     }
 
     /**
-     * @see com.delhezi.ga.genes.Point#hashCode()
+     * com.delhezi.ga.genes.Point#hashCode()
      */
     @Test
     public void testHashCode() {

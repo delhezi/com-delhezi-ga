@@ -73,7 +73,7 @@ public class TournamentTest {
     }
 
     /**
-     * @see Tournament#select(java.util.LinkedList)
+     * Tournament#select(java.util.LinkedList)
      */
     @Test
   public void testSelect() {
@@ -218,7 +218,7 @@ public class TournamentTest {
   }
 
     /**
-     * @see Tournament#getArity()
+     * Tournament#getArity()
      */
     @Test
     public void testGetArity() {
@@ -226,7 +226,7 @@ public class TournamentTest {
     }
 
     /**
-     * @see Tournament#setArity(int)
+     * Tournament#setArity(int)
      */
     @Test
     public void testSetArity() {

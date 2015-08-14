@@ -149,8 +149,7 @@ public abstract class Population {
      * Zwraca referencję do do obiektu przechowującego
      * parametry wspólne dla wszystkich chromosomów w ramach jednej
      * instancji populacji.
-     * <p />
-     * <b>Uwaga:</b><br />
+     * Uwaga:
      * Jeśli za pomocą otrzymanej referencji dojdzie do modyfikacji objektu
      * FitnessFunction należy wykonać funkcję changed() klasy Chromosome w
      * celu ponownego wyznaczenia wskaźnika przystosowania chromosomu.

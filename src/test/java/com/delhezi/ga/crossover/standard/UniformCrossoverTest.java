@@ -32,7 +32,7 @@ public class UniformCrossoverTest {
     }
 
     /**
-     * @see UniformCrossover#crossover(com.delhezi.ga.Chromosome,com.delhezi.ga.Chromosome)
+     * UniformCrossover#crossover(com.delhezi.ga.Chromosome,com.delhezi.ga.Chromosome)
      */
     @Test
     public void testCrossover() {

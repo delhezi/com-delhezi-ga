@@ -166,7 +166,7 @@ public class GeneticAlgorithmXmlDomParserFactory {
 
 
     /**
-     * @param doc
+     * @param doc Document
      */
     public void parse(Document doc) {
         //Znajdz wierzcholek od ktorego ma zaczynac sie iterakcja.

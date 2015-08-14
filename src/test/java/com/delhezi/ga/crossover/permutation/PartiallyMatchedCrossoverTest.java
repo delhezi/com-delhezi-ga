@@ -19,7 +19,7 @@ public class PartiallyMatchedCrossoverTest {
     }
 
     /**
-     * @see com.delhezi.ga.crossover.permutation.PartiallyMatchedCrossover#crossover(com.delhezi.ga.Chromosome, com.delhezi.ga.Chromosome)
+     * com.delhezi.ga.crossover.permutation.PartiallyMatchedCrossover#crossover(com.delhezi.ga.Chromosome, com.delhezi.ga.Chromosome)
      */
     @Test
     public void testCrossover() {
@@ -38,7 +38,7 @@ public class PartiallyMatchedCrossoverTest {
     }
 
     /**
-     * @see com.delhezi.ga.crossover.permutation.PartiallyMatchedCrossover#crossover(com.delhezi.ga.Chromosome, com.delhezi.ga.Chromosome, int, int)
+     * com.delhezi.ga.crossover.permutation.PartiallyMatchedCrossover#crossover(com.delhezi.ga.Chromosome, com.delhezi.ga.Chromosome, int, int)
      */
     @Test
     public void testCrossover1() {
@@ -94,7 +94,7 @@ public class PartiallyMatchedCrossoverTest {
     }
 
     /**
-     * @see com.delhezi.ga.crossover.permutation.PartiallyMatchedCrossover#optSubstring(java.util.ArrayList,java.util.ArrayList)
+     * com.delhezi.ga.crossover.permutation.PartiallyMatchedCrossover#optSubstring(java.util.ArrayList,java.util.ArrayList)
      */
     @Test
     public void testOptSubstring() {

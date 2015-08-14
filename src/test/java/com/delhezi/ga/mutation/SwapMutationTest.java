@@ -29,7 +29,7 @@ public class SwapMutationTest {
   private static Random random = new Random();
   
     /**
-     * @see com.delhezi.ga.mutation.SwapMutation#mutation(com.delhezi.ga.Chromosome)
+     * com.delhezi.ga.mutation.SwapMutation#mutation(com.delhezi.ga.Chromosome)
      */
     @Test
     public void testMutation() {
@@ -40,7 +40,7 @@ public class SwapMutationTest {
     }
 
     /**
-     * @see com.delhezi.ga.mutation.SwapMutation#mutation(com.delhezi.ga.Chromosome,int,int)
+     * com.delhezi.ga.mutation.SwapMutation#mutation(com.delhezi.ga.Chromosome,int,int)
      */
     @Test
     public void testMutation1() {

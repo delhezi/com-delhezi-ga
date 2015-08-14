@@ -59,7 +59,7 @@ public class FitnessFunctionTest {
     }
 
     /**
-     * @see com.delhezi.ga.fitnessfunction.FitnessFunction#calculateFitness(java.lang.Object[])
+     * com.delhezi.ga.fitnessfunction.FitnessFunction#calculateFitness(java.lang.Object[])
      */
     @Test
     public void testCalculateFitness() {
@@ -86,7 +86,7 @@ public class FitnessFunctionTest {
     }
 
     /**
-     * @see com.delhezi.ga.fitnessfunction.FitnessFunction#isMaximisation()
+     * com.delhezi.ga.fitnessfunction.FitnessFunction#isMaximisation()
      */
     @Test
     public void testIsMaximisation() {
@@ -97,7 +97,7 @@ public class FitnessFunctionTest {
     }
 
     /**
-     * @see com.delhezi.ga.fitnessfunction.FitnessFunction#setMaximisation(boolean)
+     * com.delhezi.ga.fitnessfunction.FitnessFunction#setMaximisation(boolean)
      */
     @Test
     public void testSetMaximisation() {

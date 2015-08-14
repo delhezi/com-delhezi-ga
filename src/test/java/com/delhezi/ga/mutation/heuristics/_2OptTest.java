@@ -65,7 +65,7 @@ public class _2OptTest {
 
 
     /**
-     * @see com.delhezi.ga.mutation.heuristics._2Opt#mutation(com.delhezi.ga.Chromosome)
+     * com.delhezi.ga.mutation.heuristics._2Opt#mutation(com.delhezi.ga.Chromosome)
      */
     @Test
     public void testMutation() {
@@ -76,7 +76,7 @@ public class _2OptTest {
     }
 
     /**
-     * @see com.delhezi.ga.mutation.heuristics._2Opt#mutation(com.delhezi.ga.Chromosome,int,int)
+     * com.delhezi.ga.mutation.heuristics._2Opt#mutation(com.delhezi.ga.Chromosome,int,int)
      */
     @Test
     public void test_2opt() {
@@ -121,7 +121,7 @@ public class _2OptTest {
     }
 
     /**
-     * @see com.delhezi.ga.mutation.heuristics._2Opt#changeEdge(com.delhezi.ga.Chromosome,int,int)
+     * com.delhezi.ga.mutation.heuristics._2Opt#changeEdge(com.delhezi.ga.Chromosome,int,int)
      */
     @Test
     public void testChangeEdge() {
@@ -199,7 +199,7 @@ public class _2OptTest {
     }
 
     /**
-     * @see com.delhezi.ga.mutation.heuristics._2Opt#selectEdge(com.delhezi.ga.Chromosome,int,int)
+     * com.delhezi.ga.mutation.heuristics._2Opt#selectEdge(com.delhezi.ga.Chromosome,int,int)
      */
     @Test
     public void testSelectEdge() {

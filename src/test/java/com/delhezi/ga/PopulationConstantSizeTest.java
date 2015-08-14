@@ -8,7 +8,7 @@ public class PopulationConstantSizeTest {
     }
 
     /**
-     * @see Population#generation()
+     * Population#generation()
      */
     @Test
     public void testGeneration1() {

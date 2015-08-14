@@ -11,11 +11,9 @@ package com.delhezi.ga;
 import com.delhezi.ga.exception.GeneticAlgorithmException;
 
 /**
- * <code>State</code>: Interfejs wzorca State - określający stan
- * algorytmu genetycznego.
+ * <code>State</code>: Interfejs wzorca State - określający stan algorytmu genetycznego.
  * @version 1.0 2011-01-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public interface State {
 

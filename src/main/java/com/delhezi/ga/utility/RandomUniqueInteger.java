@@ -42,8 +42,8 @@ public class RandomUniqueInteger {
         }
 
         /**
-         * Losowanie liczby z zakresu <1,size>.
-         * @return Liczba z zakresu <1,size>.
+         * Losowanie liczby z zakresu 1,size.
+         * @return Liczba z zakresu 1,size.
          * @since 1.0
          */
         public final Integer get() {

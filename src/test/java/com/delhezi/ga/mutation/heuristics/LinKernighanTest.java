@@ -21,7 +21,7 @@ public class LinKernighanTest {
     }
 
     /**
-     * @see com.delhezi.ga.mutation.heuristics.LinKernighan#mutation(com.delhezi.ga.Chromosome)
+     * com.delhezi.ga.mutation.heuristics.LinKernighan#mutation(com.delhezi.ga.Chromosome)
      */
     @Test
     public void testMutation() {
@@ -32,7 +32,7 @@ public class LinKernighanTest {
     }
 
     /**
-     * @see com.delhezi.ga.mutation.heuristics.LinKernighan#mutation(com.delhezi.ga.Chromosome,int,int)
+     * com.delhezi.ga.mutation.heuristics.LinKernighan#mutation(com.delhezi.ga.Chromosome,int,int)
      */
     @Test
     public void testLinKernighan() {
@@ -65,7 +65,7 @@ public class LinKernighanTest {
     }
 
     /**
-     * @see com.delhezi.ga.mutation.heuristics.LinKernighan#changeEdge(com.delhezi.ga.Chromosome,int,int)
+     * com.delhezi.ga.mutation.heuristics.LinKernighan#changeEdge(com.delhezi.ga.Chromosome,int,int)
      */
     @Test
     public void testChangeEdge() {
@@ -143,7 +143,7 @@ public class LinKernighanTest {
     }
 
     /**
-     * @see com.delhezi.ga.mutation.heuristics.LinKernighan#kwpj(com.delhezi.ga.Chromosome,int,int)
+     * com.delhezi.ga.mutation.heuristics.LinKernighan#kwpj(com.delhezi.ga.Chromosome,int,int)
      */
     @Test
     public void testKwpj() {

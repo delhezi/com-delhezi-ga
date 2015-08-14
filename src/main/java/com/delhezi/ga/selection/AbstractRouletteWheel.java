@@ -18,25 +18,22 @@ import java.util.LinkedList;
  * proporcjonalnej. W reprodukcji proporcjonalnej prawdopodobieństwo wyboru
  * osobnika do puli rodzicielskiej zależne jest od wartości funkcji
  * przystosowania danego osobnika.)
- * <p/>
  * <b>Metoda źle sobie radzi z mała rozpiętością wartości wskaźnika
  * przystosowania</b> (selekcja praktycznie nie zachodzi, w przypadku kiedy
  * wartości wskaźnika przystosowania dozwolone są dla przedziału np. 0-100000,
  * a wszystkie chromosomy mają fitness z przedziału 950000-100000).
- * <p/>
  * Prawdopodobieństwo wybrania każdego z osobników do nowej populacji
  * określa się wzorem:
- * <br/>
+ * <br>
  * a) w przypadku maksymalizacji funkcji celu:
  *    <code>wartość przystosowania danego osobnika / suma wartości
  *    przystosowania wszystkich osobników</code>,
- * <br/>
+ * <br>
  * b) w przypadku minimalizacji funkcji celu:
  *    <code>odwrotność wartości przystosowania danego osobnika * odwrotność
  *    sumy odwrotności wartości przystosowania wszystkich osobników</code>.
  * @version 1.0 2010-01-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 abstract class AbstractRouletteWheel {
 

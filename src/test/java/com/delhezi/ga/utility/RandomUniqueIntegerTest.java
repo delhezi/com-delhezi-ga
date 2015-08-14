@@ -8,7 +8,7 @@ public class RandomUniqueIntegerTest {
     }
 
     /**
-     * @see RandomUniqueInteger#get()
+     * RandomUniqueInteger#get()
      */
     @Test
     public void testGet() {
@@ -25,7 +25,7 @@ public class RandomUniqueIntegerTest {
     }
 
     /**
-     * @see RandomUniqueInteger#getSize()
+     * RandomUniqueInteger#getSize()
      */
     @Test
     public void testGetSize() {

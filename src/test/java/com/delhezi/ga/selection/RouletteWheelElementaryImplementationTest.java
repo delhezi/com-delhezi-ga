@@ -62,14 +62,14 @@ public class RouletteWheelElementaryImplementationTest {
         }
 
     /**
-     * @see RouletteWheelElementaryImplementation#rouletteWheelImpl(java.util.LinkedList,double[])
+     * RouletteWheelElementaryImplementation#rouletteWheelImpl(java.util.LinkedList,double[])
      */
     @Test
     public void testRouletteWheelImpl() {
       }
 
     /**
-     * @see AbstractRouletteWheel#select(java.util.LinkedList)
+     * AbstractRouletteWheel#select(java.util.LinkedList)
      */
     @Test
     public void testSelect() {
@@ -216,7 +216,7 @@ public class RouletteWheelElementaryImplementationTest {
     }
 
     /**
-     * @see AbstractRouletteWheel#setVariable(java.util.LinkedList)
+     * AbstractRouletteWheel#setVariable(java.util.LinkedList)
      */
     @Test
     public void testSetVariable() {

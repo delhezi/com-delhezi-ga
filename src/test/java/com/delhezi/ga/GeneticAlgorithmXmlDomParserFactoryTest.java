@@ -16,7 +16,7 @@ public class GeneticAlgorithmXmlDomParserFactoryTest {
         Logger.getLogger(GeneticAlgorithmXmlDomParserFactoryTest.class);
 
     /**
-     * @see GeneticAlgorithmXmlDomParserFactory#newGeneticAlgorithm(String,String)
+     * GeneticAlgorithmXmlDomParserFactory#newGeneticAlgorithm(String,String)
      */
     @Test
     public void testNewGeneticAlgorithm() {

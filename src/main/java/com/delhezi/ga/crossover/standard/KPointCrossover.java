@@ -58,7 +58,7 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
      * @param chromosome1 Chromosom.
      * @param chromosome2 Chromosom.
      * @param k Ilość punktów krzyżowania,
-     * wartość z przedziału <1,chromosome1.size()-1>.
+     * wartość z przedziału 1,chromosome1.size()-1.
      * @since 1.0
      */
     public final void crossover(final Chromosome chromosome1,

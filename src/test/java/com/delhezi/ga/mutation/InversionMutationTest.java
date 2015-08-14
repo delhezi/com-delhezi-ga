@@ -20,7 +20,7 @@ public class InversionMutationTest {
 
     /**
      * Przypadek: chromosome = null.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome)
      */
     @Test(expected = IllegalArgumentException.class)
     public void illegal_1_Mutation() {
@@ -32,7 +32,7 @@ public class InversionMutationTest {
     /**
      * Przypadek: chromosome.size() < 2;
      * Brak mutacji.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome)
      */
     @Test()
     public void test_1_Mutation() {
@@ -51,7 +51,7 @@ public class InversionMutationTest {
 
     /**
      * Test dla standardowych danych.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome)
      */
     @Test
     public void testMutation() {
@@ -79,7 +79,7 @@ public class InversionMutationTest {
 
     /**
      * Przypadek: chromosome = null.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test(expected = AssertionError.class)
     public void illegal_1_Mutation1() {
@@ -90,7 +90,7 @@ public class InversionMutationTest {
     
     /**
      * Przypadek: cutPoint1 > chromosome.size().
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test(expected = AssertionError.class)
     public void illegal_2_Mutation1() {
@@ -105,7 +105,7 @@ public class InversionMutationTest {
     
     /**
      * Przypadek: cutPoint1 < 0.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test(expected = AssertionError.class)
     public void illegal_3_Mutation1() {
@@ -120,7 +120,7 @@ public class InversionMutationTest {
     
     /**
      * Przypadek: cutPoint2 > chromosome.size().
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test(expected = AssertionError.class)
     public void illegal_4_Mutation1() {
@@ -135,7 +135,7 @@ public class InversionMutationTest {
     
     /**
      * Przypadek: cutPoint2 < 0.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test(expected = AssertionError.class)
     public void illegal_5_Mutation1() {
@@ -150,7 +150,7 @@ public class InversionMutationTest {
     
     /**
      * Przypadek: insertPoint < 0.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test(expected = AssertionError.class)
     public void illegal_6_Mutation1() {
@@ -167,7 +167,7 @@ public class InversionMutationTest {
     
     /**
      * Przypadek: insertPoint > chromosome.size() - (cutPoint2 - cutPoint1).
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test(expected = AssertionError.class)
     public void illegal_7_Mutation1() {
@@ -185,7 +185,7 @@ public class InversionMutationTest {
     /**
      * Przypadek: cutPoint1 = cutPoint2;
      * Brak mutacji.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test()
     public void test_1_Mutation1() {
@@ -207,7 +207,7 @@ public class InversionMutationTest {
     /**
      * Przypadek: cutPoint1 = chromosome.size() && cutPoint2 = 0;
      * Brak mutacji.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test()
     public void test_2_Mutation1() {
@@ -229,7 +229,7 @@ public class InversionMutationTest {
     /**
      * Przypadek: chromosome.size() < 2;
      * Brak mutacji.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test()
     public void test_3_Mutation1() {
@@ -250,7 +250,7 @@ public class InversionMutationTest {
 
     /**
      * Test dla standardowych danych.
-     * @see com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
+     * com.delhezi.ga.mutation.InversionMutation#mutation(com.delhezi.ga.Chromosome,int,int,int)
      */
     @Test
     public void testMutation1() {

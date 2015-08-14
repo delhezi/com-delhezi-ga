@@ -56,7 +56,7 @@ public class RouletteWheelEffectiveImplementationTest {
       }
 
     /**
-     * @see RouletteWheelEffectiveImplementation#rouletteWheelImpl(java.util.LinkedList,double[])
+     * RouletteWheelEffectiveImplementation#rouletteWheelImpl(java.util.LinkedList,double[])
      */
     @Test
     public void testRouletteWheelImpl() {
@@ -64,7 +64,7 @@ public class RouletteWheelEffectiveImplementationTest {
     }
 
     /**
-     * @see RouletteWheelEffectiveImplementation#tableInitialize(java.util.LinkedList,double [],int[])
+     * RouletteWheelEffectiveImplementation#tableInitialize(java.util.LinkedList,double [],int[])
      */
     @Test
     public void testTableInitialize() {
@@ -72,7 +72,7 @@ public class RouletteWheelEffectiveImplementationTest {
     }
 
     /**
-     * @see AbstractRouletteWheel#select(java.util.LinkedList)
+     * AbstractRouletteWheel#select(java.util.LinkedList)
      */
     @Test
     public void testSelect() {
@@ -216,7 +216,7 @@ public class RouletteWheelEffectiveImplementationTest {
       }
 
     /**
-     * @see AbstractRouletteWheel#rouletteWheelImpl(java.util.LinkedList,double[])
+     * AbstractRouletteWheel#rouletteWheelImpl(java.util.LinkedList,double[])
      */
     @Test
     public void testRouletteWheelImpl1() {
@@ -224,7 +224,7 @@ public class RouletteWheelEffectiveImplementationTest {
     }
 
     /**
-     * @see AbstractRouletteWheel#setVariable(java.util.LinkedList)
+     * AbstractRouletteWheel#setVariable(java.util.LinkedList)
      */
     @Test
     public void testSetVariable() {

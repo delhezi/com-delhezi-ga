@@ -69,7 +69,7 @@ public class LinearRankingTest {
     }
 
     /**
-     * @see LinearRanking#select(java.util.LinkedList)
+     * LinearRanking#select(java.util.LinkedList)
      */
     @Test
   public void testSelect() {
@@ -180,7 +180,7 @@ public class LinearRankingTest {
     }
 
     /**
-     * @see LinearRanking#getNormal(int,int)
+     * LinearRanking#getNormal(int,int)
      */
     @Test
     public void testGetNormal() {
