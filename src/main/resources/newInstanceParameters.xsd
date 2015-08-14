@@ -1,7 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  attributeFormDefault="qualified" elementFormDefault="qualified">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xsd:annotation>
     <xsd:documentation xml:lang="pl">Schemat opisujący parametry inicjujące algorytm genetyczny.</xsd:documentation>
   </xsd:annotation>
@@ -161,7 +159,7 @@
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="elitism" minOccurs="0" type="xsd:boolean" default="true">
+        <xsd:element default="true" minOccurs="0" name="elitism" type="xsd:boolean">
           <xsd:annotation>
             <xsd:documentation xml:lang="pl">Elitaryzm.</xsd:documentation>
           </xsd:annotation>
@@ -199,14 +197,14 @@
           </xsd:complexType>
         </xsd:element>
 
-        <xsd:element name="endConditions" minOccurs="0">
+        <xsd:element minOccurs="0" name="endConditions">
           <xsd:annotation>
             <xsd:documentation xml:lang="pl">Warunki zakończenia obliczeń. W przypadku braku
               określenia warunków końca wykonywana jest pętla nieskończona.</xsd:documentation>
           </xsd:annotation>
           <xsd:complexType>
             <xsd:sequence>
-              <xsd:element name="maxGeneration" minOccurs="0">
+              <xsd:element minOccurs="0" name="maxGeneration">
                 <xsd:annotation>
                   <xsd:documentation xml:lang="pl">Maksymalna ilość generacji.</xsd:documentation>
                 </xsd:annotation>
@@ -214,7 +212,7 @@
                   <xsd:restriction base="xsd:positiveInteger"/>
                 </xsd:simpleType>
               </xsd:element>
-              <xsd:element name="maxGenerationTopChromosomeNoChange" minOccurs="0">
+              <xsd:element minOccurs="0" name="maxGenerationTopChromosomeNoChange">
                 <xsd:annotation>
                   <xsd:documentation xml:lang="pl">Maksymalna ilość generacji od chwili znalezienia najlepszego osobnika.</xsd:documentation>
                 </xsd:annotation>
