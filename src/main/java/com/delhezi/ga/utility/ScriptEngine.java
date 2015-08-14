@@ -10,12 +10,8 @@ package com.delhezi.ga.utility;
 
 import com.delhezi.ga.exception.GeneticAlgorithmException;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.io.FileReader;
-import java.io.Reader;
 import javax.script.Invocable;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -46,7 +42,6 @@ public class ScriptEngine {
     /** */
     private String scriptFile;
 
-
     /**
      * Konstruktor.
      * @param scriptEnginName Nazwa silnika skryptów. Przykładowe wartości:
@@ -55,7 +50,7 @@ public class ScriptEngine {
      * @param scriptPath  Bezwzględna ścieżka zakończona "/" do katalogu w
      * którym składowane są skrytpy.
      * @param scriptFile  Naza pliku ze skrytem.
-     * @throws GeneticAlgorithmException DERC-1-9-1-1, DERC-1-9-1-2, DERC-1-9-1-3
+     * @throws GeneticAlgorithmException DERC-1-9-1-1
      * @since 1.0
      */
     public ScriptEngine(final String scriptEnginName,
@@ -66,78 +61,18 @@ public class ScriptEngine {
         this.scriptPath = scriptPath.replaceAll("\\\\", "/");
         this.scriptFile = scriptFile;
         
-        /*
-        System.out.print("xxxxxxxxxxxxxxxxxxxxxxxxxx1::" + this.scriptPath + scriptFile);
-        try {
-            ScriptEngineManager factory2 = new ScriptEngineManager();
-            javax.script.ScriptEngine engine2 = factory2.getEngineByName("JavaScript");
-            engine2.eval("function hi(){\n"+
-            		"var a = 'PROSPER'.toLowerCase(); \n"+
-            		"middle(); \n"+
-            		"print('Live long and' + a)}\n"+
-            		"function middle(){\n"+
-            		"var b = 1; for(var i=0, max = 5; i<max;i++){\nb++;\n}\n print('b is '+b);}hi();");
-            } catch (ScriptException ex) {
-                    //...
-                }
-                */
-
-            ScriptEngineManager factory3 = new ScriptEngineManager();
-            javax.script.ScriptEngine engine = factory3.getEngineByName("JavaScript");
+            ScriptEngineManager factory = new ScriptEngineManager();
+            javax.script.ScriptEngine engine = factory.getEngineByName(scriptEnginName);
             try {
 				engine.eval("load(\"" + this.scriptPath  + this.scriptFile + "\");");
 			} catch (ScriptException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	            String errMessage =
+	                    "DERC-" + DERC + "1: Error occurrs in script "
+	                    + this.scriptPath + scriptFile + ".";
+	                LOGGER.log(Level.WARNING, errMessage, e);
+	                throw new GeneticAlgorithmException(errMessage);
 			}
         
-/*    
-        
-        ScriptEngineManager manager = new ScriptEngineManager();
-        javax.script.ScriptEngine engine =
-            manager.getEngineByName(scriptEnginName);
-        
-        if (engine == null) {
-            String errMessage =
-                    "DERC-" + DERC + "4: Cannot load " + scriptEnginName + " engine.";
-            throw new GeneticAlgorithmException(errMessage);
-        }
-        
-
-        Reader reader;
-        try {
-            reader = new FileReader(this.scriptPath + scriptFile);
-        } catch (FileNotFoundException e) {
-            String errMessage =
-                "DERC-" + DERC + "1: The script " + this.scriptPath
-                + scriptFile
-                + " does not exist, is a directory rather than a regular file,"
-                + " or for some other reason cannot be opened for reading.";
-            LOGGER.log(Level.WARNING, errMessage, e);
-            throw new GeneticAlgorithmException(errMessage);
-        }
-        
-        try {
-            System.out.print("ccccccccccccccccccccccccccccccccc1::" + this.scriptPath + scriptFile);
-            engine.eval(reader);
-            System.out.print("ccccccccccccccccccccccccccccccccc2::" + this.scriptPath + scriptFile);
-        } catch (ScriptException e) {
-            String errMessage =
-                "DERC-" + DERC + "2: Error occurrs in script "
-                + this.scriptPath + scriptFile + ".";
-            LOGGER.log(Level.WARNING, errMessage, e);
-            throw new GeneticAlgorithmException(errMessage);
-        }
-
-        try {
-            reader.close();
-        } catch (IOException e) {
-            String errMessage =
-                "DERC-" + DERC + "3: Nie udało się zamknąć uchwytu do pliku.";
-            LOGGER.log(Level.WARNING, errMessage, e);
-            throw new GeneticAlgorithmException(errMessage);
-        }
-*/
         invokeEngine = (Invocable) engine;
     }
 

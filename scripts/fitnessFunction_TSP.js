@@ -13,7 +13,7 @@
  */
 
 //importPackage(com.delhezi.ga.genes);
-importClass (com.delhezi.ga.genes.Point);
+//importClass (com.delhezi.ga.genes.Point);
 
 /**
  * Funkcja celu. Wyznaczenie wskażnika przystosowania.
