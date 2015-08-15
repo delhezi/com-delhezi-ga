@@ -52,25 +52,24 @@ abstract class AbstractRouletteWheel {
      * or (fitnessFunction == null)
      * @since 1.0
      */
-    public final LinkedList<Chromosome> select(
-                              final LinkedList<Chromosome> chromosomes)
-    throws GeneticAlgorithmException {
+    public final LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes)
+            throws GeneticAlgorithmException {
         if (chromosomes == null) {
             throw new IllegalArgumentException("chromosomes is null.");
-            }
-        //Jest tylko jeden chromosom.
+        }
+        // Jest tylko jeden chromosom.
         if (chromosomes.size() < 2) {
             return chromosomes;
-            }
+        }
 
         this.setVariable(chromosomes);
 
-        //Tablica z określonym prawdopodobieństwem wyboru dla każdego z
-        //chromosomów.
+        // Tablica z określonym prawdopodobieństwem wyboru dla każdego z
+        // chromosomów.
         double[] normals = new double[chromosomes.size()];
         int i = 0;
         for (Chromosome ch : chromosomes) {
-            if (ch.isFitnessMaximisation() == true) {
+            if (ch.isFitnessMaximisation()) {
                 normals[i] = ch.getFitness() / sumFitness;
             } else {
                 normals[i] = 1 / (ch.getFitness() * sumaOdwrotnosci);
@@ -98,9 +97,7 @@ abstract class AbstractRouletteWheel {
      * @return Wynikowa list chromosomów.
      * @since 1.0
      */
-    abstract LinkedList<Chromosome> rouletteWheelImpl(
-                              final LinkedList<Chromosome> chromosomes,
-                              final double[] normals);
+    abstract LinkedList<Chromosome> rouletteWheelImpl(final LinkedList<Chromosome> chromosomes, final double[] normals);
 
     /**
      * Funkcja pomocnicza, wylicza wartości: minIndex,
@@ -109,8 +106,7 @@ abstract class AbstractRouletteWheel {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    private final void setVariable(final LinkedList<Chromosome> chromosomes)
-    throws GeneticAlgorithmException {
+    private void setVariable(final LinkedList<Chromosome> chromosomes) throws GeneticAlgorithmException {
         assert chromosomes != null : "Illegal argument chromosomes: null";
 
         double fitness;
@@ -138,7 +134,7 @@ abstract class AbstractRouletteWheel {
     /** Największa znaleziona wartość wskaźnika przystosowania. */
     private double maxFitness;
 
-    /** Suma wartości wskaźników przystosowania osobników w całej populacji.*/
+    /** Suma wartości wskaźników przystosowania osobników w całej populacji. */
     private double sumFitness;
 
     /**

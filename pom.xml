@@ -427,6 +427,8 @@
 								<encoding>UTF-8</encoding>
 							</configuration>
 						</plugin>
+						<!-- 	Specifying configuration here will take effect on the execution of "mvn site",
+					     but will not take effect on the execution of "mvn checkstyle:checkstyle"  -->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-checkstyle-plugin</artifactId>
@@ -505,6 +507,21 @@
 
 		<pluginManagement>
 			<plugins>
+
+				       <!-- 	Specifying configuration here will take effect on the execution of "mvn checkstyle:checkstyle",
+					      but will not take effect on the execution of "mvn site"  -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-checkstyle-plugin</artifactId>
+							<version>${maven-checkstyle-plugin.version}</version>
+							<configuration>
+								<configLocation>${project.basedir}/config/delhezi_checks.xml</configLocation>
+								<headerLocation>${project.basedir}/config/java.header</headerLocation>
+								<encoding>UTF-8</encoding>
+								<linkXRef>true</linkXRef>
+							</configuration>
+						</plugin>
+
 
 				<!-- 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>

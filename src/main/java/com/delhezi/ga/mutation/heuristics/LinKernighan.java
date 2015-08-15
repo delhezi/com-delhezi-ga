@@ -46,8 +46,7 @@ import java.util.Random;
  *
  *
  * @version 1.0 2010-01-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class LinKernighan implements IMutation {
 
@@ -57,7 +56,6 @@ public class LinKernighan implements IMutation {
 
     /** Delhezi Error Code. */
     //private static final String DERC = "1-6.2-3-";
-    
 
     /** Random. */
     private static Random random = new Random();
@@ -127,7 +125,7 @@ public class LinKernighan implements IMutation {
 
         //Chromosom nie może być wartością null.
         assert chromosome != null : "Illegal argument chromosome: null";
-      
+
         int chromosomeSize = chromosome.size();
 
         //Krawędź edge1 powininna zawierać się w obszare chromosomu.
@@ -153,7 +151,7 @@ public class LinKernighan implements IMutation {
         int edge2iter = edge2;
         boolean koniec = false;
         int tmpEdge1IterNext;
-        
+
         //Sprawddż czy edge2iter nie jest bezpośrednio po edge1iter
         //Jeśli tak to zmiana krawędzi nie zmieni porządku genów w chromosomie,
         //więc od racu przestaw edge2iter do kolejnego przypadku.
@@ -180,7 +178,7 @@ public class LinKernighan implements IMutation {
                                       //pełne koło z edge2.
             //Możlie wyjście przez break wówczas idziemy
             //do pętli zewnętrznej do GOTO2
-            
+
             //Licznik ilości podjętych prób.
             if (counter == 0) {
                 return;
@@ -223,7 +221,7 @@ public class LinKernighan implements IMutation {
                       //USTAW edge2iter za ścieżką "edge1-edge1iter"
                       edge2iter = (edge1iter == chromosomeSize) ? 1
                           : edge1iter + 1;
-                  
+
                       //edge2 jest we wnetrzu "edge1-edge1iter"
                       //WYJŚCIE Z PETLI2
                       if ((edge2 <= edge1iter) && (edge2 >= edge1)) {

@@ -42,38 +42,39 @@ public class LinearRanking implements ISelect {
      * @since 1.0
      */
     public final LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes)
-    throws GeneticAlgorithmException {
+            throws GeneticAlgorithmException {
         if (chromosomes == null) {
             throw new IllegalArgumentException("chromosomes is null.");
         }
-        //Jest tylko jeden chromosom.
+        // Jest tylko jeden chromosom.
         if (chromosomes.size() < 2) {
             return chromosomes;
         }
 
-        //Sortuje chromosomy dla maksymalizacji: od najmniejszej do najwiekszej,
-        //dla minimalizacji: od najwiekszej do najmniejszej wartosci fitness.
+        // Sortuje chromosomy dla maksymalizacji: od najmniejszej do
+        // najwiekszej,
+        // dla minimalizacji: od najwiekszej do najmniejszej wartosci fitness.
         Collections.sort(chromosomes);
 
         LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
-        
-        //Zaraz po utworzeniu iterator wskazuje na specjalną wartość przed
-        //pierwszym elementem, tak by pierwszy element był pobrany
-        //przy pierwszym wywołaniu next()
+
+        // Zaraz po utworzeniu iterator wskazuje na specjalną wartość przed
+        // pierwszym elementem, tak by pierwszy element był pobrany
+        // przy pierwszym wywołaniu next()
         ListIterator<Chromosome> itr = chromosomes.listIterator(0);
 
-        int j = 1; //Pozycja rozpatrywanego chromosomu  w populacji.
+        int j = 1; // Pozycja rozpatrywanego chromosomu w populacji.
         double roll;
         boolean wylosowany;
         Chromosome chTmp;
         double normal;
-        //Tworzymy uwzględniając przystosowanie NOWĄ listę chromosomów
-        //newChromosomes o wielkości równej chromosomes.size().
+        // Tworzymy uwzględniając przystosowanie NOWĄ listę chromosomów
+        // newChromosomes o wielkości równej chromosomes.size().
         for (int i = 0; i < chromosomes.size(); i++) {
             wylosowany = false;
-            while (!wylosowany) { //Losujemy i-ty chromosom do newChromosomes.
+            while (!wylosowany) { // Losujemy i-ty chromosom do newChromosomes.
 
-                //Wróć na początek listy jeśli doszedłeś do końca.
+                // Wróć na początek listy jeśli doszedłeś do końca.
                 if (j > chromosomes.size()) {
                     itr = chromosomes.listIterator(0);
                     j = 1;
@@ -104,9 +105,7 @@ public class LinearRanking implements ISelect {
      * @return Prawdopodobieństwo wybrania chromosomu <0,1>.
      * @since 1.0
      */
-    private final double getNormal(int populationSize,
-                                   int chromosomePosition) {
-        return (double)(2 * chromosomePosition) /
-            (populationSize * (populationSize + 1));
+    private double getNormal(final int populationSize, final int chromosomePosition) {
+        return (double) (2 * chromosomePosition) / (populationSize * (populationSize + 1));
     }
 }

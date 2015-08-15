@@ -19,6 +19,13 @@ import java.util.LinkedList;
  */
 public class SampleTsp {
 
+    /** */
+    private static final int COUNTRY_COUNT = 60;
+    /** */
+    private static final int POINT_MAX_X = 200;
+    /** */
+    private static final int POINT_MAX_Y = 200;
+
     /**
      * Populacja o zmiennej liczebności.
      * @param populationSize Wielkość populacji
@@ -26,45 +33,48 @@ public class SampleTsp {
      * @param chromosomeProperties Właściwości chromosomu
      * @return Lista chromosomów
      */
-    public static LinkedList<Chromosome> newChromosomes(int populationSize,
-            int maxPopulationSize,
-            ChromosomeProperties chromosomeProperties){
+    public static LinkedList<Chromosome> newChromosomes(final int populationSize, final int maxPopulationSize,
+            final ChromosomeProperties chromosomeProperties) {
         LinkedList<Chromosome> chromosomes = new LinkedList<Chromosome>();
         return setChromosomes(chromosomes, populationSize, chromosomeProperties);
     }
-    
+
     /**
      * Populacja o stałej liczebności.
      * @param populationSize Wielkość populacji
      * @param chromosomeProperties Właściwości chromosomu
      * @return Lista chromosomów
      */
-    public static LinkedList<Chromosome> newChromosomes(int populationSize,
-            ChromosomeProperties chromosomeProperties){
+    public static LinkedList<Chromosome> newChromosomes(final int populationSize, final ChromosomeProperties chromosomeProperties) {
         LinkedList<Chromosome> chromosomes = new LinkedList<Chromosome>();
         return setChromosomes(chromosomes, populationSize, chromosomeProperties);
-        }
-
-    
-    private static LinkedList<Chromosome> setChromosomes(LinkedList<Chromosome> chromosomes,
-            int populationSize, ChromosomeProperties chromosomeProperties){
-            Point[] chromosome_tmp;
-
-                int chromosomeSize =  60; //STAŁA ILOŚĆ MIAST, ALE MOŻNA ZMIENIĆ
-                chromosome_tmp = new Point[chromosomeSize];
-                for (int i = 0; i < chromosomeSize; i++)
-                    chromosome_tmp[i] = new Point((int) (Math.random() * 200),
-                            (int) (Math.random() * 200));
-
-            Point[] chromosome_i;
-            for (int i = 0; i < populationSize; i++) {
-                //Przemieszaj geny.
-                com.delhezi.ga.utility.ShuffleList.shuffle(chromosome_tmp);
-                chromosome_i = new Point[chromosomeSize];
-                System.arraycopy(chromosome_tmp, 0, chromosome_i, 0,chromosome_tmp.length);
-                chromosomes.add(new Chromosome(chromosome_i, chromosomeProperties));
-            }
-            return chromosomes;
     }
 
+    /**
+     * Inicjalizacja chromosomów.
+     * @param chromosomes Lista chromosomów
+     * @param populationSize Wielkość populacji
+     * @param chromosomeProperties Właściwości chromosomu
+     * @return Lista chromosomów
+     */
+    private static LinkedList<Chromosome> setChromosomes(final LinkedList<Chromosome> chromosomes, final int populationSize,
+            final ChromosomeProperties chromosomeProperties) {
+        Point[] chromosomeTmp;
+
+        int chromosomeSize = COUNTRY_COUNT; // STAŁA ILOŚĆ MIAST, ALE MOŻNA ZMIENIĆ
+        chromosomeTmp = new Point[chromosomeSize];
+        for (int i = 0; i < chromosomeSize; i++) {
+            chromosomeTmp[i] = new Point((int) (Math.random() * POINT_MAX_X), (int) (Math.random() * POINT_MAX_Y));
+        }
+
+        Point[] chromosomeI;
+        for (int i = 0; i < populationSize; i++) {
+            // Przemieszaj geny.
+            com.delhezi.ga.utility.ShuffleList.shuffle(chromosomeTmp);
+            chromosomeI = new Point[chromosomeSize];
+            System.arraycopy(chromosomeTmp, 0, chromosomeI, 0, chromosomeTmp.length);
+            chromosomes.add(new Chromosome(chromosomeI, chromosomeProperties));
+        }
+        return chromosomes;
+    }
 }

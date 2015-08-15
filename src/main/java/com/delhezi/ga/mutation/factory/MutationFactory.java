@@ -22,8 +22,7 @@ import java.util.logging.Logger;
 /**
  * Sparametryzowana metoda wytwórcza operatora mutacji.
  * @version 1.0 2009-06-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class MutationFactory {
 
@@ -45,11 +44,10 @@ public class MutationFactory {
      * @throws GeneticAlgorithmException DERC-1-6.1-1-1
      * @since 1.0
      */
-    public static IMutation getMutationOperator(
-                                 final MutationOperatorType mutationOperator)
-    throws GeneticAlgorithmException {
-    LOGGER.entering(CLASS_NAME, "getMutationOperator", mutationOperator);
-    switch (mutationOperator) {
+    public static IMutation getMutationOperator(final MutationOperatorType mutationOperator)
+            throws GeneticAlgorithmException {
+        LOGGER.entering(CLASS_NAME, "getMutationOperator", mutationOperator);
+        switch (mutationOperator) {
         case _2Opt:
             return new _2Opt();
         case _3Opt:
@@ -60,16 +58,15 @@ public class MutationFactory {
             return new InversionMutation();
         case SwapMutation:
             return new SwapMutation();
+        default:
+            break;
         }
 
-    GeneticAlgorithmException e =
-        new GeneticAlgorithmException("DERC-" + DERC +
-                                      "1: Parametr mutationOperator=" +
-                                      mutationOperator +
-                                      " is not recognized.");
-    LOGGER.log(Level.WARNING, "CrossoverFactory", e);
-    throw e;
-  }
+        GeneticAlgorithmException e = new GeneticAlgorithmException(
+                "DERC-" + DERC + "1: Parametr mutationOperator=" + mutationOperator + " is not recognized.");
+        LOGGER.log(Level.WARNING, "CrossoverFactory", e);
+        throw e;
+    }
 
     /**
      * Zwraca typ operatora mutacji określony dla parametru.
@@ -78,11 +75,9 @@ public class MutationFactory {
      * @throws GeneticAlgorithmException DERC-1-6.1-1-2
      * @since 1.0
      */
-    public static MutationOperatorType getMutationOperatorType(
-                                             final IMutation mutationOperator)
-  throws GeneticAlgorithmException {
-        LOGGER.entering(CLASS_NAME, "getMutationOperatorType",
-                        mutationOperator);
+    public static MutationOperatorType getMutationOperatorType(final IMutation mutationOperator)
+            throws GeneticAlgorithmException {
+        LOGGER.entering(CLASS_NAME, "getMutationOperatorType", mutationOperator);
 
         String pClassName = mutationOperator.getClass().getName();
 
@@ -98,11 +93,9 @@ public class MutationFactory {
             return MutationOperatorType.SwapMutation;
         }
 
-    GeneticAlgorithmException e =
-        new GeneticAlgorithmException("DERC-" + DERC +
-                                      "2: Parametr mutationOperator=" +
-                                      pClassName + " is not recognized.");
-    LOGGER.log(Level.WARNING, "CrossoverFactory", e);
-    throw e;
-  }
+        GeneticAlgorithmException e = new GeneticAlgorithmException(
+                "DERC-" + DERC + "2: Parametr mutationOperator=" + pClassName + " is not recognized.");
+        LOGGER.log(Level.WARNING, "CrossoverFactory", e);
+        throw e;
+    }
 }

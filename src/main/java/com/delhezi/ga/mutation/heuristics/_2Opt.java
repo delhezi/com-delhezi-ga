@@ -101,7 +101,7 @@ public class _2Opt implements IMutation {
      * Przykład: edge2=8 dla xxxxxx-xx.
      * @since 1.0
      */
-    protected final void mutation(Chromosome chromosome, int edge1,
+    protected final void mutation(final Chromosome chromosome, final int edge1,
                                   int edge2) {
         /** Licznik ilości podjętych prób.*/
         int counter = 70;
@@ -155,7 +155,7 @@ public class _2Opt implements IMutation {
 
             //----------- PETLA 2
             koniec = false;
-            while (koniec == false) { //Zakończ jeśli zatoczysz pełne koło
+            while (!koniec) { //Zakończ jeśli zatoczysz pełne koło
                                       //z edge2.
                                 //Możlie wyjście przez break wówczas idziemy
                                 //do pętli zewnętrznej do GOTO2
@@ -167,7 +167,7 @@ public class _2Opt implements IMutation {
                 counter--;
 
                 //Sprawdź, czy po zmianie uzyskamy lepszy cykl.
-                if (selectEdge(chromosome, edge1iter, edge2iter) == true) {
+                if (selectEdge(chromosome, edge1iter, edge2iter)) {
                     //System.out.println("ZNALAZLEM. Odcinki edge1=" + edge1 +
                     //", edge2=" + edge2 + " należy usunąć.");
                     changeEdge(chromosome, edge1iter, edge2iter);

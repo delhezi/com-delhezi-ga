@@ -21,14 +21,12 @@ import java.util.logging.Logger;
 /**
  * Sparametryzowana metoda wytwórcza metody reprodukcji.
  * @version 1.0 2010-01-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class SelectionFactory {
 
     /** Logger object. */
-    private static final Logger LOGGER =
-        Logger.getLogger(SelectionFactory.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SelectionFactory.class.getName());
 
     /** Delhezi Error Code. */
     private static final String DERC = "1-8.1-1-";
@@ -38,15 +36,13 @@ public class SelectionFactory {
 
     /**
      * Tworzy nowy obiekt funkcji selekcji i zwraca referencję do niego.
-     * @param selectionMethod Określa typ tworzonego obiektu
-     * funkcji selekcji.
+     * @param selectionMethod Określa typ tworzonego obiektu funkcji selekcji.
      * @return Referencja do obiektu funkcji selekcji.
      * @throws GeneticAlgorithmException DERC-1-8.1-1-1
      * @since 1.0
      */
-    public static ISelect getSelectionMethod(
-                                   final SelectionMethodType selectionMethod)
-    throws GeneticAlgorithmException {
+    public static ISelect getSelectionMethod(final SelectionMethodType selectionMethod)
+            throws GeneticAlgorithmException {
         LOGGER.entering(CLASS_NAME, "getSelectionMethod", selectionMethod);
         switch (selectionMethod) {
         case RouletteWheelElementaryImplementation:
@@ -56,14 +52,13 @@ public class SelectionFactory {
         case Tournament:
             return new Tournament();
         case LinearRanking:
-          return new LinearRanking();
+            return new LinearRanking();
+        default:
+            break;
         }
 
-        GeneticAlgorithmException e =
-            new GeneticAlgorithmException("DERC-" + DERC +
-                                          "1: Parametr selectionMethod=" +
-                                          selectionMethod +
-                                          " is not recognized.");
+        GeneticAlgorithmException e = new GeneticAlgorithmException(
+                "DERC-" + DERC + "1: Parametr selectionMethod=" + selectionMethod + " is not recognized.");
         LOGGER.log(Level.WARNING, "CrossoverFactory", e);
         throw e;
     }
@@ -75,9 +70,8 @@ public class SelectionFactory {
      * @throws GeneticAlgorithmException DERC-1-8.1-1-2
      * @since 1.0
      */
-    public static SelectionMethodType getSelectionMethodType(
-                                               final ISelect selectionMethod)
-    throws GeneticAlgorithmException {
+    public static SelectionMethodType getSelectionMethodType(final ISelect selectionMethod)
+            throws GeneticAlgorithmException {
         LOGGER.entering(CLASS_NAME, "getSelectionMethodType", selectionMethod);
 
         String pClassName = selectionMethod.getClass().getName();
@@ -92,12 +86,9 @@ public class SelectionFactory {
             return SelectionMethodType.LinearRanking;
         }
 
-        GeneticAlgorithmException e =
-            new GeneticAlgorithmException("DERC-" + DERC +
-                                          "2: Parametr selectionMethod=" +
-                                          pClassName + " is not recognized.");
+        GeneticAlgorithmException e = new GeneticAlgorithmException(
+                "DERC-" + DERC + "2: Parametr selectionMethod=" + pClassName + " is not recognized.");
         LOGGER.log(Level.WARNING, "CrossoverFactory", e);
         throw e;
     }
-
 }

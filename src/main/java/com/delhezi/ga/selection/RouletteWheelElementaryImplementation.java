@@ -9,7 +9,7 @@
 package com.delhezi.ga.selection;
 
 import com.delhezi.ga.Chromosome;
-import com.delhezi.ga.exception.GeneticAlgorithmException;
+//import com.delhezi.ga.exception.GeneticAlgorithmException;
 
 import java.util.ListIterator;
 import java.util.LinkedList;
@@ -25,8 +25,7 @@ import java.util.Random;
  * proporcjonalnej prawdopodobieństwo wyboru osobnika do puli rodzicielskiej
  * zależne jest od wartości funkcji przystosowania danego osobnika;)
  * @version 1.0 2010-01-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class RouletteWheelElementaryImplementation
                              extends AbstractRouletteWheel implements ISelect {
@@ -64,7 +63,7 @@ public class RouletteWheelElementaryImplementation
         //newChromosomes o wielkości równej chromosomes.size().
         for (int i = 0; i < chromosomes.size(); i++) {
             wylosowany = false;
-            while (wylosowany == false) { //Losujemy i-ty chromosom.
+            while (!wylosowany) { //Losujemy i-ty chromosom.
                 roll = random.nextDouble() / chromosomes.size();
 
                 chTmp = itr.next();
@@ -72,7 +71,7 @@ public class RouletteWheelElementaryImplementation
                     newChromosomes.add(chTmp.clone());
                     wylosowany = true;
                 }
-                
+
                 //System.out.println("--j=" + j + ", random=" + roll +
                  //", prawd=" + normals[j] + ", wybr=" + wylosowany);
 

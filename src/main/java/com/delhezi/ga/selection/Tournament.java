@@ -17,8 +17,7 @@ import java.util.Random;
 /**
  * Klasa <code>Tournament</code>: Metoda turniejowa.
  * @version 1.0 2010-01-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class Tournament implements ISelect {
 
@@ -44,14 +43,14 @@ public class Tournament implements ISelect {
      * @since 1.0
      */
     public final LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes)
-    throws GeneticAlgorithmException {
+            throws GeneticAlgorithmException {
         if (chromosomes == null) {
             throw new IllegalArgumentException("chromosomes is null.");
         }
-      if (chromosomes.size()  < this.arity)
-         throw new IllegalArgumentException("Tournament arity cannot be bigger than population size.");
-
-        //Jest tylko jeden chromosom.
+        if (chromosomes.size() < this.arity) {
+            throw new IllegalArgumentException("Tournament arity cannot be bigger than population size.");
+        }
+        // Jest tylko jeden chromosom.
         if (chromosomes.size() < 2) {
             return chromosomes;
         }
@@ -59,27 +58,23 @@ public class Tournament implements ISelect {
         // Tworzymy kopię listy chromosomów.
         LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
 
-        //Tworzymy uwzględniając przystosowanie NOWĄ listę chromosomów
-        //newChromosomes o wielkości równej chromosomes.size().
+        // Tworzymy uwzględniając przystosowanie NOWĄ listę chromosomów
+        // newChromosomes o wielkości równej chromosomes.size().
         for (int i = 0; i < chromosomes.size(); i++) {
             Chromosome bestTournamentChromosome = null;
             for (int j = 0; j < this.arity; j++) {
-                Chromosome chTmp =
-                    chromosomes.get(random.nextInt(chromosomes.size()));
+                Chromosome chTmp = chromosomes.get(random.nextInt(chromosomes.size()));
                 if (bestTournamentChromosome == null) {
                     bestTournamentChromosome = chTmp;
                 } else {
-                    if (bestTournamentChromosome.isFitnessMaximisation() ==
-                        true) {
-                        if (bestTournamentChromosome.getFitness() <
-                            chTmp.getFitness()) {
+                    if (bestTournamentChromosome.isFitnessMaximisation()) {
+                        if (bestTournamentChromosome.getFitness() < chTmp.getFitness()) {
                             bestTournamentChromosome = chTmp;
                         }
-                    } else{
-                      if (bestTournamentChromosome.getFitness() >
-                          chTmp.getFitness()) {
-                          bestTournamentChromosome = chTmp;
-                      }
+                    } else {
+                        if (bestTournamentChromosome.getFitness() > chTmp.getFitness()) {
+                            bestTournamentChromosome = chTmp;
+                        }
                     }
                 }
             }
@@ -92,7 +87,7 @@ public class Tournament implements ISelect {
      * Pobierz liczbę chromosomów biorących udział w turnieju.
      * @return Liczba chromosomów biorących udział w turnieju.
      */
-    public int getArity() {
+    public final int getArity() {
         return arity;
     }
 
@@ -100,7 +95,7 @@ public class Tournament implements ISelect {
      * Ustaw liczbę chromosomów biorących udział w turnieju.
      * @param arity Liczba chromosomów biorących udział w turnieju.
      */
-    public void setArity(int arity) {
+    public final void setArity(final int arity) {
         this.arity = arity;
     }
 }

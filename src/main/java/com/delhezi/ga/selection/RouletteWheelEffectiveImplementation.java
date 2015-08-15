@@ -14,10 +14,8 @@ import java.util.Random;
 //import java.util.logging.Logger;
 
 /**
- * Klasa <code>RouletteWheelEffectiveImplementation</code>: Metoda ruletki
- * implementacja efektywna;
- * Koszt stały + liniowy koszt inicjacji tablic zależny od wielkości
- * populacji.
+ * Klasa <code>RouletteWheelEffectiveImplementation</code>: Metoda ruletki implementacja efektywna;
+ * Koszt stały + liniowy koszt inicjacji tablic zależny od wielkości populacji.
  * M. D. Vose, A Linear Algorithm For Generating Random Numbers With a
  * Given Distribution, IEEE Transactions on Software Engineering,
  * vol. 17, no. 9, september 1991
@@ -26,8 +24,7 @@ import java.util.Random;
  * proporcjonalnej prawdopodobieństwo wyboru osobnika do puli rodzicielskiej
  * zależne jest od wartości funkcji przystosowania danego osobnika;)
  * @version 1.0 2010-01-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel
                                                          implements ISelect {
@@ -45,8 +42,7 @@ public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel
   /**
     * Efektywna implementacja funkcji ruletki.
     * @param chromosomes Lista chromosomów.
-    * @param normals Tablica z określonym prawdopodobieństwem wyboru dla
-    * każdego z chromosomów.
+    * @param normals Tablica z określonym prawdopodobieństwem wyboru dla każdego z chromosomów.
     * @return Wynikowa list chromosomów.
     * @since 1.0
     */
@@ -57,8 +53,8 @@ public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel
 
         LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
         int[] alias = new int[chromosomes.size()]; //Tab. indeksów zapasowych
-        
-        tableInitialize(chromosomes,normals,alias);
+
+        tableInitialize(chromosomes, normals, alias);
 
         double roll;
         int ui;
@@ -76,20 +72,25 @@ public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel
       return newChromosomes;
     }
 
-  /** */
-  protected void tableInitialize(final LinkedList<Chromosome> chromosomes,
-                                 final double [] normals,
-                                 final int[] alias) {
+  /**
+   * Inicjalizacja.
+   * @param chromosomes Lista chromosomów.
+   * @param normals Tablica z określonym prawdopodobieństwem wyboru dla każdego z chromosomów.
+   * @param alias Tablica indeksów zapasowych.
+   * @since 1.0
+   */
+    protected final void tableInitialize(final LinkedList<Chromosome> chromosomes, final double[] normals,
+            final int[] alias) {
         int n = chromosomes.size();
-        double _1n = (double) 1 / n;
+        double d1n = (double) 1 / n;
 
-        int[] small = new int[n]; //Stosy pomocnicze indeksów do ps
-        int[] large = new int[n]; //Stosy pomocnicze indeksów do ps
+        int[] small = new int[n]; // Stosy pomocnicze indeksów do ps
+        int[] large = new int[n]; // Stosy pomocnicze indeksów do ps
 
         int l = 0;
         int s = 0;
         for (int j = 0; j < n; j++) {
-            if (normals[j] > _1n) {
+            if (normals[j] > d1n) {
                 large[l] = j;
                 l++;
             } else {
@@ -97,9 +98,9 @@ public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel
                 s++;
             }
         }
-      
+
         // "redystrybucja" i przeskalowanie prawdopodobienstw
-        double[] prob = new double[n]; //Tab. względnych częstości
+        double[] prob = new double[n]; // Tab. względnych częstości
         int j;
         int k;
         while ((s > 0) && (l > 0)) {
@@ -109,8 +110,8 @@ public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel
             k = large[l];
             prob[j] = n * normals[j];
             alias[j] = k;
-            normals[k] = normals[k] + (normals[j] - _1n);
-            if (normals[k] > _1n) {
+            normals[k] = normals[k] + (normals[j] - d1n);
+            if (normals[k] > d1n) {
                 l = l + 1;
             } else {
                 small[s] = k;

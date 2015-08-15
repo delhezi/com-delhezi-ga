@@ -60,19 +60,17 @@ public class ScriptEngine {
         this.scriptEnginName = scriptEnginName;
         this.scriptPath = scriptPath.replaceAll("\\\\", "/");
         this.scriptFile = scriptFile;
-        
-            ScriptEngineManager factory = new ScriptEngineManager();
-            javax.script.ScriptEngine engine = factory.getEngineByName(scriptEnginName);
-            try {
-				engine.eval("load(\"" + this.scriptPath  + this.scriptFile + "\");");
-			} catch (ScriptException e) {
-	            String errMessage =
-	                    "DERC-" + DERC + "1: Error occurrs in script "
-	                    + this.scriptPath + scriptFile + ".";
-	                LOGGER.log(Level.WARNING, errMessage, e);
-	                throw new GeneticAlgorithmException(errMessage);
-			}
-        
+
+        ScriptEngineManager factory = new ScriptEngineManager();
+        javax.script.ScriptEngine engine = factory.getEngineByName(scriptEnginName);
+          try {
+              engine.eval("load(\"" + this.scriptPath  + this.scriptFile + "\");");
+          } catch (ScriptException e) {
+              String errMessage = "DERC-" + DERC + "1: Error occurrs in script "
+                                 + this.scriptPath + scriptFile + ".";
+              LOGGER.log(Level.WARNING, errMessage, e);
+              throw new GeneticAlgorithmException(errMessage);
+           }
         invokeEngine = (Invocable) engine;
     }
 
@@ -84,8 +82,8 @@ public class ScriptEngine {
      * @throws GeneticAlgorithmException DERC-1-9-1-4, DERC-1-9-1-5
      * @since 1.0
      */
-    public Object invoke(final String functionName,
-                         final Object... args) throws GeneticAlgorithmException {
+    public final Object invoke(final String functionName,
+                               final Object... args) throws GeneticAlgorithmException {
         Object o = null;
         try {
             o = invokeEngine.invokeFunction(functionName, args);

@@ -26,16 +26,15 @@ import java.util.logging.Logger;
 public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
 
     /** Logger object. */
-    private static final Logger LOGGER =
-        Logger.getLogger(KPointCrossover.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(KPointCrossover.class.getName());
 
     /** Delhezi Error Code. */
-    //private static final String DERC = "1-1.3-3-";
+    // private static final String DERC = "1-1.3-3-";
 
     /** Class name. */
     private static final String CLASS_NAME = KPointCrossover.class.getName();
 
-    /** Ilość punktów krzyżowania.*/
+    /** Ilość punktów krzyżowania. */
     private int k = 1;
 
     /**
@@ -44,13 +43,10 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
      * @param chromosome2 Chromosom.
      * @since 1.0
      */
-    public final void crossover(final Chromosome chromosome1,
-                                final Chromosome chromosome2) {
-        LOGGER.entering(CLASS_NAME, "crossover",
-                        new Object[] { chromosome1, chromosome2 });
+    public final void crossover(final Chromosome chromosome1, final Chromosome chromosome2) {
+        LOGGER.entering(CLASS_NAME, "crossover", new Object[] {chromosome1, chromosome2});
         this.crossover(chromosome1, chromosome2, this.k);
-        LOGGER.exiting(CLASS_NAME, "crossover",
-                       new Object[] { chromosome1, chromosome2 });
+        LOGGER.exiting(CLASS_NAME, "crossover", new Object[] {chromosome1, chromosome2});
     }
 
     /**
@@ -61,10 +57,8 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
      * wartość z przedziału 1,chromosome1.size()-1.
      * @since 1.0
      */
-    public final void crossover(final Chromosome chromosome1,
-                                final Chromosome chromosome2, int k) {
-        LOGGER.entering(CLASS_NAME, "crossover",
-                        new Object[] { chromosome1, chromosome2, k });
+    public final void crossover(final Chromosome chromosome1, final Chromosome chromosome2, final int k) {
+        LOGGER.entering(CLASS_NAME, "crossover", new Object[] {chromosome1, chromosome2, k});
 
         if (chromosome1.size() < 2) {
             return;
@@ -76,11 +70,10 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
             throw new IllegalArgumentException("k < 1");
         }
 
-        //Wybierz k losowych punktów krzyżowania.
+        // Wybierz k losowych punktów krzyżowania.
         List<Integer> kPoints = new ArrayList<Integer>(k);
 
-        RandomUniqueInteger bezPowtorzenZUsuwaniem =
-            new RandomUniqueInteger(chromosome1.size()-1);
+        RandomUniqueInteger bezPowtorzenZUsuwaniem = new RandomUniqueInteger(chromosome1.size() - 1);
 
         for (int i = 0; i < k; i++) {
             kPoints.add(bezPowtorzenZUsuwaniem.get());
@@ -88,8 +81,7 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
 
         this.crossover(chromosome1, chromosome2, kPoints);
 
-        LOGGER.exiting(CLASS_NAME, "crossover",
-                       new Object[] { chromosome1, chromosome2 });
+        LOGGER.exiting(CLASS_NAME, "crossover", new Object[] {chromosome1, chromosome2});
     }
 
     /**
@@ -100,18 +92,15 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
      * np. k{1,4,6,9,10} = x|xxx|xx|xxx|x|x.
      * @since 1.0
      */
-    private final void crossover(final Chromosome chromosome1,
-                                 final Chromosome chromosome2,
-                                 List<Integer> kPoints) {
-        LOGGER.entering(CLASS_NAME, "crossover",
-                        new Object[] { chromosome1, chromosome2, kPoints });
+    private void crossover(final Chromosome chromosome1, final Chromosome chromosome2, List<Integer> kPoints) {
+        LOGGER.entering(CLASS_NAME, "crossover", new Object[] {chromosome1, chromosome2, kPoints});
 
-        //Chromosom nie może być wartością null.
+        // Chromosom nie może być wartością null.
         assert chromosome1 != null : "Illegal argument chromosome1: null";
         assert chromosome2 != null : "Illegal argument chromosome2: null";
-        //Lista punktów krzyżowania nie może być wartością null.
+        // Lista punktów krzyżowania nie może być wartością null.
         assert kPoints != null : "Illegal argument kPoints: null";
-      
+
         Collections.sort(kPoints);
 
         Object tmpCh;
@@ -127,15 +116,14 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
                     s = !s;
                     kPoints.remove(0);
                 }
-                //jeśli jest ostatnia sekcja i nie trzeba wymieniać genów
-                if ((kPoints.size() == 0) && (s==false)) {
+                // jeśli jest ostatnia sekcja i nie trzeba wymieniać genów
+                if ((kPoints.size() == 0) && (s == false)) {
                     return;
                 }
             }
         }
 
-        LOGGER.exiting(CLASS_NAME, "crossover",
-                       new Object[] { chromosome1, chromosome2 });
+        LOGGER.exiting(CLASS_NAME, "crossover", new Object[] {chromosome1, chromosome2});
     }
 
     /**
@@ -143,7 +131,7 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
      * @param k Ilość punktów krzyżowania.
      * @since 1.0
      */
-    public void setK(int k) {
+    public final void setK(final int k) {
         this.k = k;
     }
 
@@ -152,7 +140,7 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
      * @return Ilość punktów krzyżowania.
      * @since 1.0
      */
-    public int getK() {
+    public final int getK() {
         return this.k;
     }
 }
