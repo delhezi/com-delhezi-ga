@@ -14,19 +14,13 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Random;
-//import java.util.logging.Logger;
 
 /**
  * Klasa <code>LinearRanking</code>: Selekcja liniowa wg rang.
  * @version 1.0 2010-01-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class LinearRanking implements ISelect {
-
-    /** Logger object. */
-    //private static final Logger LOGGER =
-    //    Logger.getLogger(LinearRanking.class.getName());
 
     /** Delhezi Error Code. */
     //private static final String DERC = "1-8-2-";
@@ -34,45 +28,47 @@ public class LinearRanking implements ISelect {
     private static Random random = new Random();
 
     /**
-     * Funkcja select.
+     * Funkcja selekcji tworzy uwzględniając przystosowanie nową listę chromosomów
+     * o wielkości równej chromosomes.size().
      * @param chromosomes Lista chromosomów.
      * @return Wynikowa list chromosomów.
-     * @throws GeneticAlgorithmException (chromosomes == null)
-     * or (fitnessFunction == null)
+     * @throws GeneticAlgorithmException (chromosomes == null) or (fitnessFunction == null)
      * @since 1.0
      */
     public final LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes)
             throws GeneticAlgorithmException {
         if (chromosomes == null) {
-            throw new IllegalArgumentException("chromosomes is null.");
+            throw new IllegalArgumentException("Chromosomes list must not be null.");
         }
-        // Jest tylko jeden chromosom.
-        if (chromosomes.size() < 2) {
+        if (chromosomes.size() == 0) {
+            throw new IllegalArgumentException("Chromosomes to select must be greater than zero.");
+        }
+        if (chromosomes.size() < 2) { // Jest tylko jeden chromosom.
             return chromosomes;
         }
 
-        // Sortuje chromosomy dla maksymalizacji: od najmniejszej do
-        // najwiekszej,
-        // dla minimalizacji: od najwiekszej do najmniejszej wartosci fitness.
+        // Sortowanie chromosomów.
+        // W przypadku maksymalizacji sortowanie od najwiekszej do najmniejszej wartości fitnes (najlepsze osobniki na początku listy).
+        // W przypadku minimalizacji sortowanie od najmniejszej do najwiekszej wartości fitnes (najlepsze osobniki na początku listy).
         Collections.sort(chromosomes);
-
+        
         LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
 
-        // Zaraz po utworzeniu iterator wskazuje na specjalną wartość przed
-        // pierwszym elementem, tak by pierwszy element był pobrany
+        // Po utworzeniu iterator wskazuje na specjalną wartość przed
+        // pierwszym elementem listy, tak by pierwszy element był pobrany
         // przy pierwszym wywołaniu next()
         ListIterator<Chromosome> itr = chromosomes.listIterator(0);
 
         int j = 1; // Pozycja rozpatrywanego chromosomu w populacji.
         double roll;
-        boolean wylosowany;
-        Chromosome chTmp;
+        boolean find;
+        Chromosome<?> chTmp;
         double normal;
         // Tworzymy uwzględniając przystosowanie NOWĄ listę chromosomów
         // newChromosomes o wielkości równej chromosomes.size().
         for (int i = 0; i < chromosomes.size(); i++) {
-            wylosowany = false;
-            while (!wylosowany) { // Losujemy i-ty chromosom do newChromosomes.
+            find = false;
+            while (!find) { // Wyznaczamy i-ty chromosom do newChromosomes.
 
                 // Wróć na początek listy jeśli doszedłeś do końca.
                 if (j > chromosomes.size()) {
@@ -81,12 +77,12 @@ public class LinearRanking implements ISelect {
                 }
 
                 roll = random.nextDouble() / chromosomes.size();
-                normal = getNormal(chromosomes.size(), j);
+                normal = getNormal(chromosomes.size(), chromosomes.size() + 1 - j);
                 chTmp = itr.next();
 
                 if (normal >= roll) {
                     newChromosomes.add(chTmp.clone());
-                    wylosowany = true;
+                    find = true;
                 }
                 j++;
             }
@@ -97,15 +93,11 @@ public class LinearRanking implements ISelect {
     /**
      * Wylicza prawdopodobieństwo wybrania chromosomu.
      * @param populationSize Wielkość populacji.
-     * @param chromosomePosition Pozycja chromosomu  w populacji dla którego
-     * wyliczamy prawdopodobieństwo wybrania. Wymagane jest wcześniejsze
-     * posortowanie populacji, dla przypadku
-     * maksymalizacji: od najmniejszej do najwiekszej,
-     * dla minimalizacji: od najwiekszej do najmniejszej wartości fitness.
+     * @param chromosomeRank Ranga chromosomu.
      * @return Prawdopodobieństwo wybrania chromosomu <0,1>.
      * @since 1.0
      */
-    private double getNormal(final int populationSize, final int chromosomePosition) {
-        return (double) (2 * chromosomePosition) / (populationSize * (populationSize + 1));
+    private double getNormal(final int populationSize, final int chromosomeRank) {
+        return (double) (2 * chromosomeRank) / (populationSize * (populationSize + 1));
     }
 }

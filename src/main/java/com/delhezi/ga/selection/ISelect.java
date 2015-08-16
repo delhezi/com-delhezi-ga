@@ -27,6 +27,5 @@ public interface ISelect {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes)
-    throws GeneticAlgorithmException;
+    LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes) throws GeneticAlgorithmException;
 }

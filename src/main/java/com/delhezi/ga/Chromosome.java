@@ -22,8 +22,7 @@ import java.util.logging.Logger;
 public class Chromosome<GENE_TYPE> implements Cloneable,
                                    Comparable<Chromosome<GENE_TYPE>> {
     /** Logger object. */
-    private static final Logger LOGGER =
-        Logger.getLogger(Chromosome.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Chromosome.class.getName());
 
     /** Delhezi Error Code. */
     private static final String DERC = "1-1-";
@@ -46,28 +45,27 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
 
     /**
      * Porównanie dwóch chromosomów;
-     * if x.compareTo(y) == 1 to x jest lepszy niż y.
      * Wykorzystywane przy sortowaniu.
-     * UWAGA. LISTA POSORTOWANA JEST W ODWROTNEJ KOLEJNOŚCI
-     * CHYAB JAKIŚ BŁĄD W JAVA
+     * W przypadku maksymalizacji sortowanie od najwiekszej do najmniejszej wartości fitnes (najlepsze osobniki na początku listy).
+     * W przypadku minimalizacji sortowanie od najmniejszej do najwiekszej wartości fitnes (najlepsze osobniki na początku listy).
      * @param chromosome Chromosom do porównania.
      * @return 0 jeśli wartości wskażników przystosowania chromosomów
      * porównywanych są równe, 1 lub -1  jeśli jeden większy od drugiego.
      */
     public final int compareTo(final Chromosome<GENE_TYPE> chromosome) {
         try {
-            if (this.chProperties.getFitnessFunction().isMaximisation()) {
-                if (this.getFitness() > chromosome.getFitness()) {
+            if (this.chProperties.getFitnessFunction().isMaximisation()) { //MAKSYMALIZACJA
+                if (this.getFitness() < chromosome.getFitness()) {
                     return 1;
                 }
-                if (this.getFitness() < chromosome.getFitness()) {
+                if (this.getFitness() > chromosome.getFitness()) {
                     return -1;
                 }
-            } else {
-                if (this.getFitness() < chromosome.getFitness()) {
+            } else { // MINIMALIZACJA
+                if (this.getFitness() > chromosome.getFitness()) {
                     return 1;
                 }
-                if (this.getFitness() > chromosome.getFitness()) {
+                if (this.getFitness() < chromosome.getFitness()) {
                     return -1;
                 }
             }

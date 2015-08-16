@@ -216,16 +216,18 @@ public final class PopulationConstantSize extends Population {
            //elitarny mymieniamy ostatni chromosom populacji na
            //chromosom elitarny.
         if (super.getElitism()) {
-            if (elitarChromosome.compareTo(foundTopChromosome) == 1) {
+            if (elitarChromosome.compareTo(foundTopChromosome) == -1) {
                 super.getChromosomes().removeLast();
                 super.getChromosomes().add(elitarChromosome.clone());
-            } else if (elitarChromosome.compareTo(foundTopChromosome) == -1) {
+            } else if (elitarChromosome.compareTo(foundTopChromosome) == 1) {
                 super.topChromosome = foundTopChromosome;
                 super.topChromosomeGenerationFound = getGeneration();
             }
         } else {
-            super.topChromosome = foundTopChromosome;
-            //super.topChromosomeGenerationFound = getGeneration(); //bez sensu
+            if (super.topChromosome.compareTo(foundTopChromosome) == 1) {
+                super.topChromosome = foundTopChromosome;
+                super.topChromosomeGenerationFound = getGeneration();
+            }
         }
     }
 
