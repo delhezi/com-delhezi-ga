@@ -16,7 +16,6 @@ import com.delhezi.ga.utility.Random;
 /**
  * Klasa <code>RouletteWheelElementaryImplementation</code>: Metoda ruletki
  * implementacja elementarna;
- * Liniowy koszt wykonania zależny od wielkości populacji;
  *
  * Metoda ruletki - (odmiana reprodukcji proporcjonalnej. W reprodukcji
  * proporcjonalnej prawdopodobieństwo wyboru osobnika do puli rodzicielskiej
@@ -39,25 +38,24 @@ public class RouletteWheelElementaryImplementation extends AbstractRouletteWheel
             final double[] normals) {
       
         LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
-
-        Chromosome chTmp = chromosomes.get(0); // inicjlizacja pierwszym chromosomem
         
         //Tworzymy uwzględniając przystosowanie NOWĄ listę chromosomów
         //newChromosomes o wielkości równej chromosomes.size().
         for (int i = 0; i < chromosomes.size(); i++) {
             
-            double chSelect = Random.nextDoubleInRange(0, 1);
+            double rndNumber = Random.nextDoubleInRange(0, 1);
             
-            double normalsSum = 0;
+            double offset = 0;
             int ii = 0;
-            while (normalsSum < chSelect) {
-                normalsSum += normals[ii];
-                chTmp = chromosomes.get(ii);
-                ii++;
-            }
+            for (ii = 0; ii < chromosomes.size(); ii++) {
+                offset += normals[ii];
+                if (rndNumber <= offset) { // ZNALEZIONY
+                    newChromosomes.add(chromosomes.get(ii).clone());
+                    break;
+                }
+            }//wyjście break
 
-          //  System.out.println("losowanie=" + chSelect + ", normalsSum=" + normalsSum + ", chromosom ii=" + (ii-1));
-             newChromosomes.add(chTmp.clone());
+            //System.out.println("losowanie=" + rndNumber + ", offset=" + offset + ", chromosom ii=" + (ii));
         }
         return newChromosomes;
     }

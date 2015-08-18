@@ -167,7 +167,7 @@ public class RouletteWheelElementaryImplementationTest {
             fail();
         }
 
-        /* 
+        /*
         i = 0;
         fitnessSum = 0;
         for (Chromosome ch : chromosomes) {
@@ -186,7 +186,7 @@ public class RouletteWheelElementaryImplementationTest {
         timeEnd = System.currentTimeMillis();
         double seconds = (timeEnd-timeStart)/1000.0;
         System.out.println("testSelect Time elapsed: "+new DecimalFormat("0.000").format(seconds)+" sec\n");
-        */
+         */
     }
 
     

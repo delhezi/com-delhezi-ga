@@ -14,7 +14,6 @@ import java.util.Random;
 
 /**
  * Klasa <code>RouletteWheelEffectiveImplementation</code>: Metoda ruletki implementacja efektywna;
- * Koszt stały + liniowy koszt inicjacji tablic zależny od wielkości populacji.
  * M. D. Vose, A Linear Algorithm For Generating Random Numbers With a
  * Given Distribution, IEEE Transactions on Software Engineering,
  * vol. 17, no. 9, september 1991

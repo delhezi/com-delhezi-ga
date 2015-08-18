@@ -168,22 +168,22 @@ public final class PopulationConstantSize extends Population {
         if (super.getElitism()) {
             elitarChromosome = super.getTopChromosome().clone();
         }
-
-        //System.out.println("++++++++++++++++++++++++++++" );
-        //for (Chromosome ch : super.getChromosomes()) {
-        //         System.out.println(ch);
-        //       }
-        // System.out.println("++++++++++++++++++++++++++++" );
-
-        //Operacja selekcji.
+/*
+        System.out.println("++++++++++++++++++++++++++++");
+        for (Chromosome ch : super.getChromosomes()) {
+            System.out.println(ch.getFitness());
+        }
+        System.out.println("++++++++++++++++++++++++++++");
+*/
+        // Operacja selekcji.
         super.setChromosomes(select.select(super.getChromosomes()));
-        // System.out.println("================================" );
-        // for (Chromosome ch : super.getChromosomes()) {
-        //         System.out.println(", chromosom = "
-        // + ch.getFitness(super.getFitnessFunction()));
-        //       }
-        // System.out.println("=================================" );
-
+/*
+        System.out.println("================================");
+        for (Chromosome ch : super.getChromosomes()) {
+            System.out.println(ch.getFitness());
+        }
+        System.out.println("=================================");
+*/
          //Ilość operacji krzyżowania (np. 100 * 0.7/2 = 35).
          final int countCross =
              (int) (this.getPopulationSize() * getCrossoverProbability() / 2);
