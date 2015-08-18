@@ -45,7 +45,7 @@ public class Tournament implements ISelect {
     public final LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes)
             throws GeneticAlgorithmException {
         if (chromosomes == null) {
-            throw new IllegalArgumentException("chromosomes is null.");
+            throw new IllegalArgumentException("Chromosomes list must not be null.");
         }
         if (chromosomes.size() < this.arity) {
             throw new IllegalArgumentException("Tournament arity cannot be bigger than population size.");

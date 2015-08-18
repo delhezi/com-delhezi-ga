@@ -9,12 +9,9 @@
 package com.delhezi.ga.selection;
 
 import com.delhezi.ga.Chromosome;
-//import com.delhezi.ga.exception.GeneticAlgorithmException;
 
-import java.util.ListIterator;
 import java.util.LinkedList;
-import java.util.Random;
-//import java.util.logging.Logger;
+import com.delhezi.ga.utility.Random;
 
 /**
  * Klasa <code>RouletteWheelElementaryImplementation</code>: Metoda ruletki
@@ -27,18 +24,7 @@ import java.util.Random;
  * @version 1.0 2010-01-10
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class RouletteWheelElementaryImplementation
-                             extends AbstractRouletteWheel implements ISelect {
-
-    /** Logger object. */
-    //private static final Logger LOGGER =
-    // Logger.getLogger(RouletteWheelElementaryImplementation.class.getName());
-
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-8-4-";
-
-    /** */
-  private static Random random = new Random();
+public class RouletteWheelElementaryImplementation extends AbstractRouletteWheel implements ISelect {
 
   /**
    * Elementarna implementacja funkcji ruletki.
@@ -49,39 +35,29 @@ public class RouletteWheelElementaryImplementation
    * @since 1.0
    */
   @Override
-  protected final LinkedList<Chromosome> rouletteWheelImpl(
-                        final LinkedList<Chromosome> chromosomes,
-                        final double [] normals) {
+    protected final LinkedList<Chromosome> rouletteWheelImpl(final LinkedList<Chromosome> chromosomes,
+            final double[] normals) {
+      
         LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
-        ListIterator<Chromosome> itr = chromosomes.listIterator(0);
 
-        int j = 0;
-        double roll;
-        boolean wylosowany;
-        Chromosome chTmp;
+        Chromosome chTmp = chromosomes.get(0); // inicjlizacja pierwszym chromosomem
+        
         //Tworzymy uwzględniając przystosowanie NOWĄ listę chromosomów
         //newChromosomes o wielkości równej chromosomes.size().
         for (int i = 0; i < chromosomes.size(); i++) {
-            wylosowany = false;
-            while (!wylosowany) { //Losujemy i-ty chromosom.
-                roll = random.nextDouble() / chromosomes.size();
-
-                chTmp = itr.next();
-                if (normals[j] >= roll) {
-                    newChromosomes.add(chTmp.clone());
-                    wylosowany = true;
-                }
-
-                //System.out.println("--j=" + j + ", random=" + roll +
-                 //", prawd=" + normals[j] + ", wybr=" + wylosowany);
-
-                if (j == chromosomes.size() - 1) {
-                    itr = chromosomes.listIterator(0);
-                    j = 0;
-                } else {
-                    j++;
-                }
+            
+            double chSelect = Random.nextDoubleInRange(0, 1);
+            
+            double normalsSum = 0;
+            int ii = 0;
+            while (normalsSum < chSelect) {
+                normalsSum += normals[ii];
+                chTmp = chromosomes.get(ii);
+                ii++;
             }
+
+          //  System.out.println("losowanie=" + chSelect + ", normalsSum=" + normalsSum + ", chromosom ii=" + (ii-1));
+             newChromosomes.add(chTmp.clone());
         }
         return newChromosomes;
     }

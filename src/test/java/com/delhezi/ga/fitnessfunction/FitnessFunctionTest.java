@@ -81,7 +81,7 @@ public class FitnessFunctionTest {
             e.printStackTrace();
             fail();
         }
-        System.out.println(result);
+       // System.out.println(result);
         assertEquals(expResult, result, 0.0);
     }
 

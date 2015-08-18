@@ -11,7 +11,6 @@ package com.delhezi.ga.selection;
 import com.delhezi.ga.Chromosome;
 import java.util.LinkedList;
 import java.util.Random;
-//import java.util.logging.Logger;
 
 /**
  * Klasa <code>RouletteWheelEffectiveImplementation</code>: Metoda ruletki implementacja efektywna;
@@ -26,15 +25,7 @@ import java.util.Random;
  * @version 1.0 2010-01-10
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel
-                                                         implements ISelect {
-
-    /** Logger object. */
-    //private static final Logger LOGGER =
-    // Logger.getLogger(RouletteWheelEffectiveImplementation.class.getName());
-
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-8-3-";
+public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel implements ISelect {
 
   /** */
   private static Random random = new Random();
@@ -47,12 +38,11 @@ public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel
     * @since 1.0
     */
   @Override
-  protected final LinkedList<Chromosome> rouletteWheelImpl(
-                                   final LinkedList<Chromosome> chromosomes,
-                                   final double [] normals) {
+    protected final LinkedList<Chromosome> rouletteWheelImpl(final LinkedList<Chromosome> chromosomes,
+            final double[] normals) {
 
         LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
-        int[] alias = new int[chromosomes.size()]; //Tab. indeksów zapasowych
+        int[] alias = new int[chromosomes.size()]; // Tab. indeksów zapasowych
 
         tableInitialize(chromosomes, normals, alias);
 

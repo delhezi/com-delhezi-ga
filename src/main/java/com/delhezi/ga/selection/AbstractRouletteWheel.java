@@ -11,7 +11,6 @@ package com.delhezi.ga.selection;
 import com.delhezi.ga.Chromosome;
 import com.delhezi.ga.exception.GeneticAlgorithmException;
 import java.util.LinkedList;
-//import java.util.logging.Logger;
 
 /**
  * <code>AbstractRouletteWheel</code>: Metoda ruletki (odmiana reprodukcji
@@ -37,13 +36,6 @@ import java.util.LinkedList;
  */
 abstract class AbstractRouletteWheel {
 
-    /** Logger object. */
-    //private static final Logger LOGGER =
-    //    Logger.getLogger(AbstractRouletteWheel.class.getName());
-
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-8-1-";
-
     /**
      * Funkcja selekcji.
      * @param chromosomes Lista chromosomów.
@@ -55,38 +47,14 @@ abstract class AbstractRouletteWheel {
     public final LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes)
             throws GeneticAlgorithmException {
         if (chromosomes == null) {
-            throw new IllegalArgumentException("chromosomes is null.");
+            throw new IllegalArgumentException("Chromosomes list must not be null.");
         }
         // Jest tylko jeden chromosom.
         if (chromosomes.size() < 2) {
             return chromosomes;
         }
 
-        this.setVariable(chromosomes);
-
-        // Tablica z określonym prawdopodobieństwem wyboru dla każdego z
-        // chromosomów.
-        double[] normals = new double[chromosomes.size()];
-        int i = 0;
-        for (Chromosome ch : chromosomes) {
-            if (ch.isFitnessMaximisation()) {
-                normals[i] = ch.getFitness() / sumFitness;
-            } else {
-                normals[i] = 1 / (ch.getFitness() * sumaOdwrotnosci);
-            }
-            i++;
-        }
-
-        //double sump=0;
-        //for(int z = 0; z < chromosomes.size(); z++){
-        //   sump+=normals[z];
-        //   System.out.println("normals["+z+"] = " + normals[z]
-        // + ", chromosom = " + chromosomes.get(z).getFitness());
-        //}
-        //System.out.println("sum. prawd. = " +sump);//Suma prawdopodobieństw
-        //powinna być równa 1.
-
-        return this.rouletteWheelImpl(chromosomes, normals);
+        return this.rouletteWheelImpl(chromosomes, probabilities(chromosomes));
     }
 
     /**
@@ -100,8 +68,35 @@ abstract class AbstractRouletteWheel {
     abstract LinkedList<Chromosome> rouletteWheelImpl(final LinkedList<Chromosome> chromosomes, final double[] normals);
 
     /**
-     * Funkcja pomocnicza, wylicza wartości: minIndex,
-     * minFitness, maxIndex, maxFitness, sumFitness, odwrotnoscSumyOdwrotnosci.
+     * Wyliczenie prawdopodobieństwa wybrania dla każdego z osobników.
+     * @param chromosomes Lista chromosomów.
+     * @return Tablica prawdopodobieństw wybrania.
+     * @since 1.0
+     */
+    private double[] probabilities(final LinkedList<Chromosome> chromosomes)
+            throws GeneticAlgorithmException {
+
+        this.setVariable(chromosomes);
+        
+        // Tablica z określonym prawdopodobieństwem wyboru dla każdego z
+        // chromosomów.
+        final double[] normals = new double[chromosomes.size()];
+        int i = 0;
+        for (Chromosome ch : chromosomes) {
+            if (ch.isFitnessMaximisation()) {
+                normals[i] = ch.getFitness() / sumFitness;
+            } else {
+                normals[i] = 1 / (ch.getFitness() * sumaOdwrotnosci);
+            }
+            i++;
+        }
+        return normals;
+    }
+    
+    
+    /**
+     * Funkcja pomocnicza, wylicza wartości:
+     * minFitness, sumFitness, odwrotnoscSumyOdwrotnosci.
      * @param chromosomes Lista chromosomów.
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
@@ -111,7 +106,6 @@ abstract class AbstractRouletteWheel {
 
         double fitness;
         this.minFitness = chromosomes.getFirst().getFitness();
-        this.maxFitness = chromosomes.getFirst().getFitness();
         double tmpSumaOdwrotnosci = 0;
 
         for (Chromosome ch : chromosomes) {
@@ -121,18 +115,12 @@ abstract class AbstractRouletteWheel {
             if (fitness < this.minFitness) {
                 this.minFitness = fitness;
             }
-            if (fitness > this.maxFitness) {
-                this.maxFitness = fitness;
-            }
         }
         this.sumaOdwrotnosci = tmpSumaOdwrotnosci;
     }
 
     /** Najmniejsza znaleziona wartość wskaźnika przystosowania. */
     private double minFitness;
-
-    /** Największa znaleziona wartość wskaźnika przystosowania. */
-    private double maxFitness;
 
     /** Suma wartości wskaźników przystosowania osobników w całej populacji. */
     private double sumFitness;

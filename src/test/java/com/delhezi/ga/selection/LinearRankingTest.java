@@ -8,6 +8,7 @@ import com.delhezi.ga.fitnessfunction.drivers.IFitnessFunctionDriver;
 import com.delhezi.ga.fitnessfunction.drivers.factory.FitnessFunctionDriverFactory;
 import com.delhezi.ga.genes.Point;
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 import junitx.util.PrivateAccessor;
 import org.apache.log4j.Logger;
@@ -25,6 +26,59 @@ public class LinearRankingTest {
     private ChromosomeProperties chromosomeProperties;
     private static final Logger log = Logger.getLogger(LinearRankingTest.class);
 
+    private static Point[][] genes = {
+            { new Point(101, 120), new Point(102, 220), new Point(103, 220), new Point(104, 220), new Point(105, 220),
+                    new Point(106, 220) }, // genes[0]
+            { new Point(101, 120), new Point(102, 130), new Point(103, 140), new Point(104, 150), new Point(105, 160),
+                    new Point(105, 170) }, // genes[1]
+            { new Point(101, 121), new Point(102, 122), new Point(103, 123), new Point(104, 124), new Point(105, 125),
+                    new Point(105, 126) }, // genes[2]
+            { new Point(101, 120), new Point(102, 120), new Point(103, 120), new Point(104, 120), new Point(105, 120),
+                    new Point(106, 120) },
+            { new Point(101, 121), new Point(102, 122), new Point(103, 123), new Point(104, 124), new Point(105, 125),
+                    new Point(105, 136) },
+            { new Point(101, 120), new Point(102, 220), new Point(103, 220), new Point(104, 220), new Point(105, 220),
+                    new Point(106, 230) },
+            { new Point(101, 120), new Point(102, 220), new Point(153, 220), new Point(104, 220), new Point(105, 220),
+                    new Point(106, 220) },
+            { new Point(101, 120), new Point(102, 130), new Point(153, 140), new Point(104, 150), new Point(105, 160),
+                    new Point(105, 170) },
+            { new Point(101, 121), new Point(102, 122), new Point(153, 123), new Point(104, 124), new Point(105, 125),
+                    new Point(105, 126) },
+            { new Point(101, 120), new Point(102, 120), new Point(153, 120), new Point(104, 120), new Point(105, 120),
+                    new Point(106, 120) },
+            { new Point(101, 121), new Point(102, 122), new Point(153, 123), new Point(104, 124), new Point(105, 125),
+                    new Point(105, 136) },
+            { new Point(101, 120), new Point(102, 220), new Point(153, 220), new Point(104, 220), new Point(105, 220),
+                    new Point(106, 230) },
+            { new Point(101, 120), new Point(102, 220), new Point(103, 220), new Point(104, 220), new Point(105, 220),
+                    new Point(106, 220) },
+            { new Point(101, 120), new Point(102, 130), new Point(103, 140), new Point(104, 150), new Point(105, 160),
+                    new Point(105, 170) },
+            { new Point(101, 121), new Point(102, 122), new Point(103, 123), new Point(104, 124), new Point(105, 125),
+                    new Point(105, 126) },
+            { new Point(101, 120), new Point(102, 120), new Point(103, 120), new Point(104, 120), new Point(105, 120),
+                    new Point(106, 120) },
+            { new Point(101, 121), new Point(102, 122), new Point(103, 123), new Point(104, 124), new Point(105, 125),
+                    new Point(105, 136) },
+            { new Point(101, 120), new Point(102, 220), new Point(103, 220), new Point(104, 220), new Point(105, 220),
+                    new Point(106, 230) },
+            { new Point(101, 120), new Point(102, 220), new Point(153, 220), new Point(104, 220), new Point(105, 220),
+                    new Point(106, 220) },
+            { new Point(101, 120), new Point(102, 130), new Point(153, 140), new Point(104, 150), new Point(105, 160),
+                    new Point(105, 170) },
+            { new Point(101, 121), new Point(102, 122), new Point(153, 123), new Point(104, 124), new Point(105, 125),
+                    new Point(105, 126) },
+            { new Point(101, 120), new Point(102, 120), new Point(153, 120), new Point(104, 120), new Point(105, 120),
+                    new Point(106, 120) },
+            { new Point(101, 121), new Point(102, 122), new Point(153, 123), new Point(104, 124), new Point(105, 125),
+                    new Point(105, 136) },
+            { new Point(101, 120), new Point(102, 220), new Point(153, 220), new Point(104, 220), new Point(105, 220),
+                    new Point(106, 230) } };// genes[23]
+    
+    private long timeStart; //milisek
+    private long timeEnd; //milisek
+    
     public LinearRankingTest() {
     }
 
@@ -66,60 +120,28 @@ public class LinearRankingTest {
      * LinearRanking#select(java.util.LinkedList)
      */
     @Test
-  public void testSelect() {
-    
-    fitnessFunction.setMaximisation(false);
-    //fitnessFunction.setMaximisation(true);
+    public void testSelect() {
+        timeStart = System.currentTimeMillis();
 
-    Point[][] genes ={ {new Point(101,120), new Point(102,220), //genes[0]
-                       new Point(103,220), new Point(104,220),
-                       new Point(105,220), new Point(106,220)},
-                      {new Point(101,120), new Point(102,130), //genes[1]
-                       new Point(103,140), new Point(104,150),
-                       new Point(105,160), new Point(105,170)},
-                      {new Point(101,121), new Point(102,122), //genes[2]
-                       new Point(103,123), new Point(104,124),
-                       new Point(105,125), new Point(105,126)},
-                      {new Point(101,120), new Point(102,120),
-                       new Point(103,120), new Point(104,120),
-                       new Point(105,120), new Point(106,120)},
-                      {new Point(101,121), new Point(102,122),
-                       new Point(103,123), new Point(104,124),
-                       new Point(105,125), new Point(105,136)},
-                      {new Point(101,120), new Point(102,220),
-                       new Point(103,220), new Point(104,220),
-                       new Point(105,220), new Point(106,230)},
-                      {new Point(101,120), new Point(102,220),
-                       new Point(153,220), new Point(104,220),
-                       new Point(105,220), new Point(106,220)},
-                      {new Point(101,120), new Point(102,130),
-                       new Point(153,140), new Point(104,150),
-                       new Point(105,160), new Point(105,170)},
-                      {new Point(101,121), new Point(102,122),
-                       new Point(153,123), new Point(104,124),
-                       new Point(105,125), new Point(105,126)},
-                      {new Point(101,120), new Point(102,120),
-                       new Point(153,120), new Point(104,120),
-                       new Point(105,120), new Point(106,120)},
-                      {new Point(101,121), new Point(102,122), //genes[10]
-                        new Point(153,123), new Point(104,124),
-                        new Point(105,125), new Point(105,136)} };
-
+        fitnessFunction.setMaximisation(false);
+        // fitnessFunction.setMaximisation(true);
 
         LinkedList<Chromosome> chromosomes = new LinkedList<Chromosome>();
-        for (int i = 0; i < genes.length; i++) {
-            chromosomes.add(new Chromosome(genes[i], chromosomeProperties));
+        for (int i = 0; i < this.genes.length; i++) {
+            chromosomes.add(new Chromosome(this.genes[i], chromosomeProperties));
         }
 
         LinearRanking instance = new LinearRanking();
 
-        /*      */
+        int i = 0;
+        double fitnessSum = 0;
+        
+        /*
         System.out.println("------------------------------------");
         System.out.println(" isMaximisation() = " +
                            fitnessFunction.isMaximisation());
         System.out.println("------------------------------------");
-        int i = 0;
-        double fitnessSum = 0;
+
         for (Chromosome ch : chromosomes) {
             try {
                 System.out.println(i + " ch.getFitness() = " +
@@ -132,10 +154,8 @@ public class LinearRankingTest {
         System.out.println("--------");
         System.out.println(" fitnessSum = " + fitnessSum);
         System.out.println("------------------------------------");
+*/
 
-        
-        for (int ff = 0; ff < 10; ff++) {
-        
         try {
             chromosomes = instance.select(chromosomes);
         } catch (GeneticAlgorithmException e) {
@@ -144,7 +164,7 @@ public class LinearRankingTest {
             fail();
         }
 
-        /*      */
+        /*     
         i = 0;
         fitnessSum = 0;
         for (Chromosome ch : chromosomes) {
@@ -160,8 +180,11 @@ public class LinearRankingTest {
         System.out.println(" fitnessSum = " + fitnessSum);
         System.out.println("------------------------------------");
 
-        }
-          
+
+        timeEnd = System.currentTimeMillis();
+        double seconds = (timeEnd-timeStart)/1000.0;
+        System.out.println("testSelect Time elapsed: "+new DecimalFormat("0.000").format(seconds)+" sec\n");
+         */
     }
 
     /**
