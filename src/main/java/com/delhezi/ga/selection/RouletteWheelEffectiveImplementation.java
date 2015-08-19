@@ -24,7 +24,7 @@ import java.util.Random;
  * @version 1.0 2010-01-10
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel implements ISelect {
+public class RouletteWheelEffectiveImplementation<GENE_TYPE> extends AbstractRouletteWheel<GENE_TYPE> implements ISelect<GENE_TYPE> {
 
   /** */
   private static Random random = new Random();
@@ -37,10 +37,10 @@ public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel 
     * @since 1.0
     */
   @Override
-    protected final LinkedList<Chromosome> rouletteWheelImpl(final LinkedList<Chromosome> chromosomes,
+    protected final LinkedList<Chromosome<GENE_TYPE>> rouletteWheelImpl(final LinkedList<Chromosome<GENE_TYPE>> chromosomes,
             final double[] normals) {
 
-        LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
+        LinkedList<Chromosome<GENE_TYPE>> newChromosomes = new LinkedList<Chromosome<GENE_TYPE>>();
         int[] alias = new int[chromosomes.size()]; // Tab. indeksów zapasowych
 
         tableInitialize(chromosomes, normals, alias);
@@ -68,7 +68,7 @@ public class RouletteWheelEffectiveImplementation extends AbstractRouletteWheel 
    * @param alias Tablica indeksów zapasowych.
    * @since 1.0
    */
-    protected final void tableInitialize(final LinkedList<Chromosome> chromosomes, final double[] normals,
+    protected final void tableInitialize(final LinkedList<Chromosome<GENE_TYPE>> chromosomes, final double[] normals,
             final int[] alias) {
         int n = chromosomes.size();
         double d1n = (double) 1 / n;

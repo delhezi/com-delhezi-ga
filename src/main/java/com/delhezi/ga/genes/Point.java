@@ -19,8 +19,7 @@ package com.delhezi.ga.genes;
  * interfejs Cloneable + funkcję clone() + fubkcje set, w innym wypadku
  * należy zrezygnowac z tych elementów.
  * @version 1.0 2008-11-02
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class Point { //extends java.awt.geom.Point2D //implements Cloneable
 

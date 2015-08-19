@@ -27,7 +27,7 @@ import com.delhezi.ga.mutation.IMutation;
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
  * Wojciech Wolszczak</a>
  */
-public class _3Opt implements IMutation {
+public class _3Opt<GENE_TYPE> implements IMutation<GENE_TYPE> {
 
     /** Logger object. */
     //private static final Logger LOGGER =
@@ -41,7 +41,7 @@ public class _3Opt implements IMutation {
      * @param chromosome Chromosom.
      * @since 1.0
      */
-    public final void mutation(final Chromosome chromosome) {
+    public final void mutation(final Chromosome<GENE_TYPE> chromosome) {
             throw new UnsupportedOperationException("No implements yet");
     }
 

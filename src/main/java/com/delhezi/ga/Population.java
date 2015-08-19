@@ -16,22 +16,17 @@ import com.delhezi.ga.mutation.IMutation;
 import com.delhezi.ga.mutation.factory.MutationFactory;
 import com.delhezi.ga.mutation.factory.MutationOperatorType;
 import java.util.LinkedList;
-import java.util.logging.Logger;
 
 /**
  * <code>Population</code>: Abstrakcyjna klasa populacji.
  * @version 1.0 2010-05-14
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public abstract class Population {
+public abstract class Population<GENE_TYPE> {
 
     /** Logger object. */
     //private static final Logger LOGGER =
     //    Logger.getLogger(Population.class.getName());
-
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-6-";
 
     /**
      * Konstruktor.
@@ -46,10 +41,10 @@ public abstract class Population {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    protected Population(final LinkedList<Chromosome> chromosomes,
-                         final ICrossover crossoverOperator,
+    protected Population(final LinkedList<Chromosome<GENE_TYPE>> chromosomes,
+                         final ICrossover<GENE_TYPE> crossoverOperator,
                          final double crossoverProbability,
-                         final IMutation mutationOperator,
+                         final IMutation<GENE_TYPE> mutationOperator,
                          final double mutationProbability,
                          final ChromosomeProperties chromosomeProperties)
     throws GeneticAlgorithmException {
@@ -78,7 +73,7 @@ public abstract class Population {
      * operator krzyżowania.
      * @since 1.0
      */
-    public final void setCrossover(final ICrossover crossover) {
+    public final void setCrossover(final ICrossover<GENE_TYPE> crossover) {
         this.crossover = crossover;
     }
 
@@ -92,7 +87,7 @@ public abstract class Population {
                               final CrossoverOperatorType crossoverOperator)
     throws GeneticAlgorithmException {
         this.crossover =
-                CrossoverFactory.getCrossoverOperator(crossoverOperator);
+                (ICrossover<GENE_TYPE>) CrossoverFactory.getCrossoverOperator(crossoverOperator);
     }
 
     /**
@@ -100,7 +95,7 @@ public abstract class Population {
      * @return Referencja do obiektu implementującego operator krzyżowania.
      * @since 1.0
      */
-    public final ICrossover getCrossover() {
+    public final ICrossover<GENE_TYPE> getCrossover() {
         return this.crossover;
     }
 
@@ -109,7 +104,7 @@ public abstract class Population {
      * @param mutation Referencja do obiektu implementującego operator mutacji.
      * @since 1.0
      */
-    public final void setMutation(final IMutation mutation) {
+    public final void setMutation(final IMutation<GENE_TYPE> mutation) {
         this.mutation = mutation;
     }
 
@@ -121,7 +116,7 @@ public abstract class Population {
      */
     public final void setMutation(final MutationOperatorType mutationOperator)
     throws GeneticAlgorithmException {
-        this.mutation = MutationFactory.getMutationOperator(mutationOperator);
+        this.mutation = (IMutation<GENE_TYPE>) MutationFactory.getMutationOperator(mutationOperator);
     }
 
     /**
@@ -129,7 +124,7 @@ public abstract class Population {
      * @return Referencja do obiektu implementującego operator mutacji.
      * @since 1.0
      */
-    public final IMutation getMutation() {
+    public final IMutation<GENE_TYPE> getMutation() {
         return this.mutation;
     }
 
@@ -165,7 +160,7 @@ public abstract class Population {
      * @return Chromosom.
      * @since 1.0
      */
-    public final Chromosome getTopChromosome() {
+    public final Chromosome<GENE_TYPE> getTopChromosome() {
         return topChromosome;
         }
 
@@ -175,7 +170,7 @@ public abstract class Population {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public final Chromosome findTopChromosome()
+    public final Chromosome<GENE_TYPE> findTopChromosome()
     throws GeneticAlgorithmException {
         if (this.chromosomeProperties.getFitnessFunction() == null) {
             throw new GeneticAlgorithmException(
@@ -186,8 +181,8 @@ public abstract class Population {
                new NullPointerException("chromosomes is null"));
             }
 
-        Chromosome top = this.getChromosomes().getFirst();
-        for (Chromosome ch : chromosomes) {
+        Chromosome<GENE_TYPE> top = this.getChromosomes().getFirst();
+        for (Chromosome<GENE_TYPE> ch : chromosomes) {
             if (ch.compareTo(top) == 1) {
               top = ch;
             }
@@ -206,7 +201,7 @@ public abstract class Population {
      * @return Referencja do chromosomu.
      * @since 1.0
      */
-    public final Chromosome getChromosome(final int i) {
+    public final Chromosome<GENE_TYPE> getChromosome(final int i) {
         return this.chromosomes.get(i);
         }
 
@@ -221,7 +216,7 @@ public abstract class Population {
      * @param chromosome Referencja do chromosomu.
      * @since 1.0
      */
-    public final void setChromosome(final int i, final Chromosome chromosome) {
+    public final void setChromosome(final int i, final Chromosome<GENE_TYPE> chromosome) {
         this.chromosomes.set(i, chromosome);
         }
 
@@ -230,7 +225,7 @@ public abstract class Population {
      * @return Lista chromosomów.
      * @since 1.0
      */
-    public final LinkedList<Chromosome> getChromosomes() {
+    public final LinkedList<Chromosome<GENE_TYPE>> getChromosomes() {
         return this.chromosomes;
     }
 
@@ -239,7 +234,7 @@ public abstract class Population {
      * @param chromosomes Referencja do listy chromosomów.
      * @since 1.0
      */
-    public final void setChromosomes(final LinkedList<Chromosome> chromosomes) {
+    public final void setChromosomes(final LinkedList<Chromosome<GENE_TYPE>> chromosomes) {
         this.chromosomes = chromosomes;
     }
 
@@ -347,13 +342,13 @@ public abstract class Population {
 
     //PARAMETRY WYMAGANE - inicjowane w konstruktorze.
     /** Referencja do listy chromosomów. */
-    private LinkedList<Chromosome> chromosomes;
+    private LinkedList<Chromosome<GENE_TYPE>> chromosomes;
     /** Referencja do obiektu implementującego funkcję krzyżowania. */
-    private ICrossover crossover;
+    private ICrossover<GENE_TYPE> crossover;
     /** Prawdopodobieństwo krzyżowania. */
     private double crossoverProbability;
     /**  Referencja do obiektu implementującego funkcję mutacji. */
-    private IMutation mutation;
+    private IMutation<GENE_TYPE> mutation;
     /** Prawdopodobieństwo mutacji. */
     private double mutationProbability;
     /**
@@ -376,5 +371,5 @@ public abstract class Population {
      * W przypadku braku elitaryzmu kopia najlepszego chromosomu może
      * zosotać utracona.
      **/
-    protected Chromosome topChromosome = null;
+    protected Chromosome<GENE_TYPE> topChromosome = null;
 }

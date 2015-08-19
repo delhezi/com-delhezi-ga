@@ -16,7 +16,7 @@ import com.delhezi.ga.Chromosome;
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
  * Wojciech Wolszczak</a>
  */
-public interface ICrossover {
+public interface ICrossover<GENE_TYPE> {
 
   /**
    * Krzyżowanie.
@@ -24,5 +24,5 @@ public interface ICrossover {
    * @param chromosome2 Chromosom.
    * @since 1.0
    */
-  void crossover(Chromosome chromosome1, Chromosome chromosome2);
+  void crossover(Chromosome<GENE_TYPE> chromosome1, Chromosome<GENE_TYPE> chromosome2);
 }

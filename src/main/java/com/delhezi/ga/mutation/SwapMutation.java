@@ -18,13 +18,10 @@ import java.util.logging.Logger;
  * @version 1.0 2009-06-10
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class SwapMutation implements IMutation {
+public class SwapMutation<GENE_TYPE> implements IMutation<GENE_TYPE> {
 
     /** Logger object. */
     private static final Logger LOGGER = Logger.getLogger(SwapMutation.class.getName());
-
-    /** Delhezi Error Code. */
-    // private static final String DERC = "1-6-2-";
 
     /** Class name. */
     private static final String CLASS_NAME = SwapMutation.class.getName();
@@ -40,7 +37,7 @@ public class SwapMutation implements IMutation {
      * @param chromosome Chromosom podlegający mutacji.
      * @since 1.0
      */
-    public final void mutation(final Chromosome chromosome) {
+    public final void mutation(final Chromosome<GENE_TYPE> chromosome) {
         LOGGER.entering(CLASS_NAME, "mutation", chromosome);
 
         if (chromosome == null) {
@@ -80,7 +77,7 @@ public class SwapMutation implements IMutation {
      * @param gene2 Gen podlegający zamianie. Przykład: gene2=0 dla Xxxxxxxx.
      * @since 1.0
      */
-    protected final void mutation(final Chromosome chromosome, final int gene1, final int gene2) {
+    protected final void mutation(final Chromosome<GENE_TYPE> chromosome, final int gene1, final int gene2) {
         LOGGER.entering(CLASS_NAME, "mutation", new Object[] { chromosome, gene1, gene2 });
 
         // Chromosom nie może być wartością null.
@@ -99,7 +96,7 @@ public class SwapMutation implements IMutation {
             return;
         }
 
-        Object temp = chromosome.getGene(gene1);
+        GENE_TYPE temp = chromosome.getGene(gene1);
         chromosome.setGene(gene1, chromosome.getGene(gene2));
         chromosome.setGene(gene2, temp);
 

@@ -17,7 +17,7 @@ import java.util.LinkedList;
  *
  * @author Wojciech.Wolszczak
  */
-public class SampleTsp {
+public class SampleTsp<GENE_TYPE> {
 
     /** */
     private static final int COUNTRY_COUNT = 60;
@@ -33,9 +33,9 @@ public class SampleTsp {
      * @param chromosomeProperties Właściwości chromosomu
      * @return Lista chromosomów
      */
-    public static LinkedList<Chromosome> newChromosomes(final int populationSize, final int maxPopulationSize,
+    public static <GENE_TYPE> LinkedList<Chromosome<GENE_TYPE>> newChromosomes(final int populationSize, final int maxPopulationSize,
             final ChromosomeProperties chromosomeProperties) {
-        LinkedList<Chromosome> chromosomes = new LinkedList<Chromosome>();
+        LinkedList<Chromosome<GENE_TYPE>> chromosomes = new LinkedList<Chromosome<GENE_TYPE>>();
         return setChromosomes(chromosomes, populationSize, chromosomeProperties);
     }
 
@@ -45,8 +45,8 @@ public class SampleTsp {
      * @param chromosomeProperties Właściwości chromosomu
      * @return Lista chromosomów
      */
-    public static LinkedList<Chromosome> newChromosomes(final int populationSize, final ChromosomeProperties chromosomeProperties) {
-        LinkedList<Chromosome> chromosomes = new LinkedList<Chromosome>();
+    public static <GENE_TYPE> LinkedList<Chromosome<GENE_TYPE>> newChromosomes(final int populationSize, final ChromosomeProperties chromosomeProperties) {
+        LinkedList<Chromosome<GENE_TYPE>> chromosomes = new LinkedList<Chromosome<GENE_TYPE>>();
         return setChromosomes(chromosomes, populationSize, chromosomeProperties);
     }
 
@@ -57,7 +57,7 @@ public class SampleTsp {
      * @param chromosomeProperties Właściwości chromosomu
      * @return Lista chromosomów
      */
-    private static LinkedList<Chromosome> setChromosomes(final LinkedList<Chromosome> chromosomes, final int populationSize,
+    private static <GENE_TYPE> LinkedList<Chromosome<GENE_TYPE>> setChromosomes(final LinkedList<Chromosome<GENE_TYPE>> chromosomes, final int populationSize,
             final ChromosomeProperties chromosomeProperties) {
         Point[] chromosomeTmp;
 
@@ -67,13 +67,13 @@ public class SampleTsp {
             chromosomeTmp[i] = new Point((int) (Math.random() * POINT_MAX_X), (int) (Math.random() * POINT_MAX_Y));
         }
 
-        Point[] chromosomeI;
+        GENE_TYPE[] chromosomeI;
         for (int i = 0; i < populationSize; i++) {
             // Przemieszaj geny.
             com.delhezi.ga.utility.ShuffleList.shuffle(chromosomeTmp);
-            chromosomeI = new Point[chromosomeSize];
+            chromosomeI = (GENE_TYPE[]) new Object[chromosomeSize];
             System.arraycopy(chromosomeTmp, 0, chromosomeI, 0, chromosomeTmp.length);
-            chromosomes.add(new Chromosome(chromosomeI, chromosomeProperties));
+            chromosomes.add(new Chromosome<GENE_TYPE>(chromosomeI, chromosomeProperties));
         }
         return chromosomes;
     }

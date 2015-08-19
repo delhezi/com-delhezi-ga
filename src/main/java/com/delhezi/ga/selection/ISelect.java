@@ -18,7 +18,7 @@ import java.util.LinkedList;
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
  * Wojciech Wolszczak</a>
  */
-public interface ISelect {
+public interface ISelect<GENE_TYPE> {
 
     /**
      * xxx.
@@ -27,5 +27,6 @@ public interface ISelect {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes) throws GeneticAlgorithmException;
+    LinkedList<Chromosome<GENE_TYPE>> select(final LinkedList<Chromosome<GENE_TYPE>> chromosomes)
+            throws GeneticAlgorithmException;
 }

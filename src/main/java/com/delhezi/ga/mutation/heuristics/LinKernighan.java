@@ -48,14 +48,11 @@ import java.util.Random;
  * @version 1.0 2010-01-10
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class LinKernighan implements IMutation {
+public class LinKernighan<GENE_TYPE> implements IMutation<GENE_TYPE> {
 
     /** Logger object. */
     //private static final Logger LOGGER =
     //    Logger.getLogger(LinKernighan.class.getName());
-
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-6.2-3-";
 
     /** Random. */
     private static Random random = new Random();
@@ -66,7 +63,7 @@ public class LinKernighan implements IMutation {
      * @since 1.0
      */
     @Override
-    public final void mutation(final Chromosome chromosome) {
+    public final void mutation(final Chromosome<GENE_TYPE> chromosome) {
 
         if (chromosome == null) {
             throw new NullPointerException("Chromosome is null.");
@@ -114,7 +111,7 @@ public class LinKernighan implements IMutation {
      * Przykład: edge2=8 dla xxxxxx-xx.
      * @since 1.0
      */
-    protected final void mutation(Chromosome chromosome,
+    protected final void mutation(Chromosome<GENE_TYPE> chromosome,
                                   int edge1,
                                   int edge2) {
 
@@ -266,7 +263,7 @@ public class LinKernighan implements IMutation {
      *              np. edge2=8 dla xxxxxx-xx.
      *
      */
-    protected final void changeEdge(Chromosome chromosome,
+    protected final void changeEdge(Chromosome<GENE_TYPE> chromosome,
                                     final int edge1,
                                     final int edge2) {
         int chromosomeSize = chromosome.size();
@@ -299,7 +296,7 @@ public class LinKernighan implements IMutation {
             : (chromosomeSize - pB) + pC + 1;
 
         //tmpGenes - sekcja inwersji po operacji inwersji.
-        Object[] invGenes = new Object[inversionGenes];
+        GENE_TYPE[] invGenes = (GENE_TYPE[]) new Object[inversionGenes];
         int ii;
         if (pB < pC) {
             ii = pC;
@@ -355,7 +352,7 @@ public class LinKernighan implements IMutation {
      * skrócić drogę), wartość ujemna oznacza pogorszenie wartości
      * rozwiązania (dystatns o jaki wydłużyła się doroga po dokonaniu zmiany).
      */
-    protected final double kwpj(Chromosome chromosome,
+    protected final double kwpj(Chromosome<GENE_TYPE> chromosome,
                                 final int edge1,
                                 final int edge2) {
 

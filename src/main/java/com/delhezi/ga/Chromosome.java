@@ -24,9 +24,6 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
     /** Logger object. */
     private static final Logger LOGGER = Logger.getLogger(Chromosome.class.getName());
 
-    /** Delhezi Error Code. */
-    private static final String DERC = "1-1-";
-
     /**
      * Konstruktor.
      * @param genes Tablica genów.
@@ -216,7 +213,7 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
           //W przypadku kiedy klasa zawiera referencje do obiektów
           //NIEZMIENIALNYCH typu String lub Integer nie ma to znaczenia.
           //W przypadku typów prostych - kopiowane sa wartości.
-          Chromosome result = (Chromosome<GENE_TYPE>) super.clone();
+          Chromosome<GENE_TYPE> result = (Chromosome<GENE_TYPE>) super.clone();
 
           //Wsytarczy płytkie kopiowanie bo tablica chromosomów jest pusta.
           if (genes.length < 1) {
@@ -226,7 +223,7 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
           //Wymagane GLEBOKIE kopiowanie.
           //Ze względu na możliwe mutacje objekt gene jest ZMIENIALY.
           if (genes[0] instanceof Cloneable) {
-          result.genes = new Object[genes.length];
+          result.genes = (GENE_TYPE[]) new Object[genes.length];
           for (int i = 0; i < genes.length; i++) {
               //if(((String) genes.getClass().getName()).equals(
               //"[Lcom.delhezi.ga.genes.KlasaObjektu;"))

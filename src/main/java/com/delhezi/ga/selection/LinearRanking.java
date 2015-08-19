@@ -20,7 +20,7 @@ import java.util.Random;
  * @version 1.0 2010-01-10
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class LinearRanking implements ISelect {
+public class LinearRanking<GENE_TYPE> implements ISelect<GENE_TYPE> {
 
     /** Delhezi Error Code. */
     //private static final String DERC = "1-8-2-";
@@ -35,7 +35,7 @@ public class LinearRanking implements ISelect {
      * @throws GeneticAlgorithmException (chromosomes == null) or (fitnessFunction == null)
      * @since 1.0
      */
-    public final LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes)
+    public final LinkedList<Chromosome<GENE_TYPE>> select(final LinkedList<Chromosome<GENE_TYPE>> chromosomes)
             throws GeneticAlgorithmException {
         if (chromosomes == null) {
             throw new IllegalArgumentException("Chromosomes list must not be null.");
@@ -52,17 +52,17 @@ public class LinearRanking implements ISelect {
         // W przypadku minimalizacji sortowanie od najmniejszej do najwiekszej wartości fitnes (najlepsze osobniki na początku listy).
         Collections.sort(chromosomes);
         
-        LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
+        LinkedList<Chromosome<GENE_TYPE>> newChromosomes = new LinkedList<Chromosome<GENE_TYPE>>();
 
         // Po utworzeniu iterator wskazuje na specjalną wartość przed
         // pierwszym elementem listy, tak by pierwszy element był pobrany
         // przy pierwszym wywołaniu next()
-        ListIterator<Chromosome> itr = chromosomes.listIterator(0);
+        ListIterator<Chromosome<GENE_TYPE>> itr = chromosomes.listIterator(0);
 
         int j = 1; // Pozycja rozpatrywanego chromosomu w populacji.
         double roll;
         boolean find;
-        Chromosome<?> chTmp;
+        Chromosome<GENE_TYPE> chTmp;
         double normal;
         // Tworzymy uwzględniając przystosowanie NOWĄ listę chromosomów
         // newChromosomes o wielkości równej chromosomes.size().

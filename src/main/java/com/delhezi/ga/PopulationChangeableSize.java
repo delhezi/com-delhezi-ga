@@ -24,16 +24,12 @@ import java.util.logging.Logger;
  * <code>PopulationChangeableSize</code>: Klasa populacji o zmiennej
  * liczebności.
  * @version 1.0 2009-06-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public final class PopulationChangeableSize extends Population {
+public final class PopulationChangeableSize<GENE_TYPE> extends Population<GENE_TYPE> {
     /** Logger object. */
     private static final Logger LOGGER =
         Logger.getLogger(PopulationChangeableSize.class.getName());
-
-    /** Delhezi Error Code. */
-    private static final String DERC = "1-7-";
 
     /**
      * Konstruktor.
@@ -52,10 +48,10 @@ public final class PopulationChangeableSize extends Population {
      * @since 1.0
      */
     private PopulationChangeableSize(final int maxLT, final int minLT,
-                               final LinkedList<Chromosome> chromosomes,
-                               final ICrossover crossoverOperator,
+                               final LinkedList<Chromosome<GENE_TYPE>> chromosomes,
+                               final ICrossover<GENE_TYPE> crossoverOperator,
                                final double crossoverProbability,
-                               final IMutation mutationOperator,
+                               final IMutation<GENE_TYPE> mutationOperator,
                                final double mutationProbability,
                                final ChromosomeProperties chromosomeProperties)
     throws GeneticAlgorithmException {
@@ -83,10 +79,10 @@ public final class PopulationChangeableSize extends Population {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public static PopulationChangeableSize newPopulationChangeableSize(
+    public static <GENE_TYPE> PopulationChangeableSize newPopulationChangeableSize(
                 final int maxLT,
                 final int minLT,
-                final LinkedList<Chromosome> chromosomes,
+                final LinkedList<Chromosome<GENE_TYPE>> chromosomes,
                 final CrossoverOperatorType crossoverOperator,
                 final double crossoverProbability,
                 final MutationOperatorType mutationOperator,
@@ -118,13 +114,13 @@ public final class PopulationChangeableSize extends Population {
    * @throws GeneticAlgorithmException xxx
    * @since 1.0
    */
-  public static PopulationChangeableSize newPopulationChangeableSize(
+  public static <GENE_TYPE> PopulationChangeableSize newPopulationChangeableSize(
               final int maxLT,
               final int minLT,
-              final LinkedList<Chromosome> chromosomes,
-              final ICrossover crossoverOperator,
+              final LinkedList<Chromosome<GENE_TYPE>> chromosomes,
+              final ICrossover<GENE_TYPE> crossoverOperator,
               final double crossoverProbability,
-              final IMutation mutationOperator,
+              final IMutation<GENE_TYPE> mutationOperator,
               final double mutationProbability,
               final ChromosomeProperties chromosomeProperties)
   throws GeneticAlgorithmException {
@@ -143,7 +139,7 @@ public final class PopulationChangeableSize extends Population {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public PopulationConstantSize toPopulationConstantSize(
+    public PopulationConstantSize<GENE_TYPE> toPopulationConstantSize(
                                 final SelectionMethodType selectionMethod)
     throws GeneticAlgorithmException {
         return PopulationConstantSize.newPopulationConstantSize(

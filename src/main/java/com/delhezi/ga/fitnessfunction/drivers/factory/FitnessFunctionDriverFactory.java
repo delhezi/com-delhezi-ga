@@ -17,8 +17,7 @@ import java.util.logging.Logger;
 /**
  * Sparametryzowana metoda wytwórcza sterownika funkcji celu.
  * @version 1.0 2009-06-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public class FitnessFunctionDriverFactory {
 

@@ -23,7 +23,7 @@ import com.delhezi.ga.utility.Random;
  * @version 1.0 2010-01-10
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class RouletteWheelElementaryImplementation extends AbstractRouletteWheel implements ISelect {
+public class RouletteWheelElementaryImplementation<GENE_TYPE> extends AbstractRouletteWheel<GENE_TYPE> implements ISelect<GENE_TYPE> {
 
   /**
    * Elementarna implementacja funkcji ruletki.
@@ -34,10 +34,10 @@ public class RouletteWheelElementaryImplementation extends AbstractRouletteWheel
    * @since 1.0
    */
   @Override
-    protected final LinkedList<Chromosome> rouletteWheelImpl(final LinkedList<Chromosome> chromosomes,
+    protected final LinkedList<Chromosome<GENE_TYPE>> rouletteWheelImpl(final LinkedList<Chromosome<GENE_TYPE>> chromosomes,
             final double[] normals) {
       
-        LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
+        LinkedList<Chromosome<GENE_TYPE>> newChromosomes = new LinkedList<Chromosome<GENE_TYPE>>();
         
         //Tworzymy uwzględniając przystosowanie NOWĄ listę chromosomów
         //newChromosomes o wielkości równej chromosomes.size().

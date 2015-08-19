@@ -19,14 +19,11 @@ import java.util.Random;
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
  * Wojciech Wolszczak</a>
  */
-public class InversionMutation implements IMutation {
+public class InversionMutation<GENE_TYPE> implements IMutation<GENE_TYPE> {
 
     /** Logger object. */
     //private static final Logger LOGGER =
     //    Logger.getLogger(InversionMutation.class.getName());
-
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-6-1-";
 
     /** Random.*/
     private static Random random = new Random();
@@ -37,7 +34,7 @@ public class InversionMutation implements IMutation {
      * @since 1.0
      */
     @Override
-    public final void mutation(final Chromosome chromosome) {
+    public final void mutation(final Chromosome<GENE_TYPE> chromosome) {
 
         if (chromosome == null) {
             throw new IllegalArgumentException("Chromosome is null.");
@@ -109,7 +106,7 @@ public class InversionMutation implements IMutation {
      * Nie są brane pod uwagę geny fragmentu inwersji.
      * @since 1.0
      */
-    protected final void mutation(final Chromosome chromosome,
+    protected final void mutation(final Chromosome<GENE_TYPE> chromosome,
                                   final int cutPoint1,
                                   final int cutPoint2,
                                   final int insertPoint) {
@@ -152,7 +149,7 @@ public class InversionMutation implements IMutation {
         //IMPLEMENTACJA DO ZMIANY, ZASTĄPIĆ WEKTORAMI.
 
         //invGenes - sekcja inwersji po operacji inwersji.
-        Object[] invGenes = new Object[inversionGenesSize];
+        GENE_TYPE[] invGenes = (GENE_TYPE[]) new Object[inversionGenesSize];
         int ii = cutPoint2;
         for (int i = 0; i < inversionGenesSize; i++) {
             ii = (ii < 1) ? chromosomeSize - 1 : ii - 1;
@@ -160,7 +157,7 @@ public class InversionMutation implements IMutation {
             }
 
         //cpGenes - pozostałe geny.
-        Object[] cpGenes = new Object[chromosomeSize - inversionGenesSize];
+        GENE_TYPE[] cpGenes = (GENE_TYPE[]) new Object[chromosomeSize - inversionGenesSize];
         ii = 0;
         int ii2 = cutPoint2;
         if (cutPoint1 < cutPoint2) {

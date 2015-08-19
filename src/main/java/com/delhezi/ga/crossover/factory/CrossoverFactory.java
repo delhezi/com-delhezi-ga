@@ -42,18 +42,18 @@ public class CrossoverFactory {
      * @throws GeneticAlgorithmException DERC-1-1.1-1-1
      * @since 1.0
      */
-    public static ICrossover getCrossoverOperator(final CrossoverOperatorType crossoverOperator) 
+    public static <GENE_TYPE> ICrossover<GENE_TYPE> getCrossoverOperator(final CrossoverOperatorType crossoverOperator) 
 		throws GeneticAlgorithmException {
         LOGGER.entering(CLASS_NAME, "getCrossoverOperator", crossoverOperator);
         switch (crossoverOperator) {
         case OrderCrossover:
-            return new OrderCrossover();
+            return new OrderCrossover<GENE_TYPE>();
         case PartiallyMatchedCrossover:
-            return new PartiallyMatchedCrossover();
+            return new PartiallyMatchedCrossover<GENE_TYPE>();
         case KPointCrossover:
-            return new KPointCrossover();
+            return new KPointCrossover<GENE_TYPE>();
         case UniformCrossover:
-            return new UniformCrossover();
+            return new UniformCrossover<GENE_TYPE>();
         }
 
         GeneticAlgorithmException e =
@@ -72,7 +72,7 @@ public class CrossoverFactory {
      * @throws GeneticAlgorithmException DERC-1-1.1-1-2
      * @since 1.0
      */
-    public static CrossoverOperatorType getCrossoverOperatorType(final ICrossover crossoverOperator) 
+    public static <GENE_TYPE> CrossoverOperatorType getCrossoverOperatorType(final ICrossover<GENE_TYPE> crossoverOperator) 
 		throws GeneticAlgorithmException {
         LOGGER.entering(CLASS_NAME, "getCrossoverOperatorType",
                         crossoverOperator);

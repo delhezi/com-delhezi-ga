@@ -19,7 +19,7 @@ import java.util.Random;
  * @version 1.0 2010-01-10
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class Tournament implements ISelect {
+public class Tournament<GENE_TYPE> implements ISelect<GENE_TYPE> {
 
     /** Logger object. */
     //private static final Logger LOGGER =
@@ -42,7 +42,7 @@ public class Tournament implements ISelect {
      * or (fitnessFunction == null)
      * @since 1.0
      */
-    public final LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes)
+    public final LinkedList<Chromosome<GENE_TYPE>> select(final LinkedList<Chromosome<GENE_TYPE>> chromosomes)
             throws GeneticAlgorithmException {
         if (chromosomes == null) {
             throw new IllegalArgumentException("Chromosomes list must not be null.");
@@ -56,14 +56,14 @@ public class Tournament implements ISelect {
         }
 
         // Tworzymy kopię listy chromosomów.
-        LinkedList<Chromosome> newChromosomes = new LinkedList<Chromosome>();
+        LinkedList<Chromosome<GENE_TYPE>> newChromosomes = new LinkedList<Chromosome<GENE_TYPE>>();
 
         // Tworzymy uwzględniając przystosowanie NOWĄ listę chromosomów
         // newChromosomes o wielkości równej chromosomes.size().
         for (int i = 0; i < chromosomes.size(); i++) {
-            Chromosome bestTournamentChromosome = null;
+            Chromosome<GENE_TYPE> bestTournamentChromosome = null;
             for (int j = 0; j < this.arity; j++) {
-                Chromosome chTmp = chromosomes.get(random.nextInt(chromosomes.size()));
+                Chromosome<GENE_TYPE> chTmp = chromosomes.get(random.nextInt(chromosomes.size()));
                 if (bestTournamentChromosome == null) {
                     bestTournamentChromosome = chTmp;
                 } else {

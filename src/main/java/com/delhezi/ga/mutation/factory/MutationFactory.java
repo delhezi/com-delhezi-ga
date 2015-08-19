@@ -44,20 +44,20 @@ public class MutationFactory {
      * @throws GeneticAlgorithmException DERC-1-6.1-1-1
      * @since 1.0
      */
-    public static IMutation getMutationOperator(final MutationOperatorType mutationOperator)
+    public static <GENE_TYPE> IMutation<GENE_TYPE> getMutationOperator(final MutationOperatorType mutationOperator)
             throws GeneticAlgorithmException {
         LOGGER.entering(CLASS_NAME, "getMutationOperator", mutationOperator);
         switch (mutationOperator) {
         case _2Opt:
-            return new _2Opt();
+            return new _2Opt<GENE_TYPE>();
         case _3Opt:
-            return new _3Opt();
+            return new _3Opt<GENE_TYPE>();
         case LinKernighan:
-            return new LinKernighan();
+            return new LinKernighan<GENE_TYPE>();
         case InversionMutation:
-            return new InversionMutation();
+            return new InversionMutation<GENE_TYPE>();
         case SwapMutation:
-            return new SwapMutation();
+            return new SwapMutation<GENE_TYPE>();
         default:
             break;
         }
@@ -75,7 +75,7 @@ public class MutationFactory {
      * @throws GeneticAlgorithmException DERC-1-6.1-1-2
      * @since 1.0
      */
-    public static MutationOperatorType getMutationOperatorType(final IMutation mutationOperator)
+    public static <GENE_TYPE> MutationOperatorType getMutationOperatorType(final IMutation<GENE_TYPE> mutationOperator)
             throws GeneticAlgorithmException {
         LOGGER.entering(CLASS_NAME, "getMutationOperatorType", mutationOperator);
 

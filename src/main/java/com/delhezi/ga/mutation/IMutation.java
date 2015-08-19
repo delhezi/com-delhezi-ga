@@ -13,15 +13,14 @@ import com.delhezi.ga.Chromosome;
 /**
  * Klasa <code>IMutation</code>: Interfejs klasy Mutation.
  * @version 1.0 2009-06-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public interface IMutation {
+public interface IMutation<GENE_TYPE> {
 
   /**
    * Funkcja mutacji.
    * @param chromosome Chromosom podlegający mutacji.
    * @since 1.0
    */
-  void mutation(Chromosome chromosome);
+  void mutation(Chromosome<GENE_TYPE> chromosome);
 }

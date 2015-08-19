@@ -27,15 +27,12 @@ import com.delhezi.ga.fitnessfunction.drivers.factory.FitnessFunctionDriverFacto
  * @version 1.0 2011-01-25
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class GeneticAlgorithm {
+public class GeneticAlgorithm<GENE_TYPE> {
     /** Logger object. */
     // private static final Logger LOGGER =
     //     Logger.getLogger(GeneticAlgorithm.class.getName());
 
-    /** Delhezi Error Code. */
-    // private static final String DERC = "1-3-";
-
-    private Population population;
+    private Population<GENE_TYPE> population;
 
     /** Status algorytmu gentycznego. */
     private State stateError;
@@ -115,6 +112,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationChangeableSize.
      * @since 1.0
      */
+    /*
     public final void toPopulationConstantSize(final SelectionMethodType selectionMethod)
     throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationChangeableSize) {
@@ -123,7 +121,7 @@ public class GeneticAlgorithm {
             throw new GeneticAlgorithmException("Funkcja określona dla PopulationType.PopulationChangeableSize");
         }
     }
-
+*/
     /**
      * Przekształca populację na populację o zmiennej liczebności;
      * Funkcja określona dla populacji o stałej liczebności;
@@ -133,6 +131,7 @@ public class GeneticAlgorithm {
      * @throws GeneticAlgorithmException If getPopulationType() != PopulationType.PopulationConstantSize.
      * @since 1.0
      */
+    /*
     public final void toPopulationChangeableSize(final int maxLT,
                                            final int minLT) throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationConstantSize) {
@@ -142,7 +141,7 @@ public class GeneticAlgorithm {
             throw new GeneticAlgorithmException("Funkcja określona dla PopulationType.PopulationConstantSize");
         }
     }
-
+*/
     /**
      * Zwraca maksymalny czas życia dopuszczalny dla chromosomu;
      * Funkcja określona dla populacji o zmiennej liczebności;
@@ -153,7 +152,7 @@ public class GeneticAlgorithm {
      */
     public final int getMaxLT() throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationChangeableSize) {
-            return ((com.delhezi.ga.PopulationChangeableSize) getPopulation()).getMaxLT();
+            return ((com.delhezi.ga.PopulationChangeableSize<GENE_TYPE>) getPopulation()).getMaxLT();
         } else {
             throw new GeneticAlgorithmException("Parametr zdefiniowany dla PopulationType.PopulationChangeableSize");
         }
@@ -169,7 +168,7 @@ public class GeneticAlgorithm {
      */
     public final void setMaxLT(final int maxLT) throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationChangeableSize) {
-            ((com.delhezi.ga.PopulationChangeableSize) getPopulation()).setMaxLT(maxLT);
+            ((com.delhezi.ga.PopulationChangeableSize<GENE_TYPE>) getPopulation()).setMaxLT(maxLT);
         } else {
             throw new GeneticAlgorithmException("Parametr zdefiniowany dla PopulationType.PopulationChangeableSize");
         }
@@ -233,7 +232,7 @@ public class GeneticAlgorithm {
      */
     public final void setSelectionMethod(final SelectionMethodType selectionMethod) throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationConstantSize) {
-            ((com.delhezi.ga.PopulationConstantSize) getPopulation()).setSelect(selectionMethod);
+            ((com.delhezi.ga.PopulationConstantSize<GENE_TYPE>) getPopulation()).setSelect(selectionMethod);
         } else {
             throw new GeneticAlgorithmException("Parametr zdefiniowany dla PopulationType.PopulationConstantSize");
         }
@@ -538,7 +537,7 @@ public class GeneticAlgorithm {
      * @return Referencja do populacji.
      * @since 1.0
      */
-    protected final Population getPopulation() {
+    protected final Population<GENE_TYPE> getPopulation() {
         return this.population;
     }
 
@@ -547,7 +546,7 @@ public class GeneticAlgorithm {
      * @param population Populacja.
      * @since 1.0
      */
-    protected final void setPopulation(final Population population) {
+    protected final void setPopulation(final Population<GENE_TYPE> population) {
         this.population = population;
     }
 }

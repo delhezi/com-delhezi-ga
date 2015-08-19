@@ -15,17 +15,13 @@ import com.delhezi.ga.Chromosome;
  * <code>OrderCrossover</code>: Krzyżowanie z porządkowaniem
  * OrderCrossover (OX1).
  * @version 1.0 2009-06-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class OrderCrossover implements com.delhezi.ga.crossover.ICrossover {
+public class OrderCrossover<GENE_TYPE> implements com.delhezi.ga.crossover.ICrossover<GENE_TYPE> {
 
     /** Logger object. */
     //private static final Logger LOGGER =
     //    Logger.getLogger(OrderCrossover.class.getName());
-
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-1.2-1-";
 
     /** Class name. */
     //private static final String CLASS_NAME = OrderCrossover.class.getName();
@@ -39,8 +35,8 @@ public class OrderCrossover implements com.delhezi.ga.crossover.ICrossover {
      * @since 1.0
      */
     @Override
-    public final void crossover(final Chromosome chromosome1,
-                                final Chromosome chromosome2) {
+    public final void crossover(final Chromosome<GENE_TYPE> chromosome1,
+                                final Chromosome<GENE_TYPE> chromosome2) {
         assert (chromosome1.getGenes().length == chromosome2.getGenes().length);
         if (chromosome1.getGenes().length == 0) {
             return;
@@ -64,8 +60,8 @@ public class OrderCrossover implements com.delhezi.ga.crossover.ICrossover {
      * @param cutpoint2 Punkt krzyżowania np. yy|yyy|yy cutpoint2=5.
      * @since 1.0
      */
-    public final void crossover(final Chromosome chromosome1,
-                                final Chromosome chromosome2,
+    public final void crossover(final Chromosome<GENE_TYPE> chromosome1,
+                                final Chromosome<GENE_TYPE> chromosome2,
                                 final int cutpoint1, final int cutpoint2) {
         assert (chromosome1.getGenes().length == chromosome2.getGenes().length);
         if (chromosome1.getGenes().length == 0) {
@@ -82,8 +78,8 @@ public class OrderCrossover implements com.delhezi.ga.crossover.ICrossover {
         final int geneLength = chromosome1.getGenes().length;
 
         //Tworzymy geny potomków.
-        Object[] child1 = new Object[geneLength];
-        Object[] child2 = new Object[geneLength];
+        GENE_TYPE[] child1 = (GENE_TYPE[]) new Object[geneLength];
+        GENE_TYPE[] child2 = (GENE_TYPE[]) new Object[geneLength];
 
         //Dla sekcji dopasowania.
         for (int i = start; i < end; i++) {

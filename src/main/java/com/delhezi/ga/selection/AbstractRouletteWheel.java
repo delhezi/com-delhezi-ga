@@ -34,7 +34,7 @@ import java.util.LinkedList;
  * @version 1.0 2010-01-10
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-abstract class AbstractRouletteWheel {
+abstract class AbstractRouletteWheel<GENE_TYPE> {
 
     /**
      * Funkcja selekcji.
@@ -44,7 +44,7 @@ abstract class AbstractRouletteWheel {
      * or (fitnessFunction == null)
      * @since 1.0
      */
-    public final LinkedList<Chromosome> select(final LinkedList<Chromosome> chromosomes)
+    public final LinkedList<Chromosome<GENE_TYPE>> select(final LinkedList<Chromosome<GENE_TYPE>> chromosomes)
             throws GeneticAlgorithmException {
         if (chromosomes == null) {
             throw new IllegalArgumentException("Chromosomes list must not be null.");
@@ -65,7 +65,7 @@ abstract class AbstractRouletteWheel {
      * @return Wynikowa list chromosomów.
      * @since 1.0
      */
-    abstract LinkedList<Chromosome> rouletteWheelImpl(final LinkedList<Chromosome> chromosomes, final double[] normals);
+    abstract LinkedList<Chromosome<GENE_TYPE>> rouletteWheelImpl(final LinkedList<Chromosome<GENE_TYPE>> chromosomes, final double[] normals);
 
     /**
      * Wyliczenie prawdopodobieństwa wybrania dla każdego z osobników.
@@ -73,7 +73,7 @@ abstract class AbstractRouletteWheel {
      * @return Tablica prawdopodobieństw wybrania.
      * @since 1.0
      */
-    private double[] probabilities(final LinkedList<Chromosome> chromosomes)
+    private double[] probabilities(final LinkedList<Chromosome<GENE_TYPE>> chromosomes)
             throws GeneticAlgorithmException {
 
         this.setVariable(chromosomes);
@@ -82,7 +82,7 @@ abstract class AbstractRouletteWheel {
         // chromosomów.
         final double[] normals = new double[chromosomes.size()];
         int i = 0;
-        for (Chromosome ch : chromosomes) {
+        for (Chromosome<GENE_TYPE> ch : chromosomes) {
             if (ch.isFitnessMaximisation()) {
                 normals[i] = ch.getFitness() / sumFitness;
             } else {
@@ -101,14 +101,14 @@ abstract class AbstractRouletteWheel {
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    private void setVariable(final LinkedList<Chromosome> chromosomes) throws GeneticAlgorithmException {
+    private void setVariable(final LinkedList<Chromosome<GENE_TYPE>> chromosomes) throws GeneticAlgorithmException {
         assert chromosomes != null : "Illegal argument chromosomes: null";
 
         double fitness;
         this.minFitness = chromosomes.getFirst().getFitness();
         double tmpSumaOdwrotnosci = 0;
 
-        for (Chromosome ch : chromosomes) {
+        for (Chromosome<GENE_TYPE> ch : chromosomes) {
             fitness = ch.getFitness();
             this.sumFitness += fitness;
             tmpSumaOdwrotnosci += (1 / ch.getFitness());

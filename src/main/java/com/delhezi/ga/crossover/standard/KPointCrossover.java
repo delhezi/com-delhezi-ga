@@ -20,16 +20,12 @@ import java.util.logging.Logger;
  * <code>KPointCrossover</code>: Krzyżowanie wielopunktowe
  * k-Point Crossover (k-PX).
  * @version 1.0 2009-06-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
+public class KPointCrossover<GENE_TYPE> implements com.delhezi.ga.crossover.ICrossover<GENE_TYPE> {
 
     /** Logger object. */
     private static final Logger LOGGER = Logger.getLogger(KPointCrossover.class.getName());
-
-    /** Delhezi Error Code. */
-    // private static final String DERC = "1-1.3-3-";
 
     /** Class name. */
     private static final String CLASS_NAME = KPointCrossover.class.getName();
@@ -43,7 +39,7 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
      * @param chromosome2 Chromosom.
      * @since 1.0
      */
-    public final void crossover(final Chromosome chromosome1, final Chromosome chromosome2) {
+    public final void crossover(final Chromosome<GENE_TYPE> chromosome1, final Chromosome<GENE_TYPE> chromosome2) {
         LOGGER.entering(CLASS_NAME, "crossover", new Object[] {chromosome1, chromosome2});
         this.crossover(chromosome1, chromosome2, this.k);
         LOGGER.exiting(CLASS_NAME, "crossover", new Object[] {chromosome1, chromosome2});
@@ -57,7 +53,7 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
      * wartość z przedziału 1,chromosome1.size()-1.
      * @since 1.0
      */
-    public final void crossover(final Chromosome chromosome1, final Chromosome chromosome2, final int k) {
+    public final void crossover(final Chromosome<GENE_TYPE> chromosome1, final Chromosome<GENE_TYPE> chromosome2, final int k) {
         LOGGER.entering(CLASS_NAME, "crossover", new Object[] {chromosome1, chromosome2, k});
 
         if (chromosome1.size() < 2) {
@@ -92,7 +88,7 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
      * np. k{1,4,6,9,10} = x|xxx|xx|xxx|x|x.
      * @since 1.0
      */
-    private void crossover(final Chromosome chromosome1, final Chromosome chromosome2, List<Integer> kPoints) {
+    private void crossover(final Chromosome<GENE_TYPE> chromosome1, final Chromosome<GENE_TYPE> chromosome2, List<Integer> kPoints) {
         LOGGER.entering(CLASS_NAME, "crossover", new Object[] {chromosome1, chromosome2, kPoints});
 
         // Chromosom nie może być wartością null.
@@ -103,13 +99,13 @@ public class KPointCrossover implements com.delhezi.ga.crossover.ICrossover {
 
         Collections.sort(kPoints);
 
-        Object tmpCh;
+        GENE_TYPE tmpG;
         boolean s = false;
         for (int i = 0; i < chromosome1.size(); i++) {
             if (s) {
-                tmpCh = chromosome1.getGene(i);
+                tmpG = chromosome1.getGene(i);
                 chromosome1.setGene(i, chromosome2.getGene(i));
-                chromosome2.setGene(i, tmpCh);
+                chromosome2.setGene(i, tmpG);
             }
             if (kPoints.size() > 0) {
                 if (i == kPoints.get(0) - 1) {

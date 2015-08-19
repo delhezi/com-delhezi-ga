@@ -23,8 +23,6 @@ public class StateInitialized implements State {
     //private static final Logger LOGGER =
     //    Logger.getLogger(StateInitialized.class.getName());
 
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-9-";
     private GeneticAlgorithm ga;
 
     /**

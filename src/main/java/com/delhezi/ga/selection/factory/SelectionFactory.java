@@ -41,18 +41,18 @@ public class SelectionFactory {
      * @throws GeneticAlgorithmException DERC-1-8.1-1-1
      * @since 1.0
      */
-    public static ISelect getSelectionMethod(final SelectionMethodType selectionMethod)
+    public static <GENE_TYPE> ISelect<GENE_TYPE> getSelectionMethod(final SelectionMethodType selectionMethod)
             throws GeneticAlgorithmException {
         LOGGER.entering(CLASS_NAME, "getSelectionMethod", selectionMethod);
         switch (selectionMethod) {
         case RouletteWheelElementaryImplementation:
-            return new RouletteWheelElementaryImplementation();
+            return new RouletteWheelElementaryImplementation<GENE_TYPE>();
         case RouletteWheelEffectiveImplementation:
-            return new RouletteWheelEffectiveImplementation();
+            return new RouletteWheelEffectiveImplementation<GENE_TYPE>();
         case Tournament:
-            return new Tournament();
+            return new Tournament<GENE_TYPE>();
         case LinearRanking:
-            return new LinearRanking();
+            return new LinearRanking<GENE_TYPE>();
         default:
             break;
         }
@@ -70,7 +70,7 @@ public class SelectionFactory {
      * @throws GeneticAlgorithmException DERC-1-8.1-1-2
      * @since 1.0
      */
-    public static SelectionMethodType getSelectionMethodType(final ISelect selectionMethod)
+    public static <GENE_TYPE> SelectionMethodType getSelectionMethodType(final ISelect<GENE_TYPE> selectionMethod)
             throws GeneticAlgorithmException {
         LOGGER.entering(CLASS_NAME, "getSelectionMethodType", selectionMethod);
 

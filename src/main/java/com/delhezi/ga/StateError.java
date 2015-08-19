@@ -19,21 +19,19 @@ import com.delhezi.ga.exception.GeneticAlgorithmException;
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
  * Wojciech Wolszczak</a>
  */
-public class StateError implements State {
+public class StateError<GENE_TYPE> implements State {
     /** Logger object. */
     //private static final Logger LOGGER =
     //    Logger.getLogger(StateInitialized.class.getName());
 
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-12-";
-    private GeneticAlgorithm ga;
+    private GeneticAlgorithm<GENE_TYPE> ga;
 
     /**
      * Konstruktor.
      * @param ga Referencja do obiektu algorytmu genetycznego.
      * @since 1.0
      */
-    public StateError(final GeneticAlgorithm ga) {
+    public StateError(final GeneticAlgorithm<GENE_TYPE> ga) {
         this.ga = ga;
     }
 

@@ -35,14 +35,11 @@ import java.util.Random;
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
  * Wojciech Wolszczak</a>
  */
-public class _2Opt implements IMutation {
+public class _2Opt<GENE_TYPE> implements IMutation<GENE_TYPE> {
 
     /** Logger object. */
     //private static final Logger LOGGER =
     //    Logger.getLogger(_2Opt.class.getName());
-
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-6.2-1-";
 
     /** Random. */
     private static Random random = new Random();
@@ -53,7 +50,7 @@ public class _2Opt implements IMutation {
      * @since 1.0
      */
     @Override
-    public final void mutation(final Chromosome chromosome) {
+    public final void mutation(final Chromosome<GENE_TYPE> chromosome) {
 
         if (chromosome == null) {
             throw new NullPointerException("Chromosome is null.");
@@ -101,7 +98,7 @@ public class _2Opt implements IMutation {
      * Przykład: edge2=8 dla xxxxxx-xx.
      * @since 1.0
      */
-    protected final void mutation(final Chromosome chromosome, final int edge1,
+    protected final void mutation(final Chromosome<GENE_TYPE> chromosome, final int edge1,
                                   int edge2) {
         /** Licznik ilości podjętych prób.*/
         int counter = 70;
@@ -245,7 +242,7 @@ public class _2Opt implements IMutation {
      *              np. edge2=8 dla xxxxxx-xx.
      * @since 1.0
      */
-    protected final void changeEdge(Chromosome chromosome,
+    protected final void changeEdge(Chromosome<GENE_TYPE> chromosome,
                                     final int edge1,
                                     final int edge2) {
         int chromosomeSize = chromosome.size();
@@ -277,7 +274,7 @@ public class _2Opt implements IMutation {
             : (chromosomeSize - pB) + pC + 1;
 
         //tmpGenes - sekcja inwersji po operacji inwersji.
-        Object[] invGenes = new Object[inversionGenes];
+        GENE_TYPE[] invGenes = (GENE_TYPE[]) new Object[inversionGenes];
         int ii;
         if (pB < pC) {
             ii = pC;
@@ -332,7 +329,7 @@ public class _2Opt implements IMutation {
      * utworzenie nowych skraca cykl.
      * @since 1.0
      */
-    protected final boolean selectEdge(Chromosome chromosome,
+    protected final boolean selectEdge(Chromosome<GENE_TYPE> chromosome,
                                        final int edge1,
                                        final int edge2) {
 

@@ -23,8 +23,6 @@ public class StateRunning implements State {
     //private static final Logger LOGGER =
     //    Logger.getLogger(StateRunning.class.getName());
 
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-10-";
     private GeneticAlgorithm ga;
 
     /**

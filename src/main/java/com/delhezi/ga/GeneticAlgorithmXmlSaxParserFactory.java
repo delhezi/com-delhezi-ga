@@ -42,7 +42,7 @@ import com.delhezi.ga.selection.factory.SelectionMethodType;
  * @version 1.0 2009-12-14
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class GeneticAlgorithmXmlSaxParserFactory {
+public class GeneticAlgorithmXmlSaxParserFactory<GENE_TYPE> {
 
     /** Logger object. */
     private static final Logger LOGGER = Logger.getLogger(GeneticAlgorithmXmlSaxParserFactory.class.getName());
@@ -63,16 +63,16 @@ public class GeneticAlgorithmXmlSaxParserFactory {
     private static final String XML_SCHEMA_FILE = "newInstanceParameters.xsd";
     
     /** */
-    private GeneticAlgorithm ga;
+    private GeneticAlgorithm<GENE_TYPE> ga;
 
-    public final GeneticAlgorithm newGeneticAlgorithm(final String fitnassFunctionScriptsPath,
+    public final GeneticAlgorithm<GENE_TYPE> newGeneticAlgorithm(final String fitnassFunctionScriptsPath,
             final String xmlParams) throws GeneticAlgorithmException {
 
-        ga = new GeneticAlgorithm();
+        ga = new GeneticAlgorithm<GENE_TYPE>();
 
         DefaultHandler handler = new DefaultHandler() {
             String currTag;
-            Population population;
+            Population<GENE_TYPE> population;
             PopulationType populationType;
             CrossoverOperatorType crossoverOperator;
             double crossoverProbability;
@@ -128,7 +128,7 @@ public class GeneticAlgorithmXmlSaxParserFactory {
                 ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
                 chromosomeProperties.setFitnessFunction(fitnessFunction);
 
-                LinkedList<Chromosome> chromosomes = null;
+                LinkedList<Chromosome<GENE_TYPE>> chromosomes = null;
                 switch (initializeDataSource) {
                 case sampleTSP:
                     chromosomes = SampleTsp.newChromosomes(populationSize, chromosomeProperties);

@@ -47,7 +47,7 @@ import org.w3c.dom.traversal.DocumentTraversal;
  * @version 1.0 2009-12-14
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class GeneticAlgorithmXmlDomParserFactory {
+public class GeneticAlgorithmXmlDomParserFactory<GENE_TYPE> {
     /** Logger object. */
     private static final Logger LOGGER =
         Logger.getLogger(GeneticAlgorithmXmlSaxParserFactory.class.getName());
@@ -64,9 +64,9 @@ public class GeneticAlgorithmXmlDomParserFactory {
         sampleTSP;
     }
     private static final String XML_SCHEMA_FILE = "newInstanceParameters.xsd";
-    private GeneticAlgorithm ga;
+    private GeneticAlgorithm<GENE_TYPE> ga;
 
-    private Population population;
+    private Population<GENE_TYPE> population;
     private PopulationType populationType;
     private CrossoverOperatorType crossoverOperator;
     private double crossoverProbability;
@@ -85,9 +85,9 @@ public class GeneticAlgorithmXmlDomParserFactory {
 
     private Document doc = null;
 
-    public GeneticAlgorithm newGeneticAlgorithm(final String fitnassFunctionScriptsPath,
+    public GeneticAlgorithm<GENE_TYPE> newGeneticAlgorithm(final String fitnassFunctionScriptsPath,
                                                 final String xmlParams) throws GeneticAlgorithmException {
-        ga = new GeneticAlgorithm();
+        ga = new GeneticAlgorithm<GENE_TYPE>();
         try {
             doc = parserXML(xmlParams);
             parse(doc);
@@ -121,7 +121,7 @@ public class GeneticAlgorithmXmlDomParserFactory {
               ChromosomeProperties.getInstance();
           chromosomeProperties.setFitnessFunction(fitnessFunction);
 
-          LinkedList<Chromosome> chromosomes = null;
+          LinkedList<Chromosome<GENE_TYPE>> chromosomes = null;
           switch (initializeDataSource) {
         case sampleTSP:
               chromosomes = SampleTsp.newChromosomes(populationSize, chromosomeProperties);
