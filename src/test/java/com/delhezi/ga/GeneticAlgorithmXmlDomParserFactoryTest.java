@@ -3,6 +3,7 @@ package com.delhezi.ga;
 import com.delhezi.ga.crossover.factory.CrossoverOperatorType;
 import com.delhezi.ga.exception.GeneticAlgorithmException;
 import com.delhezi.ga.fitnessfunction.FitnessFunctionOption;
+import com.delhezi.ga.genes.PointGene;
 import com.delhezi.ga.mutation.factory.MutationOperatorType;
 import com.delhezi.ga.selection.factory.SelectionMethodType;
 import java.io.File;
@@ -57,11 +58,11 @@ public class GeneticAlgorithmXmlDomParserFactoryTest {
         //  </initializeDataSource>
         //</gaInitializeParameters>
 
-        GeneticAlgorithmXmlDomParserFactory gaXMLf =
-            new GeneticAlgorithmXmlDomParserFactory();
+        GeneticAlgorithmXmlDomParserFactory<PointGene> gaXMLf =
+            new GeneticAlgorithmXmlDomParserFactory<PointGene>();
 
         try {
-            GeneticAlgorithm ga =
+            GeneticAlgorithm<PointGene> ga =
                 gaXMLf.newGeneticAlgorithm(scriptEngineDriverPath,
                                            xmlParameters);
           //jawnie zadeklarowane w pliku xml

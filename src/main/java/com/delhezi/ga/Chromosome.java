@@ -10,7 +10,7 @@ package com.delhezi.ga;
 
 import com.delhezi.ga.exception.GeneticAlgorithmException;
 import com.delhezi.ga.mutation.IMutation;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 /**
  * <code>Chromosome</code>: Klasa chromosomu.
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class Chromosome<GENE_TYPE> implements Cloneable,
                                    Comparable<Chromosome<GENE_TYPE>> {
     /** Logger object. */
-    private static final Logger LOGGER = Logger.getLogger(Chromosome.class.getName());
+    //private static final Logger LOGGER = Logger.getLogger(Chromosome.class.getName());
 
     /**
      * Konstruktor.
@@ -89,7 +89,7 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
      * @param mutation Funkcja mutacji
      * @since 1.0
      */
-  public final void mutation(final IMutation mutation) {
+  public final void mutation(final IMutation<GENE_TYPE> mutation) {
       mutation.mutation(this);
       //this.changed=true; Infomacja o zmianie chromosomu
                            //ustawiana w funkcji mutation.mutation(..)

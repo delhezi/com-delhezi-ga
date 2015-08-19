@@ -131,17 +131,17 @@ public class TournamentTest {
         fitnessFunction.setMaximisation(false);
         // fitnessFunction.setMaximisation(true);
 
-        LinkedList<Chromosome> chromosomes = new LinkedList<Chromosome>();
-        for (int i = 0; i < this.genes.length; i++) {
-            chromosomes.add(new Chromosome(this.genes[i], chromosomeProperties));
+        LinkedList<Chromosome<PointGene>> chromosomes = new LinkedList<Chromosome<PointGene>>();
+        for (int i = 0; i < TournamentTest.genes.length; i++) {
+            chromosomes.add(new Chromosome<PointGene>(TournamentTest.genes[i], chromosomeProperties));
         }
 
-        Tournament instance = new Tournament();
+        Tournament<PointGene> instance = new Tournament<PointGene>();
         instance.setArity(3);
-
+        /*
         int i = 0;
         double fitnessSum = 0;
-    /*
+
     System.out.println("------------------------------------");
     System.out.println(" isMaximisation() = " +
                        fitnessFunction.isMaximisation());
@@ -184,11 +184,11 @@ public class TournamentTest {
     System.out.println(" fitnessSum = " + fitnessSum);
     System.out.println("------------------------------------");
 
-
+     */
     timeEnd = System.currentTimeMillis();
     double seconds = (timeEnd-timeStart)/1000.0;
     System.out.println("testSelect Time elapsed: "+new DecimalFormat("0.000").format(seconds)+" sec\n");
-     */
+
   }
 
     /**

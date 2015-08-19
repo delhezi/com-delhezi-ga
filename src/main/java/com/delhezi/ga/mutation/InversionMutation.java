@@ -149,6 +149,7 @@ public class InversionMutation<GENE_TYPE> implements IMutation<GENE_TYPE> {
         //IMPLEMENTACJA DO ZMIANY, ZASTĄPIĆ WEKTORAMI.
 
         //invGenes - sekcja inwersji po operacji inwersji.
+        @SuppressWarnings("unchecked")
         GENE_TYPE[] invGenes = (GENE_TYPE[]) new Object[inversionGenesSize];
         int ii = cutPoint2;
         for (int i = 0; i < inversionGenesSize; i++) {
@@ -157,6 +158,7 @@ public class InversionMutation<GENE_TYPE> implements IMutation<GENE_TYPE> {
             }
 
         //cpGenes - pozostałe geny.
+        @SuppressWarnings("unchecked")
         GENE_TYPE[] cpGenes = (GENE_TYPE[]) new Object[chromosomeSize - inversionGenesSize];
         ii = 0;
         int ii2 = cutPoint2;

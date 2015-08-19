@@ -126,17 +126,17 @@ public class LinearRankingTest {
         fitnessFunction.setMaximisation(false);
         // fitnessFunction.setMaximisation(true);
 
-        LinkedList<Chromosome> chromosomes = new LinkedList<Chromosome>();
-        for (int i = 0; i < this.genes.length; i++) {
-            chromosomes.add(new Chromosome(this.genes[i], chromosomeProperties));
+        LinkedList<Chromosome<PointGene>> chromosomes = new LinkedList<Chromosome<PointGene>>();
+        for (int i = 0; i < LinearRankingTest.genes.length; i++) {
+            chromosomes.add(new Chromosome<PointGene>(LinearRankingTest.genes[i], chromosomeProperties));
         }
 
-        LinearRanking instance = new LinearRanking();
-
+        LinearRanking<PointGene> instance = new LinearRanking<PointGene>();
+        /*
         int i = 0;
         double fitnessSum = 0;
         
-        /*
+
         System.out.println("------------------------------------");
         System.out.println(" isMaximisation() = " +
                            fitnessFunction.isMaximisation());
@@ -180,11 +180,11 @@ public class LinearRankingTest {
         System.out.println(" fitnessSum = " + fitnessSum);
         System.out.println("------------------------------------");
 
-
+         */
         timeEnd = System.currentTimeMillis();
         double seconds = (timeEnd-timeStart)/1000.0;
         System.out.println("testSelect Time elapsed: "+new DecimalFormat("0.000").format(seconds)+" sec\n");
-         */
+
     }
 
     /**
@@ -192,7 +192,7 @@ public class LinearRankingTest {
      */
     @Test
     public void testGetNormal() {
-        final LinearRanking instance = new LinearRanking();
+        final LinearRanking<PointGene> instance = new LinearRanking<PointGene>();
         final int populationSize = 5; //Sprawdzenie dla populacji 5-cio elementowej
 
         Class<?> parameterTypes[] = { int.class, int.class };

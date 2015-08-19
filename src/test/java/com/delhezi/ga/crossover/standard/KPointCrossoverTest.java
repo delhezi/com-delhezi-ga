@@ -33,7 +33,7 @@ public class KPointCrossoverTest {
     public void testCrossover1() {
         ChromosomeProperties chromosomeProperties =
             ChromosomeProperties.getInstance();
-        KPointCrossover instance = new KPointCrossover();
+        KPointCrossover<Integer> instance = new KPointCrossover<Integer>();
 
         Integer[] genes1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
         Chromosome<Integer> chromosome1 =
@@ -62,7 +62,7 @@ public class KPointCrossoverTest {
     @Test
     public void testCrossover2() {
       ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-      KPointCrossover instance = new KPointCrossover();
+      KPointCrossover<Integer> instance = new KPointCrossover<Integer>();
 
       Integer[] genes1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
       Chromosome<Integer> chromosome1 =

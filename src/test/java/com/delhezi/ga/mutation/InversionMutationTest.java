@@ -24,8 +24,8 @@ public class InversionMutationTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void illegal_1_Mutation() {
-      InversionMutation instance = new InversionMutation();
-      Chromosome chromosome = null;
+      InversionMutation<Integer> instance = new InversionMutation<Integer>();
+      Chromosome<Integer> chromosome = null;
       instance.mutation(chromosome);
       }
     
@@ -37,7 +37,7 @@ public class InversionMutationTest {
     @Test()
     public void test_1_Mutation() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         Integer[] genes = {1};
         Chromosome<Integer> chromosome =
             new Chromosome<Integer>(genes, chromosomeProperties);
@@ -56,8 +56,8 @@ public class InversionMutationTest {
     @Test
     public void testMutation() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
-        Chromosome chromosome ;
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
+        Chromosome<Integer> chromosome ;
         
         //test (2)
         Integer[] genes1 = {1};
@@ -83,8 +83,8 @@ public class InversionMutationTest {
      */
     @Test(expected = AssertionError.class)
     public void illegal_1_Mutation1() {
-        InversionMutation instance = new InversionMutation();
-        Chromosome chromosome = null;
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
+        Chromosome<Integer> chromosome = null;
         instance.mutation(chromosome, 0, 0, 0);
         }
     
@@ -95,7 +95,7 @@ public class InversionMutationTest {
     @Test(expected = AssertionError.class)
     public void illegal_2_Mutation1() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         Integer[] genes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         Chromosome<Integer> chromosome =
             new Chromosome<Integer>(genes, chromosomeProperties);
@@ -110,7 +110,7 @@ public class InversionMutationTest {
     @Test(expected = AssertionError.class)
     public void illegal_3_Mutation1() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         Integer[] genes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         Chromosome<Integer> chromosome =
             new Chromosome<Integer>(genes, chromosomeProperties);
@@ -125,7 +125,7 @@ public class InversionMutationTest {
     @Test(expected = AssertionError.class)
     public void illegal_4_Mutation1() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         Integer[] genes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         Chromosome<Integer> chromosome =
             new Chromosome<Integer>(genes, chromosomeProperties);
@@ -140,7 +140,7 @@ public class InversionMutationTest {
     @Test(expected = AssertionError.class)
     public void illegal_5_Mutation1() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         Integer[] genes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         Chromosome<Integer> chromosome =
             new Chromosome<Integer>(genes, chromosomeProperties);
@@ -155,7 +155,7 @@ public class InversionMutationTest {
     @Test(expected = AssertionError.class)
     public void illegal_6_Mutation1() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         Integer[] genes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         Chromosome<Integer> chromosome =
             new Chromosome<Integer>(genes, chromosomeProperties);
@@ -172,7 +172,7 @@ public class InversionMutationTest {
     @Test(expected = AssertionError.class)
     public void illegal_7_Mutation1() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         Integer[] genes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         Chromosome<Integer> chromosome =
             new Chromosome<Integer>(genes, chromosomeProperties);
@@ -190,7 +190,7 @@ public class InversionMutationTest {
     @Test()
     public void test_1_Mutation1() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         Integer[] genes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         Chromosome<Integer> chromosome =
             new Chromosome<Integer>(genes, chromosomeProperties);
@@ -212,7 +212,7 @@ public class InversionMutationTest {
     @Test()
     public void test_2_Mutation1() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         Integer[] genes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         Chromosome<Integer> chromosome =
             new Chromosome<Integer>(genes, chromosomeProperties);
@@ -234,7 +234,7 @@ public class InversionMutationTest {
     @Test()
     public void test_3_Mutation1() {
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         Integer[] genes = {1};
         Chromosome<Integer> chromosome =
             new Chromosome<Integer>(genes, chromosomeProperties);
@@ -256,7 +256,7 @@ public class InversionMutationTest {
     public void testMutation1() {
         System.out.println("mutation");
         ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-        InversionMutation instance = new InversionMutation();
+        InversionMutation<Integer> instance = new InversionMutation<Integer>();
         int cutPoint1;
         int cutPoint2;
         int insertPoint;

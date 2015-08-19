@@ -38,14 +38,14 @@ public class LinKernighanTest {
     public void testLinKernighan() {
       System.out.println("LinKernighan");
       ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-      _2Opt instance = new _2Opt();
+      _2Opt<PointGene> instance = new _2Opt<PointGene>();
 
       PointGene[] genes = { new PointGene(11,1), new PointGene(1,23),
                         new PointGene(1,31), new PointGene(1,4),
                         new PointGene(12,6), new PointGene(22,6),
                         new PointGene(32,4), new PointGene(2,1)};
 
-      Chromosome chromosome = new Chromosome(genes, chromosomeProperties);
+      Chromosome<PointGene> chromosome = new Chromosome<PointGene>(genes, chromosomeProperties);
       int edge1=4;   //1 2 3 4 - 5 6 7 8
       int edge2=8;   //1 2 3 4   5 6 7 8 -
 
@@ -71,14 +71,14 @@ public class LinKernighanTest {
     public void testChangeEdge() {
       System.out.println("changeEdge");
       ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-      _2Opt instance = new _2Opt();
+      _2Opt<PointGene> instance = new _2Opt<PointGene>();
 
       PointGene[] genes1 = { new PointGene(1,1), new PointGene(2,2),
                         new PointGene(3,3), new PointGene(4,4),
                         new PointGene(5,5), new PointGene(6,6),
                         new PointGene(7,7), new PointGene(8,8)};
 
-      Chromosome chromosome1 = new Chromosome(genes1, chromosomeProperties);
+      Chromosome<PointGene> chromosome1 = new Chromosome<PointGene>(genes1, chromosomeProperties);
       int edge1_1=4;   // 1 2 3 4a - b5 6 7 8
       int edge2_1=8;   //d1 2 3 4    5  6 7 8c -
       //Zawsze odwracamy odcinek bc.
@@ -101,7 +101,7 @@ public class LinKernighanTest {
                          new PointGene(5,5), new PointGene(6,6),
                          new PointGene(7,7), new PointGene(8,8)};
 
-      Chromosome chromosome2 = new Chromosome(genes2, chromosomeProperties);
+      Chromosome<PointGene> chromosome2 = new Chromosome<PointGene>(genes2, chromosomeProperties);
       int edge1_2=6;   //1 2 3 4     5 6a - b7 8
       int edge2_2=4;   //1 2 3 4c - d5 6     7 8
       //Zawsze odwracamy odcinek bc.
@@ -124,7 +124,7 @@ public class LinKernighanTest {
                          new PointGene(5,5), new PointGene(6,6),
                          new PointGene(7,7), new PointGene(8,8)};
 
-      Chromosome chromosome3 = new Chromosome(genes3, chromosomeProperties);
+      Chromosome<PointGene> chromosome3 = new Chromosome<PointGene>(genes3, chromosomeProperties);
       int edge1_3=8;   //b1 2 3 4    5  6 7 8a -
       int edge2_3=4;   // 1 2 3 4c - d5 6 7 8
       //Zawsze odwracamy odcinek bc.

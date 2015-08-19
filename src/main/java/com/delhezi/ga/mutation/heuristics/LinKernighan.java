@@ -296,6 +296,7 @@ public class LinKernighan<GENE_TYPE> implements IMutation<GENE_TYPE> {
             : (chromosomeSize - pB) + pC + 1;
 
         //tmpGenes - sekcja inwersji po operacji inwersji.
+        @SuppressWarnings("unchecked")
         GENE_TYPE[] invGenes = (GENE_TYPE[]) new Object[inversionGenes];
         int ii;
         if (pB < pC) {

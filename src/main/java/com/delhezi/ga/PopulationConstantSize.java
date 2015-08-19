@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 /**
  * <code>PopulationConstantSize</code>: Klasa populacji o stałej
@@ -33,8 +33,7 @@ import java.util.logging.Logger;
 public final class PopulationConstantSize<GENE_TYPE> extends Population<GENE_TYPE> {
 
     /** Logger object. */
-    private static final Logger LOGGER =
-        Logger.getLogger(PopulationConstantSize.class.getName());
+    //private static final Logger LOGGER = Logger.getLogger(PopulationConstantSize.class.getName());
 
     /**
      * Konstruktor.
@@ -62,7 +61,7 @@ public final class PopulationConstantSize<GENE_TYPE> extends Population<GENE_TYP
               mutationOperator, mutationProbability, chromosomeProperties);
         //W konstruktorze i metodzie clone inicjuj bezposrednio
         //wartości zmiennych lub wywołuj tylko metody final.
-        this.select = (ISelect<GENE_TYPE>) SelectionFactory.getSelectionMethod(selectionMethod);
+        this.select = SelectionFactory.getSelectionMethod(selectionMethod);
     }
 
     /**
@@ -80,7 +79,7 @@ public final class PopulationConstantSize<GENE_TYPE> extends Population<GENE_TYP
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public static <GENE_TYPE> PopulationConstantSize newPopulationConstantSize(
+    public static <GENE_TYPE> PopulationConstantSize<GENE_TYPE> newPopulationConstantSize(
                         final SelectionMethodType selectionMethod,
                         final LinkedList<Chromosome<GENE_TYPE>> chromosomes,
                         final CrossoverOperatorType crossoverOperator,
@@ -89,12 +88,9 @@ public final class PopulationConstantSize<GENE_TYPE> extends Population<GENE_TYP
                         final double mutationProbability,
                         final ChromosomeProperties chromosomeProperties)
     throws GeneticAlgorithmException {
-        return new PopulationConstantSize(selectionMethod, chromosomes,
-                      CrossoverFactory.getCrossoverOperator(crossoverOperator),
-                      crossProbability,
-                      MutationFactory.getMutationOperator(mutationOperator),
-                      mutationProbability,
-                      chromosomeProperties);
+        return new PopulationConstantSize<GENE_TYPE>(selectionMethod, chromosomes,
+                CrossoverFactory.getCrossoverOperator(crossoverOperator), crossProbability,
+                MutationFactory.getMutationOperator(mutationOperator), mutationProbability, chromosomeProperties);
     }
 
   /**
@@ -113,7 +109,7 @@ public final class PopulationConstantSize<GENE_TYPE> extends Population<GENE_TYP
    * @throws GeneticAlgorithmException xxx
    * @since 1.0
    */
-  public static <GENE_TYPE> PopulationConstantSize newPopulationConstantSize(
+  public static <GENE_TYPE> PopulationConstantSize<GENE_TYPE> newPopulationConstantSize(
                       final SelectionMethodType selectionMethod,
                       final LinkedList<Chromosome<GENE_TYPE>> chromosomes,
                       final ICrossover<GENE_TYPE> crossoverOperator,
@@ -122,12 +118,8 @@ public final class PopulationConstantSize<GENE_TYPE> extends Population<GENE_TYP
                       final double mutationProbability,
                       final ChromosomeProperties chromosomeProperties)
   throws GeneticAlgorithmException {
-      return new PopulationConstantSize(selectionMethod, chromosomes,
-                                        crossoverOperator,
-                                        crossProbability,
-                                        mutationOperator,
-                                        mutationProbability,
-                                        chromosomeProperties);
+        return new PopulationConstantSize<GENE_TYPE>(selectionMethod, chromosomes, crossoverOperator, crossProbability,
+                mutationOperator, mutationProbability, chromosomeProperties);
       }
 
     /**
@@ -138,7 +130,7 @@ public final class PopulationConstantSize<GENE_TYPE> extends Population<GENE_TYP
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-  public PopulationChangeableSize toPopulationChangeableSize(final int maxLT,
+  public PopulationChangeableSize<GENE_TYPE> toPopulationChangeableSize(final int maxLT,
                                          final int minLT)
    throws GeneticAlgorithmException {
     this.select = null; //czyszczenie
@@ -244,7 +236,7 @@ public final class PopulationConstantSize<GENE_TYPE> extends Population<GENE_TYP
      */
     public void setSelect(final SelectionMethodType selectionMethod)
     throws GeneticAlgorithmException {
-        this.select = (ISelect<GENE_TYPE>) SelectionFactory.getSelectionMethod(selectionMethod);
+        this.select = SelectionFactory.getSelectionMethod(selectionMethod);
     }
 
     /**

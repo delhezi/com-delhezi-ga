@@ -34,7 +34,7 @@ public class OrderCrossoverTest {
                 new Chromosome<Integer>(genes2, chromosomeProperties);
 
         //when
-        OrderCrossover instance = new OrderCrossover();
+        OrderCrossover<Integer> instance = new OrderCrossover<Integer>();
         instance.crossover(chromosome1, chromosome2);
 
         //then
@@ -61,7 +61,7 @@ public class OrderCrossoverTest {
         int cutpoint2 = 6;
 
         //when
-        OrderCrossover instance = new OrderCrossover();
+        OrderCrossover<Integer> instance = new OrderCrossover<Integer>();
         instance.crossover(chromosome1, chromosome2, cutpoint1, cutpoint2);
         //for (int i=0; i<chromosome1.size(); i++)
         //    System.out.println(chromosome1.getGene(i).toString());
@@ -116,7 +116,7 @@ public class OrderCrossoverTest {
         int cutpoint2 = 6;
 
         //when
-        OrderCrossover instance = new OrderCrossover();
+        OrderCrossover<Integer> instance = new OrderCrossover<Integer>();
         instance.crossover(chromosome1, chromosome2, cutpoint1, cutpoint2);
         //for (int i=0; i<chromosome1.size(); i++)
         //    System.out.println(chromosome1.getGene(i).toString());

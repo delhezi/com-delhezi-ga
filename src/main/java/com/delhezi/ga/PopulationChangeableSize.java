@@ -18,7 +18,7 @@ import com.delhezi.ga.mutation.factory.MutationOperatorType;
 import com.delhezi.ga.selection.factory.SelectionMethodType;
 
 import java.util.LinkedList;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 /**
  * <code>PopulationChangeableSize</code>: Klasa populacji o zmiennej
@@ -27,9 +27,9 @@ import java.util.logging.Logger;
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
 public final class PopulationChangeableSize<GENE_TYPE> extends Population<GENE_TYPE> {
+
     /** Logger object. */
-    private static final Logger LOGGER =
-        Logger.getLogger(PopulationChangeableSize.class.getName());
+    //private static final Logger LOGGER = Logger.getLogger(PopulationChangeableSize.class.getName());
 
     /**
      * Konstruktor.
@@ -79,7 +79,7 @@ public final class PopulationChangeableSize<GENE_TYPE> extends Population<GENE_T
      * @throws GeneticAlgorithmException xxx
      * @since 1.0
      */
-    public static <GENE_TYPE> PopulationChangeableSize newPopulationChangeableSize(
+    public static <GENE_TYPE> PopulationChangeableSize<GENE_TYPE> newPopulationChangeableSize(
                 final int maxLT,
                 final int minLT,
                 final LinkedList<Chromosome<GENE_TYPE>> chromosomes,
@@ -89,12 +89,9 @@ public final class PopulationChangeableSize<GENE_TYPE> extends Population<GENE_T
                 final double mutationProbability,
                 final ChromosomeProperties chromosomeProperties)
     throws GeneticAlgorithmException {
-        return new PopulationChangeableSize(maxLT, minLT, chromosomes,
-                     CrossoverFactory.getCrossoverOperator(crossoverOperator),
-                                            crossoverProbability,
-                     MutationFactory.getMutationOperator(mutationOperator),
-                                            mutationProbability,
-                                            chromosomeProperties);
+        return new PopulationChangeableSize<GENE_TYPE>(maxLT, minLT, chromosomes,
+                CrossoverFactory.getCrossoverOperator(crossoverOperator), crossoverProbability,
+                MutationFactory.getMutationOperator(mutationOperator), mutationProbability, chromosomeProperties);
         }
 
   /**
@@ -114,7 +111,7 @@ public final class PopulationChangeableSize<GENE_TYPE> extends Population<GENE_T
    * @throws GeneticAlgorithmException xxx
    * @since 1.0
    */
-  public static <GENE_TYPE> PopulationChangeableSize newPopulationChangeableSize(
+  public static <GENE_TYPE> PopulationChangeableSize<GENE_TYPE> newPopulationChangeableSize(
               final int maxLT,
               final int minLT,
               final LinkedList<Chromosome<GENE_TYPE>> chromosomes,
@@ -124,12 +121,8 @@ public final class PopulationChangeableSize<GENE_TYPE> extends Population<GENE_T
               final double mutationProbability,
               final ChromosomeProperties chromosomeProperties)
   throws GeneticAlgorithmException {
-      return new PopulationChangeableSize(maxLT, minLT, chromosomes,
-                                          crossoverOperator,
-                                          crossoverProbability,
-                                          mutationOperator,
-                                          mutationProbability,
-                                          chromosomeProperties);
+        return new PopulationChangeableSize<GENE_TYPE>(maxLT, minLT, chromosomes, crossoverOperator,
+                crossoverProbability, mutationOperator, mutationProbability, chromosomeProperties);
     }
 
     /**

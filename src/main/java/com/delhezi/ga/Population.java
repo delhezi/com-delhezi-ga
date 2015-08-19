@@ -86,8 +86,7 @@ public abstract class Population<GENE_TYPE> {
     public final void setCrossover(
                               final CrossoverOperatorType crossoverOperator)
     throws GeneticAlgorithmException {
-        this.crossover =
-                (ICrossover<GENE_TYPE>) CrossoverFactory.getCrossoverOperator(crossoverOperator);
+        this.crossover = CrossoverFactory.getCrossoverOperator(crossoverOperator);
     }
 
     /**
@@ -116,7 +115,7 @@ public abstract class Population<GENE_TYPE> {
      */
     public final void setMutation(final MutationOperatorType mutationOperator)
     throws GeneticAlgorithmException {
-        this.mutation = (IMutation<GENE_TYPE>) MutationFactory.getMutationOperator(mutationOperator);
+        this.mutation = MutationFactory.getMutationOperator(mutationOperator);
     }
 
     /**

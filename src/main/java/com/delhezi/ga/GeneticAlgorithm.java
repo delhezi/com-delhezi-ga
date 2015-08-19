@@ -54,10 +54,10 @@ public class GeneticAlgorithm<GENE_TYPE> {
      * @since 1.0
      */
     public GeneticAlgorithm() {
-        stateError = new StateError(this);
-        stateInitialized = new StateInitialized(this);
-        stateRunning = new StateRunning(this);
-        stateStopped = new StateStopped(this);
+        stateError = new StateError<GENE_TYPE>(this);
+        stateInitialized = new StateInitialized<GENE_TYPE>(this);
+        stateRunning = new StateRunning<GENE_TYPE>(this);
+        stateStopped = new StateStopped<GENE_TYPE>(this);
         state = null;
     }
 
@@ -184,7 +184,7 @@ public class GeneticAlgorithm<GENE_TYPE> {
      */
     public final int getMinLT() throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationChangeableSize) {
-            return ((com.delhezi.ga.PopulationChangeableSize) getPopulation()).getMinLT();
+            return ((com.delhezi.ga.PopulationChangeableSize<GENE_TYPE>) getPopulation()).getMinLT();
         } else {
             throw new GeneticAlgorithmException("Parametr zdefiniowany dla PopulationType.PopulationChangeableSize");
         }
@@ -200,7 +200,7 @@ public class GeneticAlgorithm<GENE_TYPE> {
      */
     public final void setMinLT(final int minLT) throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationChangeableSize) {
-            ((com.delhezi.ga.PopulationChangeableSize) getPopulation()).setMinLT(minLT);
+            ((com.delhezi.ga.PopulationChangeableSize<GENE_TYPE>) getPopulation()).setMinLT(minLT);
         } else {
             throw new GeneticAlgorithmException("Parametr zdefiniowany dla PopulationType.PopulationChangeableSize");
         }
@@ -216,7 +216,7 @@ public class GeneticAlgorithm<GENE_TYPE> {
      */
     public final SelectionMethodType getSelectionMethod() throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationConstantSize) {
-            return SelectionFactory.getSelectionMethodType(((com.delhezi.ga.PopulationConstantSize) getPopulation()).getSelect());
+            return SelectionFactory.getSelectionMethodType(((com.delhezi.ga.PopulationConstantSize<GENE_TYPE>) getPopulation()).getSelect());
         } else {
             throw new GeneticAlgorithmException("Parametr zdefiniowany dla PopulationType.PopulationConstantSize");
         }
@@ -437,7 +437,7 @@ public class GeneticAlgorithm<GENE_TYPE> {
      */
     public final void setPopulationSize(final int populationSize) throws GeneticAlgorithmException {
         if (getPopulationType() == PopulationType.PopulationConstantSize) {
-            ((com.delhezi.ga.PopulationConstantSize) getPopulation()).changePopulationSize(populationSize);
+            ((com.delhezi.ga.PopulationConstantSize<GENE_TYPE>) getPopulation()).changePopulationSize(populationSize);
         } else {
             throw new GeneticAlgorithmException("Metoda zdefiniowana dla PopulationType.PopulationConstantSize");
         }

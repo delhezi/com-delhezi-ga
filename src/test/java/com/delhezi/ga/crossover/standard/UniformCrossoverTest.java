@@ -2,11 +2,10 @@ package com.delhezi.ga.crossover.standard;
 
 import com.delhezi.ga.Chromosome;
 import com.delhezi.ga.ChromosomeProperties;
-import com.delhezi.ga.exception.GeneticAlgorithmException;
 
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -47,7 +46,7 @@ public class UniformCrossoverTest {
       Chromosome<Integer> chromosome2 =
               new Chromosome<Integer>(genes2, chromosomeProperties);
 
-        UniformCrossover instance = new UniformCrossover();
+        UniformCrossover<Integer> instance = new UniformCrossover<Integer>();
         instance.crossover(chromosome1, chromosome2);
 
         //for (int i = 0; i < genes1.length; i++) {

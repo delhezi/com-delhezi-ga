@@ -33,7 +33,7 @@ public class PartiallyMatchedCrossoverTest {
         Chromosome<Integer> chromosome2 =
                 new Chromosome<Integer>(genes2, chromosomeProperties);
 
-        PartiallyMatchedCrossover instance = new PartiallyMatchedCrossover();
+        PartiallyMatchedCrossover<Integer> instance = new PartiallyMatchedCrossover<Integer>();
         instance.crossover(chromosome1, chromosome2);
     }
 
@@ -56,7 +56,7 @@ public class PartiallyMatchedCrossoverTest {
         int cutpoint2 = 6;
 
         //when
-        PartiallyMatchedCrossover instance = new PartiallyMatchedCrossover();
+        PartiallyMatchedCrossover<Integer> instance = new PartiallyMatchedCrossover<Integer>();
         instance.crossover(chromosome1, chromosome2, cutpoint1, cutpoint2);
         //for (int i=0; i<chromosome1.size(); i++)
         //    System.out.println(chromosome1.getGene(i).toString());
@@ -113,7 +113,7 @@ public class PartiallyMatchedCrossoverTest {
         substring2.add(6);
 
         //when
-        PartiallyMatchedCrossover instance = new PartiallyMatchedCrossover();
+        PartiallyMatchedCrossover<Integer> instance = new PartiallyMatchedCrossover<Integer>();
         instance.optSubstring(substring1, substring2);
 
         //Określenie owzorowania dla sekcji dopasowania.

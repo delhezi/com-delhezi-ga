@@ -10,23 +10,18 @@ package com.delhezi.ga.mutation;
 
 import com.delhezi.ga.Chromosome;
 import com.delhezi.ga.ChromosomeProperties;
-import com.delhezi.ga.selection.RouletteWheelElementaryImplementationTest;
 
-import java.util.Random;
-
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SwapMutationTest {
 
-    private static final Logger log = Logger.getLogger(SwapMutationTest.class);
+    //private static final Logger log = Logger.getLogger(SwapMutationTest.class);
 
     public SwapMutationTest() {
     }
-
-  private static Random random = new Random();
   
     /**
      * com.delhezi.ga.mutation.SwapMutation#mutation(com.delhezi.ga.Chromosome)
@@ -46,7 +41,7 @@ public class SwapMutationTest {
     public void testMutation1() {
       System.out.println("mutation");
       ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
-      SwapMutation instance = new SwapMutation();
+      SwapMutation<Integer> instance = new SwapMutation<Integer>();
 
       Integer[] genes = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
       Chromosome<Integer> chromosome =

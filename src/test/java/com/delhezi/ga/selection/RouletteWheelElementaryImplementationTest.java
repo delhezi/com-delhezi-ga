@@ -132,16 +132,16 @@ public class RouletteWheelElementaryImplementationTest {
         fitnessFunction.setMaximisation(false);
         // fitnessFunction.setMaximisation(true);
 
-        LinkedList<Chromosome> chromosomes = new LinkedList<Chromosome>();
-        for (int i = 0; i < this.genes.length; i++) {
-            chromosomes.add(new Chromosome(this.genes[i], chromosomeProperties));
+        LinkedList<Chromosome<PointGene>> chromosomes = new LinkedList<Chromosome<PointGene>>();
+        for (int i = 0; i < RouletteWheelElementaryImplementationTest.genes.length; i++) {
+            chromosomes.add(new Chromosome<PointGene>(RouletteWheelElementaryImplementationTest.genes[i], chromosomeProperties));
         }
 
-        RouletteWheelElementaryImplementation instance = new RouletteWheelElementaryImplementation();
-
+        RouletteWheelElementaryImplementation<PointGene> instance = new RouletteWheelElementaryImplementation<PointGene>();
+        /*
         int i = 0;
         double fitnessSum = 0;
-        /*
+
         System.out.println("------------------------------------");
         System.out.println(" isMaximisation() = " +
                            fitnessFunction.isMaximisation());
@@ -182,11 +182,11 @@ public class RouletteWheelElementaryImplementationTest {
         System.out.println(" fitnessSum = " + fitnessSum);
         System.out.println("------------------------------------");
 
-        
+         */
         timeEnd = System.currentTimeMillis();
         double seconds = (timeEnd-timeStart)/1000.0;
         System.out.println("testSelect Time elapsed: "+new DecimalFormat("0.000").format(seconds)+" sec\n");
-         */
+
     }
 
     
@@ -202,14 +202,14 @@ public class RouletteWheelElementaryImplementationTest {
     public void probabilities(boolean maximisation) {
         fitnessFunction.setMaximisation(maximisation);
 
-        LinkedList<Chromosome> chromosomes = new LinkedList<Chromosome>();
-        for (int i = 0; i < this.genes.length; i++) {
-            chromosomes.add(new Chromosome(this.genes[i], chromosomeProperties));
+        LinkedList<Chromosome<PointGene>> chromosomes = new LinkedList<Chromosome<PointGene>>();
+        for (int i = 0; i < RouletteWheelElementaryImplementationTest.genes.length; i++) {
+            chromosomes.add(new Chromosome<PointGene>(RouletteWheelElementaryImplementationTest.genes[i], chromosomeProperties));
         }
         
         double[] normals = new double[chromosomes.size()];
 
-        RouletteWheelElementaryImplementation instance = new RouletteWheelElementaryImplementation();
+        RouletteWheelElementaryImplementation<PointGene> instance = new RouletteWheelElementaryImplementation<PointGene>();
         
         Class parameterTypes[] = { LinkedList.class };
         Object args[] = { chromosomes };
@@ -254,12 +254,12 @@ public class RouletteWheelElementaryImplementationTest {
     public void setVariable(boolean maximisation) {
         fitnessFunction.setMaximisation(maximisation);
 
-        LinkedList<Chromosome> chromosomes = new LinkedList<Chromosome>();
-        for (int i = 0; i < this.genes.length; i++) {
-            chromosomes.add(new Chromosome(this.genes[i], chromosomeProperties));
+        LinkedList<Chromosome<PointGene>> chromosomes = new LinkedList<Chromosome<PointGene>>();
+        for (int i = 0; i < RouletteWheelElementaryImplementationTest.genes.length; i++) {
+            chromosomes.add(new Chromosome<PointGene>(RouletteWheelElementaryImplementationTest.genes[i], chromosomeProperties));
         }
 
-        RouletteWheelElementaryImplementation instance = new RouletteWheelElementaryImplementation();
+        RouletteWheelElementaryImplementation<PointGene> instance = new RouletteWheelElementaryImplementation<PointGene>();
 
         Class parameterTypes[] = { LinkedList.class };
         Object args[] = { chromosomes };

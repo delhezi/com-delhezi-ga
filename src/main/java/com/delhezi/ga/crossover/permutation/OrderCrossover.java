@@ -78,7 +78,9 @@ public class OrderCrossover<GENE_TYPE> implements com.delhezi.ga.crossover.ICros
         final int geneLength = chromosome1.getGenes().length;
 
         //Tworzymy geny potomków.
+        @SuppressWarnings("unchecked")
         GENE_TYPE[] child1 = (GENE_TYPE[]) new Object[geneLength];
+        @SuppressWarnings("unchecked")
         GENE_TYPE[] child2 = (GENE_TYPE[]) new Object[geneLength];
 
         //Dla sekcji dopasowania.

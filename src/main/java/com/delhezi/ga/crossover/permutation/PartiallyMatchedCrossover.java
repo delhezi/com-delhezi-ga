@@ -75,7 +75,9 @@ public class PartiallyMatchedCrossover<GENE_TYPE> implements com.delhezi.ga.cros
         final int geneLength = chromosome1.getGenes().length;
 
         // Tworzymy geny potomków.
+        @SuppressWarnings("unchecked")
         GENE_TYPE[] child1 = (GENE_TYPE[]) new Object[geneLength];
+        @SuppressWarnings("unchecked")
         GENE_TYPE[] child2 = (GENE_TYPE[]) new Object[geneLength];
         // Odwzorowania genów dla sekcji dopasowania.
         ArrayList<GENE_TYPE> substring1 = new ArrayList<GENE_TYPE>(cutpoint2 - cutpoint1);
