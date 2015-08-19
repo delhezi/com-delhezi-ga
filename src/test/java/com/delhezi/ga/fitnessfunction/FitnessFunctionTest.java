@@ -12,7 +12,7 @@ import com.delhezi.ga.exception.GeneticAlgorithmException;
 import com.delhezi.ga.fitnessfunction.drivers.IFitnessFunctionDriver;
 import com.delhezi.ga.fitnessfunction.drivers.ScriptEngineDriver;
 import com.delhezi.ga.fitnessfunction.drivers.factory.FitnessFunctionDriverFactory;
-import com.delhezi.ga.genes.Point;
+import com.delhezi.ga.genes.PointGene;
 
 import java.io.File;
 
@@ -65,9 +65,9 @@ public class FitnessFunctionTest {
     public void testCalculateFitness() {
         log.debug("calculateFitness");
         //given
-        Point[] genes = {new Point(1, 1), new Point(1, 2),
-                new Point(1, 3), new Point(2, 3),
-                new Point(2, 2), new Point(1, 2)};
+        PointGene[] genes = {new PointGene(1, 1), new PointGene(1, 2),
+                new PointGene(1, 3), new PointGene(2, 3),
+                new PointGene(2, 2), new PointGene(1, 2)};
         double expResult = 6.0;
 
         //when

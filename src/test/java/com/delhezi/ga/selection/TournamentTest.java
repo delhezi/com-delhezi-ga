@@ -8,7 +8,7 @@ import com.delhezi.ga.fitnessfunction.drivers.IFitnessFunctionDriver;
 
 import com.delhezi.ga.fitnessfunction.drivers.factory.FitnessFunctionDriverFactory;
 
-import com.delhezi.ga.genes.Point;
+import com.delhezi.ga.genes.PointGene;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -30,55 +30,55 @@ public class TournamentTest {
     private static ChromosomeProperties chromosomeProperties;
     private static final Logger log = Logger.getLogger(TournamentTest.class);
 
-    private static Point[][] genes = {
-            { new Point(101, 120), new Point(102, 220), new Point(103, 220), new Point(104, 220), new Point(105, 220),
-                    new Point(106, 220) }, // genes[0]
-            { new Point(101, 120), new Point(102, 130), new Point(103, 140), new Point(104, 150), new Point(105, 160),
-                    new Point(105, 170) }, // genes[1]
-            { new Point(101, 121), new Point(102, 122), new Point(103, 123), new Point(104, 124), new Point(105, 125),
-                    new Point(105, 126) }, // genes[2]
-            { new Point(101, 120), new Point(102, 120), new Point(103, 120), new Point(104, 120), new Point(105, 120),
-                    new Point(106, 120) },
-            { new Point(101, 121), new Point(102, 122), new Point(103, 123), new Point(104, 124), new Point(105, 125),
-                    new Point(105, 136) },
-            { new Point(101, 120), new Point(102, 220), new Point(103, 220), new Point(104, 220), new Point(105, 220),
-                    new Point(106, 230) },
-            { new Point(101, 120), new Point(102, 220), new Point(153, 220), new Point(104, 220), new Point(105, 220),
-                    new Point(106, 220) },
-            { new Point(101, 120), new Point(102, 130), new Point(153, 140), new Point(104, 150), new Point(105, 160),
-                    new Point(105, 170) },
-            { new Point(101, 121), new Point(102, 122), new Point(153, 123), new Point(104, 124), new Point(105, 125),
-                    new Point(105, 126) },
-            { new Point(101, 120), new Point(102, 120), new Point(153, 120), new Point(104, 120), new Point(105, 120),
-                    new Point(106, 120) },
-            { new Point(101, 121), new Point(102, 122), new Point(153, 123), new Point(104, 124), new Point(105, 125),
-                    new Point(105, 136) },
-            { new Point(101, 120), new Point(102, 220), new Point(153, 220), new Point(104, 220), new Point(105, 220),
-                    new Point(106, 230) },
-            { new Point(101, 120), new Point(102, 220), new Point(103, 220), new Point(104, 220), new Point(105, 220),
-                    new Point(106, 220) },
-            { new Point(101, 120), new Point(102, 130), new Point(103, 140), new Point(104, 150), new Point(105, 160),
-                    new Point(105, 170) },
-            { new Point(101, 121), new Point(102, 122), new Point(103, 123), new Point(104, 124), new Point(105, 125),
-                    new Point(105, 126) },
-            { new Point(101, 120), new Point(102, 120), new Point(103, 120), new Point(104, 120), new Point(105, 120),
-                    new Point(106, 120) },
-            { new Point(101, 121), new Point(102, 122), new Point(103, 123), new Point(104, 124), new Point(105, 125),
-                    new Point(105, 136) },
-            { new Point(101, 120), new Point(102, 220), new Point(103, 220), new Point(104, 220), new Point(105, 220),
-                    new Point(106, 230) },
-            { new Point(101, 120), new Point(102, 220), new Point(153, 220), new Point(104, 220), new Point(105, 220),
-                    new Point(106, 220) },
-            { new Point(101, 120), new Point(102, 130), new Point(153, 140), new Point(104, 150), new Point(105, 160),
-                    new Point(105, 170) },
-            { new Point(101, 121), new Point(102, 122), new Point(153, 123), new Point(104, 124), new Point(105, 125),
-                    new Point(105, 126) },
-            { new Point(101, 120), new Point(102, 120), new Point(153, 120), new Point(104, 120), new Point(105, 120),
-                    new Point(106, 120) },
-            { new Point(101, 121), new Point(102, 122), new Point(153, 123), new Point(104, 124), new Point(105, 125),
-                    new Point(105, 136) },
-            { new Point(101, 120), new Point(102, 220), new Point(153, 220), new Point(104, 220), new Point(105, 220),
-                    new Point(106, 230) } };// genes[23]
+    private static PointGene[][] genes = {
+            { new PointGene(101, 120), new PointGene(102, 220), new PointGene(103, 220), new PointGene(104, 220), new PointGene(105, 220),
+                    new PointGene(106, 220) }, // genes[0]
+            { new PointGene(101, 120), new PointGene(102, 130), new PointGene(103, 140), new PointGene(104, 150), new PointGene(105, 160),
+                    new PointGene(105, 170) }, // genes[1]
+            { new PointGene(101, 121), new PointGene(102, 122), new PointGene(103, 123), new PointGene(104, 124), new PointGene(105, 125),
+                    new PointGene(105, 126) }, // genes[2]
+            { new PointGene(101, 120), new PointGene(102, 120), new PointGene(103, 120), new PointGene(104, 120), new PointGene(105, 120),
+                    new PointGene(106, 120) },
+            { new PointGene(101, 121), new PointGene(102, 122), new PointGene(103, 123), new PointGene(104, 124), new PointGene(105, 125),
+                    new PointGene(105, 136) },
+            { new PointGene(101, 120), new PointGene(102, 220), new PointGene(103, 220), new PointGene(104, 220), new PointGene(105, 220),
+                    new PointGene(106, 230) },
+            { new PointGene(101, 120), new PointGene(102, 220), new PointGene(153, 220), new PointGene(104, 220), new PointGene(105, 220),
+                    new PointGene(106, 220) },
+            { new PointGene(101, 120), new PointGene(102, 130), new PointGene(153, 140), new PointGene(104, 150), new PointGene(105, 160),
+                    new PointGene(105, 170) },
+            { new PointGene(101, 121), new PointGene(102, 122), new PointGene(153, 123), new PointGene(104, 124), new PointGene(105, 125),
+                    new PointGene(105, 126) },
+            { new PointGene(101, 120), new PointGene(102, 120), new PointGene(153, 120), new PointGene(104, 120), new PointGene(105, 120),
+                    new PointGene(106, 120) },
+            { new PointGene(101, 121), new PointGene(102, 122), new PointGene(153, 123), new PointGene(104, 124), new PointGene(105, 125),
+                    new PointGene(105, 136) },
+            { new PointGene(101, 120), new PointGene(102, 220), new PointGene(153, 220), new PointGene(104, 220), new PointGene(105, 220),
+                    new PointGene(106, 230) },
+            { new PointGene(101, 120), new PointGene(102, 220), new PointGene(103, 220), new PointGene(104, 220), new PointGene(105, 220),
+                    new PointGene(106, 220) },
+            { new PointGene(101, 120), new PointGene(102, 130), new PointGene(103, 140), new PointGene(104, 150), new PointGene(105, 160),
+                    new PointGene(105, 170) },
+            { new PointGene(101, 121), new PointGene(102, 122), new PointGene(103, 123), new PointGene(104, 124), new PointGene(105, 125),
+                    new PointGene(105, 126) },
+            { new PointGene(101, 120), new PointGene(102, 120), new PointGene(103, 120), new PointGene(104, 120), new PointGene(105, 120),
+                    new PointGene(106, 120) },
+            { new PointGene(101, 121), new PointGene(102, 122), new PointGene(103, 123), new PointGene(104, 124), new PointGene(105, 125),
+                    new PointGene(105, 136) },
+            { new PointGene(101, 120), new PointGene(102, 220), new PointGene(103, 220), new PointGene(104, 220), new PointGene(105, 220),
+                    new PointGene(106, 230) },
+            { new PointGene(101, 120), new PointGene(102, 220), new PointGene(153, 220), new PointGene(104, 220), new PointGene(105, 220),
+                    new PointGene(106, 220) },
+            { new PointGene(101, 120), new PointGene(102, 130), new PointGene(153, 140), new PointGene(104, 150), new PointGene(105, 160),
+                    new PointGene(105, 170) },
+            { new PointGene(101, 121), new PointGene(102, 122), new PointGene(153, 123), new PointGene(104, 124), new PointGene(105, 125),
+                    new PointGene(105, 126) },
+            { new PointGene(101, 120), new PointGene(102, 120), new PointGene(153, 120), new PointGene(104, 120), new PointGene(105, 120),
+                    new PointGene(106, 120) },
+            { new PointGene(101, 121), new PointGene(102, 122), new PointGene(153, 123), new PointGene(104, 124), new PointGene(105, 125),
+                    new PointGene(105, 136) },
+            { new PointGene(101, 120), new PointGene(102, 220), new PointGene(153, 220), new PointGene(104, 220), new PointGene(105, 220),
+                    new PointGene(106, 230) } };// genes[23]
     
     private long timeStart; //milisek
     private long timeEnd; //milisek

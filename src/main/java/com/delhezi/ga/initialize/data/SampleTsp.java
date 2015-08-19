@@ -10,7 +10,7 @@ package com.delhezi.ga.initialize.data;
 
 import com.delhezi.ga.Chromosome;
 import com.delhezi.ga.ChromosomeProperties;
-import com.delhezi.ga.genes.Point;
+import com.delhezi.ga.genes.PointGene;
 import java.util.LinkedList;
 
 /**
@@ -59,12 +59,12 @@ public class SampleTsp<GENE_TYPE> {
      */
     private static <GENE_TYPE> LinkedList<Chromosome<GENE_TYPE>> setChromosomes(final LinkedList<Chromosome<GENE_TYPE>> chromosomes, final int populationSize,
             final ChromosomeProperties chromosomeProperties) {
-        Point[] chromosomeTmp;
+        PointGene[] chromosomeTmp;
 
         int chromosomeSize = COUNTRY_COUNT; // STAŁA ILOŚĆ MIAST, ALE MOŻNA ZMIENIĆ
-        chromosomeTmp = new Point[chromosomeSize];
+        chromosomeTmp = new PointGene[chromosomeSize];
         for (int i = 0; i < chromosomeSize; i++) {
-            chromosomeTmp[i] = new Point((int) (Math.random() * POINT_MAX_X), (int) (Math.random() * POINT_MAX_Y));
+            chromosomeTmp[i] = new PointGene((int) (Math.random() * POINT_MAX_X), (int) (Math.random() * POINT_MAX_Y));
         }
 
         GENE_TYPE[] chromosomeI;

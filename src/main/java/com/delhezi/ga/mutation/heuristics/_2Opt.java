@@ -10,7 +10,7 @@ package com.delhezi.ga.mutation.heuristics;
 
 
 import com.delhezi.ga.Chromosome;
-import com.delhezi.ga.genes.Point;
+import com.delhezi.ga.genes.PointGene;
 import com.delhezi.ga.mutation.IMutation;
 import java.util.Random;
 //import java.util.logging.Logger;
@@ -338,23 +338,23 @@ public class _2Opt<GENE_TYPE> implements IMutation<GENE_TYPE> {
         double sizeCD;
         double sizeAC;
         double sizeDB;
-        Point pA, pB, pC, pD;
+        PointGene pA, pB, pC, pD;
 
             if (edge1 == chromosomeSize) { //bxxxxxxxxa-
-               pA = (Point) chromosome.getGene(edge1 - 1); //geny licza sie od 0
-               pB = (Point) chromosome.getGene(0);
+               pA = (PointGene) chromosome.getGene(edge1 - 1); //geny licza sie od 0
+               pB = (PointGene) chromosome.getGene(0);
             } else { //xxxxxa-bxxx
-               pA = (Point) chromosome.getGene(edge1 - 1); //geny licza sie od 0
-               pB = (Point) chromosome.getGene(edge1);
+               pA = (PointGene) chromosome.getGene(edge1 - 1); //geny licza sie od 0
+               pB = (PointGene) chromosome.getGene(edge1);
             }
             sizeAB = distance(pA.getx(), pA.gety(), pB.getx(), pB.gety());
 
             if (edge2 == chromosomeSize) { //dxxxxxxxxc-
-               pC = (Point) chromosome.getGene(edge2 - 1); //geny licza sie od 0
-               pD = (Point) chromosome.getGene(0);
+               pC = (PointGene) chromosome.getGene(edge2 - 1); //geny licza sie od 0
+               pD = (PointGene) chromosome.getGene(0);
             } else { //xxxxxc-dxxx
-               pC = (Point) chromosome.getGene(edge2 - 1); //geny licza sie od 0
-               pD = (Point) chromosome.getGene(edge2);
+               pC = (PointGene) chromosome.getGene(edge2 - 1); //geny licza sie od 0
+               pD = (PointGene) chromosome.getGene(edge2);
             }
             sizeCD = distance(pC.getx(), pC.gety(), pD.getx(), pD.gety());
 

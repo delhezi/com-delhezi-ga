@@ -1,5 +1,5 @@
 /**
- * @(#)Point.java
+ * @(#)PointGene.java
  * Copyright (C) 2008-2011 delhezi.com
  *
  * This class is released under the:
@@ -9,7 +9,7 @@
 package com.delhezi.ga.genes;
 
 /**
- * Klasa <code>Point</code>: Klasa przechowująca informacje o punkcie;
+ * Klasa <code>PointGene</code>: Klasa przechowująca informacje o punkcie;
  * Klasa przykładowa, ale może należało użyć java.awt.geom.Point2D;
  * UWAGA;
  * W przypadku kiedy w trakcie działania programu może dojść do zmiany
@@ -21,7 +21,7 @@ package com.delhezi.ga.genes;
  * @version 1.0 2008-11-02
  * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class Point { //extends java.awt.geom.Point2D //implements Cloneable
+public class PointGene implements com.delhezi.ga.genes.IGene { //extends java.awt.geom.Point2D //implements Cloneable
 
     /** Wspłórzędna x. */
     private int x;
@@ -34,7 +34,7 @@ public class Point { //extends java.awt.geom.Point2D //implements Cloneable
      * @param y Wspłórzędna y.
      * @since 1.0
      */
-    public Point(final int x, final int y) {
+    public PointGene(final int x, final int y) {
         this.x = x;
         this.y = y;
     }
@@ -103,8 +103,8 @@ public class Point { //extends java.awt.geom.Point2D //implements Cloneable
      */
     @Override
     public final boolean equals(final Object object) {
-        if (object instanceof Point) {
-           Point other = (Point) object;
+        if (object instanceof PointGene) {
+           PointGene other = (PointGene) object;
            return (this.getx() == other.getx() && this.gety() == other.gety());
         }
         return super.equals(object);

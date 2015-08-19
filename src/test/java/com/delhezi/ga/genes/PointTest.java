@@ -21,15 +21,15 @@ public class PointTest {
     @Test
     public void testEquals() {
       System.out.println("equals");
-      Point x;
-      Point y;
-      Point z;
+      PointGene x;
+      PointGene y;
+      PointGene z;
       boolean expResult;
       boolean result;
 
       //Jest zwrotna - dla dowolnej niepustej wartości referencyjnej x,
       //x.equals(x) musi zwracać true.
-      x = new Point(100,200);
+      x = new PointGene(100,200);
       expResult = true;
       result = x.equals(x);
       assertEquals(expResult, result);
@@ -37,8 +37,8 @@ public class PointTest {
       //Jest symetryczna - dla dowolnych niepustych wartości referencyjnych
       //x i y x.equals(y) musi zwracać true wtedy i tylko wtedy, gdy y.equals(x)
       //zwraca true.
-      x = new Point(100,200);
-      y = new Point(100,200);
+      x = new PointGene(100,200);
+      y = new PointGene(100,200);
       expResult = true;
       result = x.equals(y);
       assertEquals(expResult, result);
@@ -48,9 +48,9 @@ public class PointTest {
       //Jest przechodnia - dla dowolnych niepustych wartości referencyjnych
       //x i y oraz z, jeśli x.equals(y) zwraca true i y.equals(z) zwraca true,
       //to x.equals(z) musi zwracać ture.
-      x = new Point(100,200);
-      y = new Point(100,200);
-      z = new Point(100,200);
+      x = new PointGene(100,200);
+      y = new PointGene(100,200);
+      z = new PointGene(100,200);
       expResult = true;
       result = x.equals(y);
       assertEquals(expResult, result);
@@ -63,8 +63,8 @@ public class PointTest {
       //wieloktorne wywołania x.equals(y) zwracają konsekwentnie true lub
       //konsekwentnie false, przy założeniu, że nie została zmodyfikowana żadna
       //dana wykorzystywana do porównania obiektów.
-      x = new Point(100,200);
-      y = new Point(100,200);
+      x = new PointGene(100,200);
+      y = new PointGene(100,200);
       expResult = true;
       result = x.equals(y);
       assertEquals(expResult, result);
@@ -73,7 +73,7 @@ public class PointTest {
 
       //Dla dowolnych niepustych referencji x różnych od null x.equals(null)
       //musi zwracać false.
-      x = new Point(100,200);
+      x = new PointGene(100,200);
       expResult = false;
       result = x.equals(null);
       assertEquals(expResult, result);
@@ -85,7 +85,7 @@ public class PointTest {
     @Test
     public void testHashCode() {
       System.out.println("hashCode");
-      Point instance = new Point(100,200);
+      PointGene instance = new PointGene(100,200);
       int expResult = -1930559488;
       int result = instance.hashCode();
       assertEquals(expResult, result);
