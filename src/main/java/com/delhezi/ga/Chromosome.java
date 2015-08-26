@@ -201,6 +201,7 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
    * @return Głęboka kopia chromosomu.
    * @since 1.0
    */
+  @SuppressWarnings("unchecked")
   @Override
   public final Chromosome<GENE_TYPE> clone() {
       try {

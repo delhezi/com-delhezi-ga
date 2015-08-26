@@ -89,8 +89,9 @@ public final class PopulationConstantSize<GENE_TYPE> extends Population<GENE_TYP
                         final ChromosomeProperties chromosomeProperties)
     throws GeneticAlgorithmException {
         return new PopulationConstantSize<GENE_TYPE>(selectionMethod, chromosomes,
-                CrossoverFactory.getCrossoverOperator(crossoverOperator), crossProbability,
-                MutationFactory.getMutationOperator(mutationOperator), mutationProbability, chromosomeProperties);
+                CrossoverFactory.<GENE_TYPE> getCrossoverOperator(crossoverOperator), crossProbability,
+                MutationFactory.<GENE_TYPE> getMutationOperator(mutationOperator), mutationProbability,
+                chromosomeProperties);
     }
 
   /**

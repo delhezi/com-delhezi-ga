@@ -10,7 +10,6 @@ package com.delhezi.ga.fitnessfunction;
 
 import com.delhezi.ga.exception.GeneticAlgorithmException;
 import com.delhezi.ga.fitnessfunction.drivers.IFitnessFunctionDriver;
-import com.delhezi.ga.fitnessfunction.drivers.ScriptEngineDriver;
 import com.delhezi.ga.fitnessfunction.drivers.factory.FitnessFunctionDriverFactory;
 import com.delhezi.ga.genes.PointGene;
 
@@ -31,12 +30,8 @@ public class FitnessFunctionTest {
     @Before
     public void setUp() {
         String scriptEngineDriverPath = "";
-        File dir1 = new File(".");//D:\sun\NetBeansProjects\GA\lib
-        //File dir2 = new File ("..");//D:\sun\NetBeansProjects\lib
+        File dir1 = new File(".");
         try {
-            //System.out.println ("Current dir : " + dir1.getCanonicalPath());
-            //System.out.println ("Parent  dir : " + dir2.getCanonicalPath());
-            //scriptEngineDriverPath = "D:/sun/NetBeansProjects/lib/com-delhezi-ga_scripts/";
             scriptEngineDriverPath = dir1.getCanonicalPath() .replaceAll("\\\\", "/") + "/scripts/";
         } catch (Exception e) {
             log.debug("Exception: ", e);

@@ -90,9 +90,10 @@ public final class PopulationChangeableSize<GENE_TYPE> extends Population<GENE_T
                 final ChromosomeProperties chromosomeProperties)
     throws GeneticAlgorithmException {
         return new PopulationChangeableSize<GENE_TYPE>(maxLT, minLT, chromosomes,
-                CrossoverFactory.getCrossoverOperator(crossoverOperator), crossoverProbability,
-                MutationFactory.getMutationOperator(mutationOperator), mutationProbability, chromosomeProperties);
-        }
+                CrossoverFactory.<GENE_TYPE> getCrossoverOperator(crossoverOperator), crossoverProbability,
+                MutationFactory.<GENE_TYPE> getMutationOperator(mutationOperator), mutationProbability,
+                chromosomeProperties);
+    }
 
   /**
    * Statyczna metoda factory, pomocna przy przekształcaniu

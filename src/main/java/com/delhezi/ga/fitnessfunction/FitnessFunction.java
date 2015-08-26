@@ -68,7 +68,7 @@ public class FitnessFunction {
      */
     public final double calculateFitness(final Object[] genes)
     throws GeneticAlgorithmException {
-        List genesList = Arrays.asList(genes);
+        List<Object> genesList = Arrays.asList(genes);
         return this.driv.invokeFunction(this.functionName, genesList);
     }
 

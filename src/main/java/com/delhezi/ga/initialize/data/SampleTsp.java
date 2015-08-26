@@ -57,6 +57,7 @@ public class SampleTsp<GENE_TYPE> {
      * @param chromosomeProperties Właściwości chromosomu
      * @return Lista chromosomów
      */
+    @SuppressWarnings("unchecked")
     private static <GENE_TYPE> LinkedList<Chromosome<GENE_TYPE>> setChromosomes(final LinkedList<Chromosome<GENE_TYPE>> chromosomes, final int populationSize,
             final ChromosomeProperties chromosomeProperties) {
         PointGene[] chromosomeTmp;

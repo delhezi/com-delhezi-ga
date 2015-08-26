@@ -81,7 +81,7 @@ public class KPointCrossoverTest {
       kPoints.add(10);
       //x|xxx|xx|xxx|x|x
       
-      Class parameterTypes[] = { Chromosome.class, Chromosome.class, List.class };
+      Class<?> parameterTypes[] = { Chromosome.class, Chromosome.class, List.class };
       Object args[] = { chromosome1, chromosome2, kPoints };
       
       try {

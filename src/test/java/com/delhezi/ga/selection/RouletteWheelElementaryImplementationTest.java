@@ -211,7 +211,7 @@ public class RouletteWheelElementaryImplementationTest {
 
         RouletteWheelElementaryImplementation<PointGene> instance = new RouletteWheelElementaryImplementation<PointGene>();
         
-        Class parameterTypes[] = { LinkedList.class };
+        Class<?> parameterTypes[] = { LinkedList.class };
         Object args[] = { chromosomes };
 
         try {
@@ -261,7 +261,7 @@ public class RouletteWheelElementaryImplementationTest {
 
         RouletteWheelElementaryImplementation<PointGene> instance = new RouletteWheelElementaryImplementation<PointGene>();
 
-        Class parameterTypes[] = { LinkedList.class };
+        Class<?> parameterTypes[] = { LinkedList.class };
         Object args[] = { chromosomes };
 
         try {
@@ -283,7 +283,7 @@ public class RouletteWheelElementaryImplementationTest {
         }
         */
 
-        int i_expResult;
+        //int i_expResult;
         double d_expResult;
 
         try {
