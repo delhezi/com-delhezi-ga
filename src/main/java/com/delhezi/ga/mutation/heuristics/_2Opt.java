@@ -246,27 +246,27 @@ public class _2Opt<GENE_TYPE> implements IMutation<GENE_TYPE> {
                                     final int edge1,
                                     final int edge2) {
         int chromosomeSize = chromosome.size();
-        int pA;
+        //int pA;
         int pB;
         int pC;
-        int pD;
+        //int pD;
 
         //Zawsze odwracamy punkty pomiędzy B a C.
 
             if (edge1 == chromosomeSize) { //bxxxxxxxxa-
-               pA = edge1 - 1; //geny licza sie od 0
+               //pA = edge1 - 1; //geny licza sie od 0
                pB = 0;
             } else { //xxxxxa-bxxx
-               pA = edge1 - 1; //geny licza sie od 0
+               //pA = edge1 - 1; //geny licza sie od 0
                pB = edge1;
             }
 
             if (edge2 == chromosomeSize) { //dxxxxxxxxc-
                pC = edge2 - 1; //geny licza sie od 0
-               pD = 0;
+               //pD = 0;
             } else { //xxxxxc-dxxx
                pC = edge2 - 1; //geny licza sie od 0
-               pD = edge2;
+               //pD = edge2;
             }
 
         //Liczba genów podlegających inwersji.

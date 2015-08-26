@@ -223,7 +223,7 @@ public class RouletteWheelElementaryImplementationTest {
         }
 
         double sump = 0;
-        double zakresMin = 0;
+        //double zakresMin = 0;
         for (int z = 0; z < chromosomes.size(); z++) {
             sump += normals[z];
             /*
@@ -235,7 +235,7 @@ public class RouletteWheelElementaryImplementationTest {
                 e.printStackTrace();
             }
                          */
-            zakresMin += normals[z];
+            //zakresMin += normals[z];
         }
 
         double d_expResult = 1.0;

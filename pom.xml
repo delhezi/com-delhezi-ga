@@ -42,7 +42,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss z</maven.build.timestamp.format>
-		<java.version>1.7</java.version>
+		<java.version>1.8</java.version>
 		<hamcrest-all.version>1.3</hamcrest-all.version>
 		<jacoco-maven-plugin.version>0.7.5.201505241946</jacoco-maven-plugin.version><!-- kompatybilny z java 7 i 8 -->
 		<cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>

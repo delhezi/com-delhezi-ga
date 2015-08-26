@@ -52,9 +52,6 @@ public class GeneticAlgorithmXmlDomParserFactory<GENE_TYPE> {
     private static final Logger LOGGER =
         Logger.getLogger(GeneticAlgorithmXmlSaxParserFactory.class.getName());
 
-    /** Delhezi Error Code. */
-    //private static final String DERC = "1-5-";
-
     /** Źródło inicjalizacji populacji. */
     public static enum InitializeDataSource {
         /** Baza danych. */

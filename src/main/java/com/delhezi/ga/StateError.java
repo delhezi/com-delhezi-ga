@@ -16,23 +16,19 @@ import com.delhezi.ga.exception.GeneticAlgorithmException;
  * <code>StateError</code>: Klasa określająca stan
  * algorytmu genetycznego.
  * @version 1.0 2011-01-10
- * @author <a href="mailto:wojciech.wolszczak@delhezi.com">
- * Wojciech Wolszczak</a>
+ * @author <a href="mailto:wojciech.wolszczak@delhezi.com">Wojciech Wolszczak</a>
  */
-public class StateError<GENE_TYPE> implements State {
+public class StateError implements State {
     /** Logger object. */
     //private static final Logger LOGGER =
     //    Logger.getLogger(StateInitialized.class.getName());
-
-    private GeneticAlgorithm<GENE_TYPE> ga;
 
     /**
      * Konstruktor.
      * @param ga Referencja do obiektu algorytmu genetycznego.
      * @since 1.0
      */
-    public StateError(final GeneticAlgorithm<GENE_TYPE> ga) {
-        this.ga = ga;
+    public StateError() {
     }
 
     /**
@@ -42,8 +38,7 @@ public class StateError<GENE_TYPE> implements State {
      */
     @Override
     public final void run() throws GeneticAlgorithmException {
-        throw new GeneticAlgorithmException("Current status : "
-                                            + this.getState().toString());
+        throw new GeneticAlgorithmException("Current status : " + this.getState().toString());
     }
 
     /**
@@ -53,8 +48,7 @@ public class StateError<GENE_TYPE> implements State {
      */
     @Override
     public final void stop() throws GeneticAlgorithmException {
-        throw new GeneticAlgorithmException("Current status : "
-                                            + this.getState().toString());
+        throw new GeneticAlgorithmException("Current status : " + this.getState().toString());
     }
 
     /**
@@ -67,4 +61,3 @@ public class StateError<GENE_TYPE> implements State {
         return GeneticAlgorithmState.ERROR;
     }
 }
-

@@ -35,31 +35,7 @@ public class GeneticAlgorithm<GENE_TYPE> {
     private Population<GENE_TYPE> population;
 
     /** Status algorytmu gentycznego. */
-    private State stateError;
-
-    /** Status algorytmu gentycznego. */
-    private State stateInitialized;
-
-    /** Status algorytmu gentycznego. */
-    private State stateRunning;
-
-    /** Status algorytmu gentycznego. */
-    private State stateStopped;
-
-    /** Status algorytmu gentycznego. */
     private State state;
-
-    /**
-     * Konstruktor.
-     * @since 1.0
-     */
-    public GeneticAlgorithm() {
-        stateError = new StateError<GENE_TYPE>(this);
-        stateInitialized = new StateInitialized<GENE_TYPE>(this);
-        stateRunning = new StateRunning<GENE_TYPE>(this);
-        stateStopped = new StateStopped<GENE_TYPE>(this);
-        state = null;
-    }
 
     /**
      * Licznik pokoleń - zwraca numer aktualnego pokolenia.
@@ -518,16 +494,16 @@ public class GeneticAlgorithm<GENE_TYPE> {
     protected final void setState(final GeneticAlgorithmState state) {
         switch (state) {
         case ERROR:
-            this.state = stateError;
+            this.state = new StateError();
             break;
         case STOPPED:
-            this.state = stateStopped;
+            this.state = new StateStopped<GENE_TYPE>(this);
             break;
         case RUNNING:
-            this.state = stateRunning;
+            this.state = new StateRunning<GENE_TYPE>(this);
             break;
         case INITIALIZED:
-            this.state = stateInitialized;
+            this.state = new StateInitialized<GENE_TYPE>(this);
             break;
         }
     }
