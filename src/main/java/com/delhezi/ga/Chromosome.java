@@ -8,6 +8,10 @@
  */
 package com.delhezi.ga;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import com.delhezi.ga.exception.GeneticAlgorithmException;
 import com.delhezi.ga.mutation.IMutation;
 //import java.util.logging.Logger;
@@ -31,15 +35,23 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
      * parametry wspólne dla wszystkich chromosomów w ramach jednej instancji populacji.
      * @since 1.0
      */
-    public Chromosome(final GENE_TYPE[] genes,
-                      final ChromosomeProperties chromosomeProperties) {
-        //W konstruktorze i metodzie clone inicjuj bezposrednio
-        //wartości zmiennych lub wywołuj tylko metody final.
-        this.genes = genes;
+    public Chromosome(final GENE_TYPE[] genes, final ChromosomeProperties chromosomeProperties) {
+        this.setGenes(genes);
         this.chProperties = chromosomeProperties;
-        this.changed = true;
     }
 
+    /**
+     * Konstruktor.
+     * @param genes Lista genów.
+     * @param chromosomeProperties Referencja do obiektu przechowującego
+     * parametry wspólne dla wszystkich chromosomów w ramach jednej instancji populacji.
+     * @since 1.0
+     */
+    public Chromosome(final List<GENE_TYPE> genes, final ChromosomeProperties chromosomeProperties) {
+        this.setGenes(genes);
+        this.chProperties = chromosomeProperties;
+    }
+    
     /**
      * Porównanie dwóch chromosomów;
      * Wykorzystywane przy sortowaniu.
@@ -172,7 +184,41 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
    *
    * @since 1.0
    */
-  public final GENE_TYPE[] getGenes() {
+  public final LinkedList<GENE_TYPE> getGenesAsLinkedList() {
+      return new LinkedList<GENE_TYPE>(java.util.Arrays.asList(this.genes));
+  }
+
+  /**
+   * Zwraca referencję do tablicy genów;
+   * Uwaga;
+   * Zwracana jest referencja do tablicy a nie jej kopia;
+   * Jeśli za pomocą otrzymanej referencji dojdzie do modyfikacji wartości
+   * tablicy należy wykonać funkcję changed() klasy Chromosome w celu
+   * ponownego wyznaczenia wskaźnika przystosowania chromosomu.
+   * @return Referencja do tablicy genów.
+   *
+   * @since 1.0
+   */
+  public final ArrayList<GENE_TYPE> getGenesAsArrayList() {
+      return new ArrayList<GENE_TYPE>(java.util.Arrays.asList(this.genes));
+  }
+  
+  //public final ArrayList<GENE_TYPE> getGenesAsArrayList() {
+  //    return new ArrayList<GENE_TYPE>(java.util.Arrays.asList(this.genes));
+  //}
+  
+  /**
+   * Zwraca referencję do tablicy genów;
+   * Uwaga;
+   * Zwracana jest referencja do tablicy a nie jej kopia;
+   * Jeśli za pomocą otrzymanej referencji dojdzie do modyfikacji wartości
+   * tablicy należy wykonać funkcję changed() klasy Chromosome w celu
+   * ponownego wyznaczenia wskaźnika przystosowania chromosomu.
+   * @return Referencja do tablicy genów.
+   *
+   * @since 1.0
+   */
+  public final GENE_TYPE[] getGenesAsArray() {
           return this.genes;
   }
 
@@ -192,6 +238,14 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
           this.changed = true;
   }
 
+    @SuppressWarnings("unchecked")
+    public final void setGenes(final List<GENE_TYPE> genes) {
+        this.genes = (GENE_TYPE[]) new Object[genes.size()];
+        for (int i = 0; i < genes.size(); i++)
+            this.genes[i] = genes.get(i);
+        this.changed = true;
+    }
+  
   /**
    * Kopiuje chromosom. Ze względu na konieczność skopiowania tablicy
    * genów wymagane jest "głębokie kopiowanie";

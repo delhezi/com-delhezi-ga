@@ -39,12 +39,8 @@ public class _2OptTest {
   @Before
   public void setUp() throws Exception {
     String scriptEngineDriverPath ="";
-    File dir1 = new File (".");//D:\sun\NetBeansProjects\GA\lib
-    //File dir2 = new File ("..");//D:\sun\NetBeansProjects\lib
+    File dir1 = new File (".");
     try {
-        //System.out.println ("Current dir : " + dir1.getCanonicalPath());
-        //System.out.println ("Parent  dir : " + dir2.getCanonicalPath());
-        //scriptEngineDriverPath = "D:/sun/NetBeansProjects/lib/com-delhezi-ga_scripts/";
         scriptEngineDriverPath = dir1.getCanonicalPath()+"/scripts/";
         }
     catch(Exception e) {e.printStackTrace();}
@@ -80,7 +76,7 @@ public class _2OptTest {
      */
     @Test
     public void test_2opt() {
-      System.out.println("_2opt");
+
       ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
       _2Opt<PointGene> instance = new _2Opt<PointGene>();
 

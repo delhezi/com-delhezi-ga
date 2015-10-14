@@ -37,12 +37,12 @@ public class PartiallyMatchedCrossover<GENE_TYPE> implements com.delhezi.ga.cros
     @Override
     public final void crossover(final Chromosome<GENE_TYPE> chromosome1, final Chromosome<GENE_TYPE> chromosome2) {
         LOGGER.entering(CLASS_NAME, "crossover", new Object[] { chromosome1, chromosome2 });
-        assert(chromosome1.getGenes().length == chromosome2.getGenes().length);
-        if (chromosome1.getGenes().length == 0) {
+        assert(chromosome1.getGenesAsArray().length == chromosome2.getGenesAsArray().length);
+        if (chromosome1.getGenesAsArray().length == 0) {
             return;
         }
 
-        final int geneLength = chromosome1.getGenes().length;
+        final int geneLength = chromosome1.getGenesAsArray().length;
 
         // Losowe określenie dwóch punktów krzyżowania.
         // cutLength = długość sekcji dopasowania min 1, max geneLength-1.
@@ -66,13 +66,13 @@ public class PartiallyMatchedCrossover<GENE_TYPE> implements com.delhezi.ga.cros
     public final void crossover(final Chromosome<GENE_TYPE> chromosome1, final Chromosome<GENE_TYPE> chromosome2, final int cutpoint1,
             final int cutpoint2) {
         LOGGER.entering(CLASS_NAME, "crossover", new Object[] { chromosome1, chromosome2, cutpoint1, cutpoint2 });
-        assert(chromosome1.getGenes().length == chromosome2.getGenes().length);
+        assert(chromosome1.getGenesAsArray().length == chromosome2.getGenesAsArray().length);
         assert(cutpoint1 < cutpoint2);
-        if (chromosome1.getGenes().length == 0) {
+        if (chromosome1.getGenesAsArray().length == 0) {
             return;
         }
 
-        final int geneLength = chromosome1.getGenes().length;
+        final int geneLength = chromosome1.getGenesAsArray().length;
 
         // Tworzymy geny potomków.
         @SuppressWarnings("unchecked")
