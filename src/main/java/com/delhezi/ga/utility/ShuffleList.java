@@ -8,6 +8,8 @@
  */
 package com.delhezi.ga.utility;
 
+//ISTNIEJE OPERACJA Collections.shuffle
+//klasa do usunięcia
 /**
  * <code>ShuffleList</code>: Klasa pomocnicza. Miesza elementy listy.
  * @version 1.0 2009-06-10

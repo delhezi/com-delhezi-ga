@@ -17,7 +17,6 @@ import com.delhezi.ga.Chromosome;
 import com.delhezi.ga.genes.PointGene;
 import com.delhezi.ga.mutation.IMutation;
 //import java.util.logging.Logger;
-import com.delhezi.ga.selection.TournamentTest;
 
 /**
  * Klasa <code>_3Opt</code>: Algorytm 3-opt;
@@ -82,10 +81,8 @@ public class _3Opt<GENE_TYPE> implements IMutation<GENE_TYPE> {
     private final void mutation(final Chromosome<GENE_TYPE> chromosome, final int edge[]) {
         /** Licznik ilości podjętych prób. */
         int counter = 70;
-
+/*
         assert chromosome != null : "Illegal argument chromosome: null";
-
-        int chromosomeSize = chromosome.size();
         
         for (int i = 0; i < edge.length; i++) {
             System.out.println(" edge" + i + "=" + edge[i]);
@@ -115,6 +112,70 @@ public class _3Opt<GENE_TYPE> implements IMutation<GENE_TYPE> {
         for(int i=0;i<list.size();i++){
             System.out.println(list.get(i));
         } 
+*/
+    }
+    
+    // np. krawędź edge1=2 dla xx-xxxxxxxx.
+    ////12-34-56-
+    private Chromosome<GENE_TYPE>[] reconnectionCases(final Chromosome<GENE_TYPE> chromosome, final int edge[]) {
+/*
+        assert chromosome != null : "Illegal argument chromosome: null";
+
+        Chromosome<GENE_TYPE> chromosome1 = chromosome.clone(); //1256341
+        LinkedList<GENE_TYPE> genesLinkedList = chromosome1.getGenesAsLinkedList();
+        GENE_TYPE geneRef1 = genesLinkedList.get(edge[0]-1);
+        GENE_TYPE geneRef2;
+        
+        if (genesLinkedList.size() > edge[0])
+            geneRef2 = genesLinkedList.get(edge[0]);
+        else
+            geneRef2 = genesLinkedList.getFirst();
+        
+        System.out.println("geneRef1="+geneRef1.toString());
+        System.out.println("geneRef2="+geneRef2.toString());
+        
+        GENE_TYPE geneRef3 = genesLinkedList.get(edge[1] - 1);
+        GENE_TYPE geneRef4;
+        if (genesLinkedList.size() > edge[1])
+            geneRef4 = genesLinkedList.get(edge[1]);
+        else
+            geneRef4 = genesLinkedList.getFirst();
+        
+        System.out.println("geneRef3="+geneRef3.toString());
+        System.out.println("geneRef4="+geneRef4.toString());
+        
+        GENE_TYPE geneRef5 = genesLinkedList.get(edge[2] - 1);
+        GENE_TYPE geneRef6;
+        if (genesLinkedList.size() > edge[2])
+            geneRef6 = genesLinkedList.get(edge[2]);
+        else
+            geneRef6 = genesLinkedList.getFirst();
+        
+        System.out.println("geneRef5="+geneRef5.toString());
+        System.out.println("geneRef6="+geneRef6.toString());
+        
+       // ListIterator<GENE_TYPE> it = genesLinkedList.listIterator();
+       // if (it.hasNext()) {
+       //     GENE_TYPE s1 = it.next();
+       //     System.out.println(s1);
+       // }
+
+        Node<GENE_TYPE> cur  = genesLinkedList.getFirst();
+       
+        
+*/
+        Chromosome<GENE_TYPE> chromosome2 = chromosome.clone(); //1265341
+        Chromosome<GENE_TYPE> chromosome4 = chromosome.clone(); //1256431
+        Chromosome<GENE_TYPE> chromosome6 = chromosome.clone(); //1243651
+
+        
+        Chromosome<GENE_TYPE> chromosomes[] = new Chromosome[4];
+        for (int i = 0; i < 8; i++) {
+
+        }
+
+        return chromosomes;
+
     }
 
 }

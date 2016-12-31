@@ -20,7 +20,7 @@ import com.delhezi.ga.genes.PointGene;
 import junitx.util.PrivateAccessor;
 
 public class _3OptTest {
-    
+
     private IFitnessFunctionDriver fitnessFunctionDriver;
     private static FitnessFunction fitnessFunction;
     private static ChromosomeProperties chromosomeProperties;
@@ -47,11 +47,11 @@ public class _3OptTest {
           e.printStackTrace();
           fail();
       }
-      fitnessFunction =new FitnessFunction(fitnessFunctionDriver, "fitnessFunction");
+      fitnessFunction = new FitnessFunction(fitnessFunctionDriver, "fitnessFunction");
       chromosomeProperties = ChromosomeProperties.getInstance();
       chromosomeProperties.setFitnessFunction(fitnessFunction);
     }
-  
+
     @Test
     public void testMutation() {
 
@@ -69,7 +69,6 @@ public class _3OptTest {
         edge[1]=4;   //1 2   3 4 - 5 6 7 8
         edge[2]=8;   //1 2   3 4   5 6 7 8 -
 
-        
         Class<?> parameterTypes[] = { Chromosome.class, int[].class };
         Object args[] = { chromosome, edge };
 
@@ -80,7 +79,7 @@ public class _3OptTest {
             e.printStackTrace();
             fail();
         }
-        
+
           /* try {
               System.out.println("fitnessFunction=" + fitnessFunction.calculateFitness(genes));
           } catch (GeneticAlgorithmException e) {
@@ -108,4 +107,62 @@ public class _3OptTest {
 */
       }
 
+    @Test
+    public void testReconnectionCases() {
+
+        ChromosomeProperties chromosomeProperties = ChromosomeProperties.getInstance();
+        _3Opt<PointGene> instance = new _3Opt<PointGene>();
+
+        PointGene[] genes = {   new PointGene(11,1),
+                                new PointGene(1,23),
+                                new PointGene(1,31),
+                                new PointGene(1,4),
+                                new PointGene(12,6),
+                                new PointGene(22,6),
+                                new PointGene(32,4),
+                                new PointGene(2,1)};
+
+        Chromosome<PointGene> chromosome = new Chromosome<PointGene>(genes, chromosomeProperties);
+        int edge[] = new int[3];
+        edge[0]=2;   //1 2 - 3 4   5 6 7 8
+        edge[1]=4;   //1 2   3 4 - 5 6 7 8
+        edge[2]=8;   //1 2   3 4   5 6 7 8 -
+
+        Class<?> parameterTypes[] = { Chromosome.class, int[].class };
+        Object args[] = { chromosome, edge };
+
+        try {
+            PrivateAccessor.invoke(instance, "reconnectionCases", parameterTypes, args);
+        } catch (Throwable e) {
+            log.debug("Exception: ", e);
+            e.printStackTrace();
+            fail();
+        }
+
+          /* try {
+              System.out.println("fitnessFunction=" + fitnessFunction.calculateFitness(genes));
+          } catch (GeneticAlgorithmException e) {
+            log.debug("Exception: ", e);
+            e.printStackTrace();
+            fail();
+          } */
+
+          /* try {
+              System.out.println("fitnessFunction=" + fitnessFunction.calculateFitness(genes));
+          } catch (GeneticAlgorithmException e) {
+            log.debug("Exception: ", e);
+            e.printStackTrace();
+            fail();
+          } */
+/*
+          PointGene[] expResult1 = { new PointGene(11,1), new PointGene(1,23),
+                               new PointGene(1,31), new PointGene(1,4),
+                               new PointGene(2,1), new PointGene(32,4),
+                               new PointGene(22,6), new PointGene(12,6)};
+        for (int i=0; i<chromosome.size(); i++){
+            assertEquals(expResult1[i], chromosome.getGene(i));
+            //System.out.println(chromosome.size().toString());
+        }
+*/
+      }
 }

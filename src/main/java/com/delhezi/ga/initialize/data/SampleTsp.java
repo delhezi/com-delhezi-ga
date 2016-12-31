@@ -11,6 +11,9 @@ package com.delhezi.ga.initialize.data;
 import com.delhezi.ga.Chromosome;
 import com.delhezi.ga.ChromosomeProperties;
 import com.delhezi.ga.genes.PointGene;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -71,7 +74,8 @@ public class SampleTsp<GENE_TYPE> {
         GENE_TYPE[] chromosomeI;
         for (int i = 0; i < populationSize; i++) {
             // Przemieszaj geny.
-            com.delhezi.ga.utility.ShuffleList.shuffle(chromosomeTmp);
+            com.delhezi.ga.utility.ShuffleList.shuffle(chromosomeTmp);  //ISTNIEJE OPERACJA Collections.shuffle
+            //Collections.shuffle(Arrays.asList(chromosomeTmp));
             chromosomeI = (GENE_TYPE[]) new Object[chromosomeSize];
             System.arraycopy(chromosomeTmp, 0, chromosomeI, 0, chromosomeTmp.length);
             chromosomes.add(new Chromosome<GENE_TYPE>(chromosomeI, chromosomeProperties));

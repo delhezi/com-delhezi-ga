@@ -152,7 +152,7 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
 
   /**
    * Zwraca gen ze wskazanej pozycji (locus).
-   * @param locus Pozycja genu (locus).
+   * @param locus Pozycja genu (locus) liczona od 0.
    * @return Gen określonego typu.
    *
    * @since 1.0
@@ -174,6 +174,7 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
   }
 
   /**
+   * Pobieranie pojedynczego chromosomu z listy jest BARDZo WOLNE
    * Zwraca referencję do tablicy genów;
    * Uwaga;
    * Zwracana jest referencja do tablicy a nie jej kopia;
@@ -183,12 +184,13 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
    * @return Referencja do tablicy genów.
    *
    * @since 1.0
-   */
+   
   public final LinkedList<GENE_TYPE> getGenesAsLinkedList() {
       return new LinkedList<GENE_TYPE>(java.util.Arrays.asList(this.genes));
-  }
+  }*/
 
   /**
+   * Pobieranie pojedynczego chromosomu z listy jest BARDZo WOLNE
    * Zwraca referencję do tablicy genów;
    * Uwaga;
    * Zwracana jest referencja do tablicy a nie jej kopia;
@@ -198,15 +200,11 @@ public class Chromosome<GENE_TYPE> implements Cloneable,
    * @return Referencja do tablicy genów.
    *
    * @since 1.0
-   */
+   
   public final ArrayList<GENE_TYPE> getGenesAsArrayList() {
       return new ArrayList<GENE_TYPE>(java.util.Arrays.asList(this.genes));
-  }
-  
-  //public final ArrayList<GENE_TYPE> getGenesAsArrayList() {
-  //    return new ArrayList<GENE_TYPE>(java.util.Arrays.asList(this.genes));
-  //}
-  
+  }*/
+
   /**
    * Zwraca referencję do tablicy genów;
    * Uwaga;
